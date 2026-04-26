@@ -7,21 +7,21 @@ ninja.data = [{
     title: "about",
     section: "Navigation",
     handler: () => {
-      window.location.href = "/";
+      window.location.href = "/panly.github.io/";
     },
   },{id: "nav-publications",
           title: "publications",
           description: "Preprints and manuscripts on AI agents, agent harnesses, coding agents, and evaluation.",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/publications/";
+            window.location.href = "/panly.github.io/publications/";
           },
         },{id: "nav-code",
           title: "code",
           description: "Selected GitHub repositories and open-source work.",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/repositories/";
+            window.location.href = "/panly.github.io/repositories/";
           },
         },{id: "news-️-super-excited-to-launch-catarena-we-built-a-tournament-style-benchmark-to-push-a-much-tougher-question-for-coding-agents-can-they-actually-get-stronger-through-iterative-feedback-self-reflection-and-peer-experience",
           title: '⚔️ Super excited to launch CATArena! We built a tournament-style benchmark to push...',
