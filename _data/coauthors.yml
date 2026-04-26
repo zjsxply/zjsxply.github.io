@@ -1,34 +1,45 @@
-"adams":
-  - firstname: ["Edwin", "E.", "E. P.", "Edwin Plimpton"]
-    url: https://en.wikipedia.org/wiki/Edwin_Plimpton_Adams
+"pan":
+  - firstname: ["Linyue"]
+    url: https://scholar.google.com/citations?user=xS16saYAAAAJ
 
-"podolsky":
-  - firstname: ["Boris", "B.", "B. Y.", "Boris Yakovlevich"]
-    url: https://en.wikipedia.org/wiki/Boris_Podolsky
+"zou":
+  - firstname: ["Lexiao"]
+    url: https://scholar.google.com/citations?user=ufy0-VgAAAAJ
 
-"rosen":
-  - firstname: ["Nathan", "N."]
-    url: https://en.wikipedia.org/wiki/Nathan_Rosen
+"ni":
+  - firstname: ["Jingchen"]
+    url: https://scholar.google.com/citations?user=KJSB8EkAAAAJ
 
-"bach":
-  - firstname: ["Johann Sebastian", "J. S."]
-    url: https://en.wikipedia.org/wiki/Johann_Sebastian_Bach
+"zheng":
+  - firstname: ["Hai-Tao", "Haitao"]
+    url: https://scholar.google.com/citations?user=7VPeORoAAAAJ
 
-  - firstname: ["Carl Philipp Emanuel", "C. P. E."]
-    url: https://en.wikipedia.org/wiki/Carl_Philipp_Emanuel_Bach
+"zhang":
+  - firstname: ["Shao"]
+    url: https://scholar.google.com/citations?user=UG36L2YAAAAJ
+  - firstname: ["Weinan"]
+    url: https://scholar.google.com/citations?user=Qzss0GEAAAAJ
 
-"przibram":
-  - firstname: ["Karl"]
-    url: https://link.springer.com/article/10.1007/s00016-019-00242-z
+"zhu":
+  - firstname: ["Yaoming"]
+    url: https://scholar.google.com/citations?user=rQ_HRMYAAAAJ
 
-"schrodinger":
-  - firstname: ["Erwin"]
-    url: https://en.wikipedia.org/wiki/Erwin_Schr%C3%B6dinger
+"qiu":
+  - firstname: ["Lin"]
+    url: https://scholar.google.com/citations?user=U4GJuPIAAAAJ
 
-"lorentz":
-  - firstname: ["Hendrik Antoon"]
-    url: https://en.wikipedia.org/wiki/Hendrik_Lorentz
+"liu":
+  - firstname: ["Weiwen"]
+    url: https://scholar.google.com/citations?user=C7UzRGgAAAAJ
 
-"planck":
-  - firstname: ["Max"]
-    url: https://en.wikipedia.org/wiki/Max_Planck
+"ding":
+  - firstname: ["Jiaxin"]
+    url: https://scholar.google.com/citations?user=bF_VBEAAAAAJ
+
+"cao":
+  - firstname: ["Xuezhi"]
+    url: https://scholar.google.com/citations?user=lqXw00MAAAAJ
+
+"yu":
+  - firstname: ["Yong"]
+    url: https://scholar.google.com/citations?user=-84M1m0AAAAJ

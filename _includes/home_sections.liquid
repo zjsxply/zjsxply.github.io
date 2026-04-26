@@ -1,0 +1,98 @@
+{% assign home_sections = site.data.home_sections %}
+
+{% if home_sections.internships %}
+  <h2 class="home-section-title" id="internships">🧪 internships</h2>
+  <div class="home-section-list">
+    {% for item in home_sections.internships %}
+      <div class="home-card home-card--with-logo">
+        <div class="home-card__logos">
+          {% if item.company_logo %}
+            <img src="{{ item.company_logo | relative_url }}" alt="{{ item.company }} logo" loading="lazy">
+          {% endif %}
+          {% if item.team_logo %}
+            <img src="{{ item.team_logo | relative_url }}" alt="{{ item.team }} logo" loading="lazy">
+          {% endif %}
+        </div>
+        <div class="home-card__content">
+          <div class="home-card__header">
+            <h3>
+              {{ item.company }}
+              {% if item.team %}
+                ·
+                {% if item.team_url %}
+                  <a href="{{ item.team_url }}">{{ item.team }}</a>
+                {% else %}
+                  {{ item.team }}
+                {% endif %}
+              {% endif %}
+            </h3>
+            <span>{{ item.period }}</span>
+          </div>
+          <p class="home-card__meta">💼 {{ item.role }} · 📍 {{ item.location }}</p>
+          <ul>
+            {% for bullet in item.bullets %}
+              <li>{{ bullet | markdownify | remove: '<p>' | remove: '</p>' }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% if home_sections.education %}
+  <h2 class="home-section-title" id="education">🎓 education</h2>
+  <div class="home-section-list">
+    {% for item in home_sections.education %}
+      <div class="home-card home-card--with-logo">
+        <div class="home-card__logos">
+          {% if item.logo %}
+            <img src="{{ item.logo | relative_url }}" alt="{{ item.institution }} logo" loading="lazy">
+          {% endif %}
+        </div>
+        <div class="home-card__content">
+          <div class="home-card__header">
+            <h3>{{ item.institution }}</h3>
+            <span>{{ item.period }}</span>
+          </div>
+          <p class="home-card__meta">🎓 {{ item.degree }} · 📍 {{ item.location }}</p>
+          <ul>
+            {% for bullet in item.bullets %}
+              <li>{{ bullet | markdownify | remove: '<p>' | remove: '</p>' }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% if home_sections.honors %}
+  <h2 class="home-section-title" id="honors-and-awards">🏆 honors and awards</h2>
+  <div class="home-section-list home-section-list--compact">
+    {% for item in home_sections.honors %}
+      <div class="home-card home-card--compact">
+        <div class="home-card__header">
+          <h3>{{ item.title }}</h3>
+          <span>{{ item.date }}</span>
+        </div>
+        <p>{{ item.summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% if home_sections.academic_service %}
+  <h2 class="home-section-title" id="academic-service">🤝 academic service</h2>
+  <div class="home-section-list home-section-list--compact">
+    {% for item in home_sections.academic_service %}
+      <div class="home-card home-card--compact">
+        <div class="home-card__header">
+          <h3>{{ item.title }}</h3>
+          <span>{{ item.date }}</span>
+        </div>
+        <p>{{ item.summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}

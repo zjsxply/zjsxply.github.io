@@ -1,0 +1,57 @@
+internships:
+  - company: Meituan
+    company_logo: /assets/img/logos/meituan.svg
+    team: LongCat LLM Team
+    team_logo: /assets/img/logos/longcat.svg
+    team_url: https://github.com/meituan-longcat
+    role: Algorithm Strategy Intern
+    location: Beijing, China
+    period: Nov 2025 – Present
+    bullets:
+      - 🚀 Designed competitive evaluation frameworks and unified experiment pipelines for self-improving LLM agents.
+      - 🧩 Built long-horizon business-simulation environments with persistent state, resources, stochastic events, delayed rewards, metrics, and log replay.
+
+  - company: Tencent
+    company_logo: /assets/img/logos/tencent.svg
+    role: Intern, Natural Language Processing
+    location: Shenzhen, China
+    period: Apr 2025 – Jun 2025
+    bullets:
+      - 🧠 Explored static-analysis-guided decoding for repository-level code generation.
+
+education:
+  - institution: Tsinghua University (THU)
+    logo: /assets/img/logos/tsinghua.svg
+    degree: M.S. in Computer Technology, Shenzhen International Graduate School (SIGS)
+    location: Shenzhen, China
+    period: Sep 2024 – Jul 2027
+    bullets:
+      - 🎯 Second-year master's student at Tsinghua SIGS advised by [Prof. Haitao Zheng](https://scholar.google.com/citations?user=7VPeORoAAAAJ&hl=en).
+      - 🤖 Researching long-horizon AI agents, agent harnesses, multi-agent systems, and reliable evaluation.
+
+  - institution: China University of Mining and Technology (CUMT)
+    logo: /assets/img/logos/cumt.png
+    degree: B.S. in Mathematics and Applied Mathematics
+    location: Xuzhou, China
+    period: Sep 2019 – Jul 2024
+    bullets:
+      - 📐 Built a strong foundation in mathematics, optimization, information theory, operating systems, and databases.
+
+honors:
+  - title: 🥇 First-Class Scholarship
+    date: 2024
+    summary: Ranked 2 / 124 at China University of Mining and Technology (CUMT).
+  - title: 🏅 Meritorious Winner, The Mathematical Contest in Modeling (MCM)
+    date: 2021
+    summary: Awarded by COMAP; certificate [2115775](https://www.comap-math.org/mcm/2021Certs/2115775.pdf).
+  - title: 🥈 Second Prize, The Chinese Mathematics Competitions for College Students (CMC), Category A
+    date: 2023
+    summary: National college mathematics competition organized by the Chinese Mathematical Society.
+
+academic_service:
+  - title: Teaching Assistant, Knowledge Engineering, Tsinghua University
+    date: Feb 2026 – Jun 2026
+    summary: 🧑‍🏫 Redesigned course materials around generative knowledge engineering, RAG, hallucinations, knowledge editing, agents, multimodality, and trustworthy AI.
+  - title: President, Mathematical Modeling Association, China University of Mining and Technology
+    date: Sep 2022 – Jul 2023
+    summary: 🤝 Organized the [May Day Mathematical Modeling Contest (51MCM)](https://51mcm.cumt.edu.cn/) with 16,000+ participants and led campus competitions and national-contest training.

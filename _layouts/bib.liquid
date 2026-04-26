@@ -48,7 +48,16 @@
   <!-- Entry bib key -->
   <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
     <!-- Title -->
-    <div class="title">{{ entry.title }}</div>
+    <div class="title publication-title-with-logo">
+      {% if entry.title_logo %}
+        <img src="{{ entry.title_logo | prepend: '/assets/img/logos/' | relative_url }}" class="publication-title-logo" alt="{{ entry.title_logo }}">
+      {% endif %}
+      {% if entry.url %}
+        <a href="{{ entry.url }}">{{ entry.title }}</a>
+      {% else %}
+        {{ entry.title }}
+      {% endif %}
+    </div>
     <!-- Author -->
     <div class="author">
       {% assign author_array_size = entry.author_array | size %}
@@ -85,10 +94,19 @@
           {%- if forloop.last and author_array_limit == author_array_size %}and {% endif -%}
         {% endif %}
         {%- if author_is_self -%}
-          <em>
-            {{- author.first }}
-            {{ author_last_html -}}
-          </em>
+          {%- if coauthor_url -%}
+            <a href="{{ coauthor_url }}">
+              <em>
+                {{- author.first }}
+                {{ author_last_html -}}
+              </em>
+            </a>
+          {%- else -%}
+            <em>
+              {{- author.first }}
+              {{ author_last_html -}}
+            </em>
+          {%- endif -%}
         {%- else -%}
           {%- if coauthor_url -%}
             <a href="{{ coauthor_url }}">
@@ -241,6 +259,12 @@
       {% if entry.code %}
         <a href="{{ entry.code }}" class="btn btn-sm z-depth-0" role="button">Code</a>
       {% endif %}
+      {% if entry.x_post %}
+        <a href="{{ entry.x_post }}" class="btn btn-sm z-depth-0" role="button">X Post</a>
+      {% endif %}
+      {% if entry.x_discussion %}
+        <a href="{{ entry.x_discussion }}" class="btn btn-sm z-depth-0" role="button">X Discussion</a>
+      {% endif %}
       {% if entry.poster %}
         {% if entry.poster contains '://' %}
           <a href="{{ entry.poster }}" class="btn btn-sm z-depth-0" role="button">Poster</a>
@@ -259,6 +283,30 @@
         <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Website</a>
       {% endif %}
     </div>
+    {% if entry.scholar_citations != null or entry.github_repo %}
+      <div class="pub-metrics">
+        {% if entry.scholar_citations != null %}
+          <a
+            href="{% if entry.scholar_url %}{{ entry.scholar_url }}{% else %}https://scholar.google.com/scholar?q={{ entry.title | uri_escape }}{% endif %}"
+            aria-label="Google Scholar citations"
+            role="button"
+          >
+            <img
+              src="https://img.shields.io/badge/Citations-{{ entry.scholar_citations }}-EBB215"
+              alt="Citations: {{ entry.scholar_citations }}"
+            >
+          </a>
+        {% endif %}
+        {% if entry.github_repo %}
+          <a href="https://github.com/{{ entry.github_repo }}" aria-label="GitHub stars" role="button">
+            <img
+              src="https://img.shields.io/github/stars/{{ entry.github_repo }}?style=flat&logo=github&label=Stars"
+              alt="GitHub stars for {{ entry.github_repo }}"
+            >
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
     {% if site.enable_publication_badges %}
       {% assign entry_has_altmetric_badge = false %}
       {% if entry.altmetric and entry.altmetric != 'false' %}

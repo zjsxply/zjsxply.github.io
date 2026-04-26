@@ -1,97 +1,171 @@
-- title: General Information
-  type: map
-  contents:
-    - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
-    - name: Languages
-      value: English, German
+cv:
+  name: Linyue Pan
+  label: M.S. Student in Computer Technology, Tsinghua University
+  email: zjsxlc@foxmail.com
+  location: Beijing, China
+  image: assets/img/prof_pic.jpg
+  website: https://zjsxply.github.io
+  summary: >
+    I work on long-horizon AI agents, natural-language agent harnesses, multi-agent systems, coding agents, and reliable evaluation.
+    My current research asks how agent systems can become persistent, verifiable, and evolvable beyond one-shot task performance.
 
-- title: Education
-  type: time_table
-  contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
-      description:
-        - Description 1.
-        - Description 2.
+  social_networks:
+    - network: Google Scholar
+      username: xS16saYAAAAJ
+    - network: GitHub
+      username: zjsxply
+    - network: LinkedIn
+      username: linyue-pan
+    - network: X
+      username: ply_thu
 
-- title: Experience
-  type: time_table
-  contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
-      description:
-        - Description 1.
-        - Description 2.
+  address:
+    city: Beijing
+    countryCode: CN
 
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
+  sections:
+    Education:
+      - institution: Tsinghua University
+        location: Beijing, China
+        area: Computer Technology
+        studyType: M.S.
+        start_date: Sep 2024
+        end_date: Jul 2027
+        score: "GPA: 3.734 / 4.0"
+        highlights:
+          - "Advisor: [Prof. Haitao Zheng](https://scholar.google.com/citations?user=7VPeORoAAAAJ&hl=en)."
+          - "Research focus: long-horizon AI agents, agent harnesses, multi-agent systems, and reliable evaluation."
 
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
-      description:
+      - institution: China University of Mining and Technology
+        location: Xuzhou, China
+        area: Mathematics and Applied Mathematics
+        studyType: B.S.
+        start_date: Sep 2019
+        end_date: Jul 2024
+        highlights:
+          - "Relevant coursework: Information Theory and Coding, Optimization Methods, Operating Systems, Database Systems."
 
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
+    Experience:
+      - company: Meituan
+        position: Algorithm Strategy Intern, LongCat Foundation Model Team
+        location: Beijing, China
+        start_date: Nov 2025
+        end_date: Present
+        highlights:
+          - Designed a competitive evaluation framework and unified experimental pipeline for self-improving LLM agents in strategy programming, algorithmic competitions, and engineering efficiency optimization.
+          - Built a complex business-simulation benchmark with persistent state, resource constraints, stochastic events, delayed rewards, metrics, and log replay tools.
 
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
+      - company: Tencent
+        position: Research Intern in NLP, Photon Technology Development Department
+        location: China
+        start_date: Apr 2025
+        end_date: Jun 2025
+        highlights:
+          - Proposed a hybrid static-analysis and decoding-guidance method for repository-level code generation.
+          - Implemented monitoring-guided decoding with type-consistency constraints, improving code generation accuracy by 8.9%.
 
-- title: Honors and Awards
-  type: time_table
-  contents:
-    - year: 1921
-      items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
-    - year: 2029
-      items:
-        - Max Planck Medal
+    Research Experience:
+      - label: "[Natural-Language Agent Harnesses](https://arxiv.org/abs/2603.25723)"
+        details: >
+          First-author work introducing [NLAH](https://arxiv.org/abs/2603.25723) and IHR to decouple agent harness mechanisms such as search, persistent memory, compression, and verification into explicit natural-language-executable orchestration.
+      - label: CATArena
+        details: >
+          Co-first-author work on a multi-round tournament-style benchmark that disentangles one-shot coding-agent performance from dynamic evolutionary potential.
+      - label: Population Evolution of Agents in Competitive Evaluation Ecosystems
+        details: >
+          Ongoing first-author project on population-level agent evolution, social learning, and adversarial adaptation in heterogeneous competitive environments.
+      - label: Trusted Execution Environments for SWE
+        details: >
+          Ongoing first-author project on automatic construction of trustworthy execution environments for software-engineering agents beyond Python-centric setup pipelines.
 
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Topic 1.
-      items:
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
-      items:
-        - Description 1.
-        - Description 2.
+    Publications:
+      - title: "[Natural-Language Agent Harnesses](https://arxiv.org/abs/2603.25723)"
+        authors:
+          - Linyue Pan
+          - others
+        publisher: arXiv preprint arXiv:2603.25723
+        releaseDate: 2026
+        url: https://arxiv.org/abs/2603.25723
+        summary: >
+          Introduces natural-language-executable harness representations and an intelligent runtime for explicit, adaptable agent orchestration.
 
-- title: Other Interests
-  type: list
-  contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+      - title: "CATArena: Evaluating the Evolutionary Capacity of Coding Agents"
+        authors:
+          - Linyue Pan
+          - others
+        publisher: arXiv preprint arXiv:2510.26852
+        releaseDate: 2025
+        url: https://arxiv.org/abs/2510.26852
+        summary: >
+          A tournament-style benchmark for evaluating whether coding agents can improve over repeated rounds with feedback, self-reflection, and peer experience.
+
+    Open Source Projects:
+      - name: LinguaClaw
+        url: https://github.com/curated-skills/LinguaClaw
+        summary: Claude Code-style agent orchestration reimplemented using natural-language harnesses.
+        highlights:
+          - Built a LiteLLM gateway, minimalist runtime, and modular natural-language harnesses for explicit agent orchestration.
+
+      - name: coding-agent-kit
+        url: https://github.com/zjsxply/coding-agent-kit
+        summary: Unified runtime and analytics toolkit for coding-agent experiments.
+        highlights:
+          - Standardizes agent invocation, MCP and skills configuration, run results, and process statistics across diverse agents.
+
+      - name: Agent Skills
+        url: https://github.com/zjsxply/skills
+        summary: Reusable skills for automating complex research and engineering workflows.
+        highlights:
+          - Packages paper discovery, citation search, and marketplace publishing workflows into recoverable and auditable skills.
+
+      - name: awesome-coding-agent-tech
+        url: https://github.com/zjsxply/awesome-coding-agent-tech
+        summary: Bilingual technical intelligence map for coding agents and OpenClaw.
+        highlights:
+          - Tracks 20+ topic areas and 160+ high-signal resources across papers, blogs, products, benchmarks, and engineering practices.
+
+    Academic Service:
+      - label: Teaching Assistant, Knowledge Engineering, Tsinghua University
+        details: >
+          Redesigned course materials around generative knowledge engineering, knowledge representation, RAG, hallucinations, knowledge editing, agents, multimodality, and trustworthy AI.
+      - label: President, Mathematical Modeling Association, China University of Mining and Technology
+        details: >
+          Organized a provincial mathematical modeling contest with more than 16,000 participants and led campus competitions and national-contest training.
+
+    Honors and Awards:
+      - title: Alibaba Cloud Tianchi Agent Challenge, 4th / 1028
+        date: 2026
+        awarder: Alibaba Cloud Tianchi
+        summary: Built a multi-step agent system for deep-search and deep-research question answering.
+      - title: First-Class Scholarship
+        date: 2024
+        awarder: China University of Mining and Technology
+        summary: Ranked 2 / 124.
+      - title: First Prize, International Mathematical Modeling Contest
+        date: 2023
+        awarder: International Mathematical Modeling Contest
+      - title: Second Prize, Chinese Mathematics Competitions for College Students, Category A
+        date: 2023
+        awarder: Chinese Mathematics Competitions for College Students
+
+    Skills:
+      - name: Programming and Systems
+        keywords:
+          - Python
+          - Docker
+          - Git
+          - Codex
+      - name: Agent and LLM Tooling
+        keywords:
+          - vLLM
+          - AutoGen
+          - Google ADK
+          - LiteLLM
+      - name: Research Areas
+        keywords:
+          - AI agents
+          - Coding agents
+          - Agent harnesses
+          - Multi-agent systems
+          - SFT/RL
+          - Evaluation

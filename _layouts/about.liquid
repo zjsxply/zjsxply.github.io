@@ -43,7 +43,7 @@ layout: default
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
       <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
+        <a href="{{ '/news/' | relative_url }}" style="color: inherit">🗞️ news</a>
       </h2>
       {% include news.liquid limit=true %}
     {% endif %}
@@ -59,9 +59,13 @@ layout: default
     <!-- Selected papers -->
     {% if page.selected_papers %}
       <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
+        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">📚 selected publications</a>
       </h2>
       {% include selected_papers.liquid %}
+    {% endif %}
+
+    {% if page.home_sections %}
+      {% include home_sections.liquid %}
     {% endif %}
 
     <!-- Social -->
@@ -69,8 +73,23 @@ layout: default
       <div class="social">
         <div class="contact-icons">{% social_links %}</div>
 
-        <div class="contact-note">{{ site.contact_note }}</div>
+        {% if site.contact_note %}
+          <div class="contact-note">{{ site.contact_note }}</div>
+        {% endif %}
       </div>
+
+      {% if site.data.socials.wechat.id %}
+        <div id="wechat-modal" class="wechat-modal" role="dialog" aria-modal="true" aria-labelledby="wechat-modal-title" aria-hidden="true">
+          <div class="wechat-modal__dialog" role="document">
+            <button type="button" class="wechat-modal__close" aria-label="Close WeChat dialog">&times;</button>
+            <button type="button" class="wechat-modal__copy" data-copy-text="{{ site.data.socials.wechat.id }}">
+              <span id="wechat-modal-title">WeChat ID:</span>
+              <strong>{{ site.data.socials.wechat.id }}</strong>
+            </button>
+            <div class="wechat-modal__hint" aria-live="polite">Click to copy</div>
+          </div>
+        </div>
+      {% endif %}
     {% endif %}
 
     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
