@@ -279,6 +279,38 @@ ul.task-list input[type="checkbox"] {
   border-radius: 0.25rem;
 }
 
+.profile-contact-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.65rem 0 1rem;
+}
+
+.profile-contact-icons a {
+  display: inline-flex;
+  width: 1.85rem;
+  height: 1.85rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--global-text-color);
+  font-size: 1rem;
+  text-decoration: none;
+  background: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: 999px;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.profile-contact-icons a:hover,
+.profile-contact-icons a:focus {
+  color: var(--global-theme-color);
+  border-color: var(--global-theme-color);
+  transform: translateY(-1px);
+}
+
 @media (max-width: 576px) {
   .home-card--with-logo {
     grid-template-columns: 1fr;
