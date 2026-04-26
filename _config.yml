@@ -335,6 +335,8 @@ filtered_bibtex_keywords:
     poster,
     preview,
     scholar_citations,
+    scholar_pub_id,
+    scholar_citation_id,
     scholar_url,
     selected,
     slides,

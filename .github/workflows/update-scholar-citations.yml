@@ -1,0 +1,43 @@
+name: Update Scholar citations
+
+on:
+  schedule:
+    - cron: "0 8 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Update Scholar citations from SerpApi
+        env:
+          SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
+        run: |
+          if [ -z "$SERPAPI_API_KEY" ]; then
+            echo "::warning::SERPAPI_API_KEY is not set; skipping Scholar citation update."
+            exit 0
+          fi
+          python3 bin/update_scholar_citations_serpapi.py
+
+      - name: Commit updated citation counts
+        run: |
+          if git diff --quiet -- _bibliography/papers.bib; then
+            echo "No citation changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _bibliography/papers.bib
+          git commit -m "Update Scholar citations"
+          git push
