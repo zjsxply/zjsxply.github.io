@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: write
   contents: write
 
 jobs:
@@ -41,3 +42,16 @@ jobs:
           git add _bibliography/papers.bib
           git commit -m "Update Scholar citations"
           git push
+
+      - name: Trigger site deployment
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          curl -fsS -X POST \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -d '{"ref":"main"}' \
+            "https://api.github.com/repos/$REPO/actions/workflows/deploy.yml/dispatches"
