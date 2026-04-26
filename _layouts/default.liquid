@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="{{ site.lang }}">
+{% assign document_lang = page.lang | default: site.lang %}
+<html lang="{{ document_lang }}">
   <!-- Head -->
   <head>
     {% if page.redirect %}

@@ -1,10 +1,34 @@
 ---
 layout: default
 ---
+{% assign current_lang = page.lang | default: site.lang | split: '-' | first %}
+{% assign wechat_title_label = 'WeChat ID:' %}
+{% assign wechat_hint_label = 'Click to copy' %}
+{% assign wechat_copied_label = 'Copied!' %}
+{% assign wechat_failed_label = 'Copy failed — please copy manually.' %}
+{% assign wechat_close_label = 'Close WeChat dialog' %}
+{% if current_lang == 'zh' %}
+  {% assign news_label = '🗞️ 动态' %}
+  {% assign wechat_title_label = '微信号：' %}
+  {% assign wechat_hint_label = '点击复制' %}
+  {% assign wechat_copied_label = '已复制！' %}
+  {% assign wechat_failed_label = '复制失败，请手动复制。' %}
+  {% assign wechat_close_label = '关闭微信弹窗' %}
+  {% assign news_url = '/zh/news/' %}
+  {% assign publications_label = '📚 代表论文' %}
+  {% assign publications_url = '/zh/publications/' %}
+{% else %}
+  {% assign news_label = '🗞️ news' %}
+  {% assign news_url = '/news/' %}
+  {% assign publications_label = '📚 selected publications' %}
+  {% assign publications_url = '/publications/' %}
+{% endif %}
 <div class="post">
   <header class="post-header">
     <h1 class="post-title">
-      {% if site.title == 'blank' %}
+      {% if page.display_name %}
+        {{ page.display_name }}
+      {% elsif site.title == 'blank' %}
         <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
         {{ site.last_name }}
       {% else %}
@@ -43,7 +67,7 @@ layout: default
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
       <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">🗞️ news</a>
+        <a href="{{ news_url | relative_url }}" style="color: inherit">{{ news_label }}</a>
       </h2>
       {% include news.liquid limit=true %}
     {% endif %}
@@ -59,7 +83,7 @@ layout: default
     <!-- Selected papers -->
     {% if page.selected_papers %}
       <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">📚 selected publications</a>
+        <a href="{{ publications_url | relative_url }}" style="color: inherit">{{ publications_label }}</a>
       </h2>
       {% include selected_papers.liquid %}
     {% endif %}
@@ -81,12 +105,19 @@ layout: default
       {% if site.data.socials.wechat.id %}
         <div id="wechat-modal" class="wechat-modal" role="dialog" aria-modal="true" aria-labelledby="wechat-modal-title" aria-hidden="true">
           <div class="wechat-modal__dialog" role="document">
-            <button type="button" class="wechat-modal__close" aria-label="Close WeChat dialog">&times;</button>
-            <button type="button" class="wechat-modal__copy" data-copy-text="{{ site.data.socials.wechat.id }}">
-              <span id="wechat-modal-title">WeChat ID:</span>
+            <button type="button" class="wechat-modal__close" aria-label="{{ wechat_close_label }}">&times;</button>
+            <button
+              type="button"
+              class="wechat-modal__copy"
+              data-copy-text="{{ site.data.socials.wechat.id }}"
+              data-copy-hint="{{ wechat_hint_label }}"
+              data-copy-success="{{ wechat_copied_label }}"
+              data-copy-failed="{{ wechat_failed_label }}"
+            >
+              <span id="wechat-modal-title">{{ wechat_title_label }}</span>
               <strong>{{ site.data.socials.wechat.id }}</strong>
             </button>
-            <div class="wechat-modal__hint" aria-live="polite">Click to copy</div>
+            <button type="button" class="wechat-modal__hint" aria-live="polite">{{ wechat_hint_label }}</button>
           </div>
         </div>
       {% endif %}

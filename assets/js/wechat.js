@@ -25,7 +25,7 @@
     modal.classList.remove("is-visible");
     modal.setAttribute("aria-hidden", "true");
     if (hint) {
-      hint.textContent = "Click to copy";
+      hint.textContent = copyButton ? copyButton.dataset.copyHint : "Click to copy";
     }
   }
 
@@ -54,11 +54,11 @@
         fallbackCopy(wechatId);
       }
       if (hint) {
-        hint.textContent = "Copied!";
+        hint.textContent = copyButton.dataset.copySuccess || "Copied!";
       }
     } catch (error) {
       if (hint) {
-        hint.textContent = "Copy failed — please copy manually.";
+        hint.textContent = copyButton.dataset.copyFailed || "Copy failed — please copy manually.";
       }
     }
   }
@@ -73,6 +73,10 @@
 
   if (copyButton) {
     copyButton.addEventListener("click", copyWechatId);
+  }
+
+  if (hint) {
+    hint.addEventListener("click", copyWechatId);
   }
 
   modal.addEventListener("click", (event) => {

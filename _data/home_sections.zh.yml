@@ -1,0 +1,57 @@
+internships:
+  - company: 美团
+    company_logo: /assets/img/logos/meituan.svg
+    team: LongCat 基础模型团队
+    team_logo: /assets/img/logos/longcat.svg
+    team_url: https://github.com/meituan-longcat
+    role: 算法策略实习生
+    location: 北京
+    period: 2025 年 11 月 – 至今
+    bullets:
+      - 🚀 设计面向自我进化 LLM Agents 的竞技评测框架与统一实验流水线。
+      - 🧩 构建长时程经营模拟环境，覆盖持久状态、资源、随机事件、延迟奖励、指标与日志回放。
+
+  - company: 腾讯
+    company_logo: /assets/img/logos/tencent.svg
+    role: 自然语言处理实习生
+    location: 深圳
+    period: 2025 年 4 月 – 2025 年 6 月
+    bullets:
+      - 🧠 探索用于仓库级代码生成的静态分析引导解码方法。
+
+education:
+  - institution: 清华大学
+    logo: /assets/img/logos/tsinghua.svg
+    degree: 计算机技术硕士，深圳国际研究生院
+    location: 深圳
+    period: 2024 年 9 月 – 2027 年 7 月
+    bullets:
+      - 🎯 清华大学深圳国际研究生院二年级硕士研究生，导师为 [郑海涛副教授](https://scholar.google.com/citations?user=7VPeORoAAAAJ)。
+      - 🤖 研究长时程 AI Agents、Agent Harnesses、多 Agent 系统与可靠评测。
+
+  - institution: 中国矿业大学（CUMT）
+    logo: /assets/img/logos/cumt.png
+    degree: 数学与应用数学学士
+    location: 徐州
+    period: 2019 年 9 月 – 2024 年 7 月
+    bullets:
+      - 📐 系统学习数学、优化、信息论、操作系统与数据库等基础课程。
+
+honors:
+  - title: 🥇 一等奖学金
+    date: 2024 年
+    summary: 在中国矿业大学（CUMT）排名 2 / 124。
+  - title: 🏅 国际数学建模竞赛一等奖
+    date: 2021 年
+    summary: 由 COMAP 颁发；证书 [2115775](https://www.comap-math.org/mcm/2021Certs/2115775.pdf)。
+  - title: 🥈 全国大学生数学竞赛（CMC）A 类二等奖
+    date: 2023 年
+    summary: 由中国数学会组织的全国性大学生数学竞赛。
+
+academic_service:
+  - title: 清华大学《知识工程》课程助教
+    date: 2026 年 2 月 – 2026 年 6 月
+    summary: 🧑‍🏫 围绕生成式知识工程、RAG、幻觉、知识编辑、Agents、多模态与可信 AI 重构课程材料。
+  - title: 中国矿业大学数学建模协会主席
+    date: 2022 年 9 月 – 2023 年 7 月
+    summary: 🤝 组织 16,000+ 人参与的[五一数学建模竞赛（51MCM）](https://51mcm.cumt.edu.cn/)，并负责校内竞赛与国赛培训。

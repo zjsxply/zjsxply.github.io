@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Update manual Scholar citation badges in _bibliography/papers.bib via SerpApi.
+"""Update manual Scholar citation badges in _data/publications.yml via SerpApi.
 
-The script updates only BibTeX entries that already contain a scholar_citations
-field, so papers without a citation badge stay untouched.
+The script updates only publication config entries that already contain a
+scholar_citations field, so papers without a citation badge stay untouched. The
+BibTeX file remains a clean arXiv-exported metadata source.
 """
 
 from __future__ import annotations
@@ -18,12 +19,22 @@ from pathlib import Path
 from typing import Iterable
 
 BIB_PATH = Path("_bibliography/papers.bib")
+PUBLICATIONS_PATH = Path("_data/publications.yml")
 SOCIALS_PATH = Path("_data/socials.yml")
 SERPAPI_URL = "https://serpapi.com/search.json"
 
 
 @dataclass(frozen=True)
 class BibEntry:
+    key: str
+    start: int
+    end: int
+    text: str
+
+
+@dataclass(frozen=True)
+class PublicationBlock:
+    key: str
     start: int
     end: int
     text: str
@@ -53,6 +64,11 @@ def find_bib_entries(text: str) -> list[BibEntry]:
         if open_index == -1:
             break
 
+        key_end = text.find(",", open_index)
+        if key_end == -1:
+            break
+        key = text[open_index + 1 : key_end].strip()
+
         depth = 0
         position = open_index
         while position < len(text):
@@ -63,7 +79,7 @@ def find_bib_entries(text: str) -> list[BibEntry]:
                 depth -= 1
                 if depth == 0:
                     end = position + 1
-                    entries.append(BibEntry(at_index, end, text[at_index:end]))
+                    entries.append(BibEntry(key=key, start=at_index, end=end, text=text[at_index:end]))
                     index = end
                     break
             position += 1
@@ -71,6 +87,11 @@ def find_bib_entries(text: str) -> list[BibEntry]:
             raise ValueError(f"Unbalanced BibTeX braces near byte offset {at_index}")
 
     return entries
+
+
+def find_publication_blocks(text: str) -> list[PublicationBlock]:
+    pattern = re.compile(r"(?ms)^([A-Za-z0-9_.:-]+):\n(.*?)(?=^[A-Za-z0-9_.:-]+:\n|\Z)")
+    return [PublicationBlock(key=match.group(1), start=match.start(), end=match.end(), text=match.group(0)) for match in pattern.finditer(text)]
 
 
 def extract_field(entry_text: str, field_name: str) -> str | None:
@@ -102,6 +123,13 @@ def extract_field(entry_text: str, field_name: str) -> str | None:
     return None
 
 
+def extract_yaml_scalar(block_text: str, field_name: str) -> str | None:
+    match = re.search(rf"(?m)^\s{{2}}{re.escape(field_name)}:\s*(.*?)\s*$", block_text)
+    if not match:
+        return None
+    return match.group(1).strip().strip('"\'')
+
+
 def normalize_title(title: str) -> str:
     replacements = {
         r"\emph": " ",
@@ -118,12 +146,11 @@ def normalize_title(title: str) -> str:
     return re.sub(r"\s+", " ", normalized).strip()
 
 
-def update_citation_field(entry_text: str, citations: int) -> str:
-    citation_pattern = re.compile(r'(?im)^(\s*scholar_citations\s*=\s*)[{"][^}\"]*[}\"](,?)')
-    replacement = rf"\g<1>{{{citations}}}\2"
-    updated, count = citation_pattern.subn(replacement, entry_text, count=1)
+def update_yaml_citation_field(block_text: str, citations: int) -> str:
+    citation_pattern = re.compile(r"(?m)^(\s{2}scholar_citations:\s*).*$")
+    updated, count = citation_pattern.subn(rf"\g<1>{citations}", block_text, count=1)
     if count != 1:
-        raise ValueError("Entry was selected for update but scholar_citations field was not found")
+        raise ValueError("Publication was selected for update but scholar_citations field was not found")
     return updated
 
 
@@ -187,26 +214,38 @@ def index_articles(articles: Iterable[dict]) -> tuple[dict[str, dict], dict[str,
     return by_title, by_citation_id
 
 
-def update_bibtex(articles: list[dict]) -> bool:
+def bib_titles_by_key() -> dict[str, str]:
     original = BIB_PATH.read_text(encoding="utf-8")
     entries = find_bib_entries(original)
+    titles: dict[str, str] = {}
+    for entry in entries:
+        title = extract_field(entry.text, "title")
+        if title:
+            titles[entry.key] = title
+    return titles
+
+
+def update_publication_data(articles: list[dict]) -> bool:
+    original = PUBLICATIONS_PATH.read_text(encoding="utf-8")
+    blocks = find_publication_blocks(original)
+    titles = bib_titles_by_key()
     by_title, by_citation_id = index_articles(articles)
 
     rebuilt_parts: list[str] = []
     cursor = 0
     changed = False
 
-    for entry in entries:
-        rebuilt_parts.append(original[cursor:entry.start])
-        entry_text = entry.text
-        cursor = entry.end
+    for block in blocks:
+        rebuilt_parts.append(original[cursor:block.start])
+        block_text = block.text
+        cursor = block.end
 
-        if extract_field(entry_text, "scholar_citations") is None:
-            rebuilt_parts.append(entry_text)
+        if extract_yaml_scalar(block_text, "scholar_citations") is None:
+            rebuilt_parts.append(block_text)
             continue
 
-        title = extract_field(entry_text, "title")
-        scholar_pub_id = extract_field(entry_text, "scholar_pub_id") or extract_field(entry_text, "scholar_citation_id")
+        title = titles.get(block.key)
+        scholar_pub_id = extract_yaml_scalar(block_text, "scholar_pub_id") or extract_yaml_scalar(block_text, "scholar_citation_id")
 
         article = None
         if scholar_pub_id:
@@ -215,27 +254,27 @@ def update_bibtex(articles: list[dict]) -> bool:
             article = by_title.get(normalize_title(title))
 
         if article is None:
-            print(f"Warning: no Scholar match for BibTeX title: {title or '<unknown>'}")
-            rebuilt_parts.append(entry_text)
+            print(f"Warning: no Scholar match for publication config key: {block.key}")
+            rebuilt_parts.append(block_text)
             continue
 
         citations = article_citations(article)
         if citations is None:
             print(f"Warning: matched Scholar article has no citation count: {article.get('title')}")
-            rebuilt_parts.append(entry_text)
+            rebuilt_parts.append(block_text)
             continue
 
-        old_citations = extract_field(entry_text, "scholar_citations")
-        print(f"{title}: {old_citations} -> {citations}")
-        new_entry_text = update_citation_field(entry_text, citations)
-        if new_entry_text != entry_text:
+        old_citations = extract_yaml_scalar(block_text, "scholar_citations")
+        print(f"{title or block.key}: {old_citations} -> {citations}")
+        new_block_text = update_yaml_citation_field(block_text, citations)
+        if new_block_text != block_text:
             changed = True
-        rebuilt_parts.append(new_entry_text)
+        rebuilt_parts.append(new_block_text)
 
     rebuilt_parts.append(original[cursor:])
     updated = "".join(rebuilt_parts)
     if changed:
-        BIB_PATH.write_text(updated, encoding="utf-8")
+        PUBLICATIONS_PATH.write_text(updated, encoding="utf-8")
     return changed
 
 
@@ -250,7 +289,7 @@ def main() -> int:
     articles = fetch_serpapi_articles(author_id, api_key)
     print(f"Fetched {len(articles)} Scholar articles")
 
-    changed = update_bibtex(articles)
+    changed = update_publication_data(articles)
     print("Updated citation counts." if changed else "Citation counts already up to date.")
     return 0
 

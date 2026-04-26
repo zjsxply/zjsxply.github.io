@@ -1,6 +1,10 @@
 ---
 layout: page
 permalink: /publications/
+lang: en
+lang_ref: publications
+zh_url: /zh/publications/
+lang_redirect: true
 title: publications
 description: Preprints and manuscripts on AI agents, agent harnesses, coding agents, and evaluation.
 nav: true

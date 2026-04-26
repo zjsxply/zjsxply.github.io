@@ -1,0 +1,13 @@
+pan2026naturallanguageagentharnesses:
+  title: 自然语言的 Agent Harness
+  note: 投稿中
+  award_name: 社区关注
+  award: 登顶 alphaXiv Hot \#1，入选 DAIR.AI Weekly Top 10，并在 X 上获得 55 万+ 浏览。
+  abstract: 智能体性能越来越依赖 harness 工程，但 harness 设计通常埋藏在控制器代码和特定运行时约定中，难以作为科学对象进行迁移、比较和研究。我们追问：智能体 harness 的高层控制逻辑能否被外部化为一种可移植的可执行产物？我们提出自然语言的 Agent Harness（NLAHs），用可编辑的自然语言表达 harness 行为；同时提出 Intelligent Harness Runtime（IHR），通过显式契约、持久化产物和轻量适配器执行这些 harness。在代码与计算机使用基准上，我们对操作可行性、模块消融以及从代码到文本的 harness 迁移进行了受控评估。
+  translation: https://hjfy.top/arxiv/2603.25723
+
+fu2026catarenaevaluatingevolutionarycapabilities:
+  title: CATArena：通过迭代锦标赛评测代码智能体的进化能力
+  note: 投稿中
+  abstract: 当前针对大型语言模型（LLM）代码智能体的评测主要关注单轮场景中的功能性代码生成，无法评估智能体持续代码优化和多轮迭代开发的能力。为弥补这一缺口，我们提出 CATArena，一个通过迭代锦标赛评测代码智能体进化能力的框架。智能体参与多轮锦标赛，并基于全面的执行反馈，通过自我反思和同伴学习持续改进代码。评测方面，我们提出双指标体系，将静态生成能力与进化潜力解耦。大量实验表明，智能体的进化潜力并不严格相关于其初始能力。进一步分析显示，当前智能体仍难以同时利用同伴学习和自我反思来获得有效性能提升。此外，结果验证了 CATArena 的高可扩展性和对任务变化的鲁棒性，使其成为评估 LLM 代码智能体进化能力的持续、可靠标准。
+  translation: https://hjfy.top/arxiv/2510.26852

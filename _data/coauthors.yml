@@ -6,6 +6,10 @@
   - firstname: ["Lexiao"]
     url: https://scholar.google.com/citations?user=ufy0-VgAAAAJ
 
+"guo":
+  - firstname: ["Shuo"]
+    url: https://openreview.net/profile?id=~Shuo_Guo1
+
 "ni":
   - firstname: ["Jingchen"]
     url: https://scholar.google.com/citations?user=KJSB8EkAAAAJ
@@ -20,6 +24,10 @@
   - firstname: ["Weinan"]
     url: https://scholar.google.com/citations?user=Qzss0GEAAAAJ
 
+"fu":
+  - firstname: ["Lingyue"]
+    url: https://openreview.net/profile?id=~Lingyue_Fu1
+
 "zhu":
   - firstname: ["Yaoming"]
     url: https://scholar.google.com/citations?user=rQ_HRMYAAAAJ
@@ -33,12 +41,18 @@
     url: https://scholar.google.com/citations?user=C7UzRGgAAAAJ
 
 "ding":
+  - firstname: ["Xin"]
+    url: https://openreview.net/profile?id=~Xin_Ding5
   - firstname: ["Jiaxin"]
     url: https://scholar.google.com/citations?user=bF_VBEAAAAAJ
 
 "cao":
   - firstname: ["Xuezhi"]
     url: https://scholar.google.com/citations?user=lqXw00MAAAAJ
+
+"cai":
+  - firstname: ["Xunliang"]
+    url: https://scholar.google.com/citations?user=ZEAfy1QAAAAJ
 
 "yu":
   - firstname: ["Yong"]

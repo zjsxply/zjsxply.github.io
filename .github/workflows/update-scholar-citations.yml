@@ -33,13 +33,13 @@ jobs:
 
       - name: Commit updated citation counts
         run: |
-          if git diff --quiet -- _bibliography/papers.bib; then
+          if git diff --quiet -- _data/publications.yml; then
             echo "No citation changes to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add _bibliography/papers.bib
+          git add _data/publications.yml
           git commit -m "Update Scholar citations"
           git push
 

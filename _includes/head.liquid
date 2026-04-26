@@ -1,6 +1,36 @@
 <!-- Metadata, OpenGraph and Schema.org -->
 {% include metadata.liquid %}
 
+{% if page.lang_redirect and page.zh_url %}
+  <script>
+    (function () {
+      try {
+        var storageKey = 'preferredLanguage';
+        var params = new URLSearchParams(window.location.search);
+        var explicitLanguage = params.get('lang');
+        var preferredLanguage = localStorage.getItem(storageKey);
+
+        if (explicitLanguage === 'en' || explicitLanguage === 'zh') {
+          localStorage.setItem(storageKey, explicitLanguage);
+          preferredLanguage = explicitLanguage;
+        }
+
+        var browserLanguages = navigator.languages || [navigator.language || navigator.userLanguage || ''];
+        var browserPrefersChinese = browserLanguages.some(function (language) {
+          return /^zh/i.test(language || '');
+        });
+        var targetLanguage = preferredLanguage || (browserPrefersChinese ? 'zh' : 'en');
+
+        if (targetLanguage === 'zh') {
+          window.location.replace('{{ page.zh_url | relative_url }}');
+        }
+      } catch (error) {
+        // Keep the English page if language detection is unavailable.
+      }
+    })();
+  </script>
+{% endif %}
+
 <!-- Security: Content Security Policy -->
 <!-- Permissive CSP suitable for academic websites. Allows external images, videos, and common embed services. -->
 <!-- To customize for your needs, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->

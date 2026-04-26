@@ -1,13 +1,81 @@
 ---
 ---
+{% assign current_lang = page.lang | default: site.lang | split: '-' | first %}
+{% assign publication_config = site.data.publications[entry.key] %}
+{% assign display_abbr = publication_config.abbr %}
+{% assign display_preview = publication_config.preview %}
+{% assign display_title_logo = publication_config.title_logo %}
+{% assign display_title = entry.title %}
+{% assign display_note = publication_config.note %}
+{% assign display_award = publication_config.award %}
+{% assign display_award_name = publication_config.award_name %}
+{% assign display_abstract = publication_config.abstract %}
+{% assign display_bibtex_show = publication_config.bibtex_show %}
+{% assign display_arxiv_id = entry.eprint %}
+{% assign display_doi = publication_config.doi %}
+{% assign display_hal = publication_config.hal %}
+{% assign display_html = publication_config.html %}
+{% assign display_pdf = publication_config.pdf %}
+{% assign display_supp = publication_config.supp %}
+{% assign display_video = publication_config.video %}
+{% assign display_blog = publication_config.blog %}
+{% assign display_code = publication_config.code %}
+{% assign display_x_post = publication_config.x_post %}
+{% assign display_x_discussion = publication_config.x_discussion %}
+{% assign display_poster = publication_config.poster %}
+{% assign display_slides = publication_config.slides %}
+{% assign display_website = publication_config.website %}
+{% assign display_scholar_url = publication_config.scholar_url %}
+{% assign display_scholar_citations = publication_config.scholar_citations %}
+{% assign display_github_repo = publication_config.github_repo %}
+{% assign display_altmetric = publication_config.altmetric %}
+{% assign display_dimensions = publication_config.dimensions %}
+{% assign display_google_scholar_id = publication_config.google_scholar_id %}
+{% assign display_inspirehep_id = publication_config.inspirehep_id %}
+{% assign abstract_label = 'Abs' %}
+{% assign awarded_label = 'Awarded' %}
+{% assign bibtex_label = 'Bib' %}
+{% assign video_label = 'Video' %}
+{% assign x_post_label = 'X Post' %}
+{% assign x_discussion_label = 'X Discussion' %}
+{% assign website_label = 'Website' %}
+{% assign translation_label = 'Translation' %}
+{% assign code_label = 'Code' %}
+{% if current_lang == 'zh' %}
+  {% assign publication_zh = site.data.publicationszh[entry.key] %}
+  {% assign abstract_label = '摘要' %}
+  {% assign awarded_label = '获奖' %}
+  {% assign bibtex_label = '引用' %}
+  {% assign video_label = '视频' %}
+  {% assign x_post_label = 'X 帖文' %}
+  {% assign x_discussion_label = 'X 讨论' %}
+  {% assign website_label = '网站' %}
+  {% assign translation_label = '中文翻译' %}
+  {% assign code_label = '代码' %}
+  {% if publication_zh.title %}
+    {% assign display_title = publication_zh.title %}
+  {% endif %}
+  {% if publication_zh.note %}
+    {% assign display_note = publication_zh.note %}
+  {% endif %}
+  {% if publication_zh.award %}
+    {% assign display_award = publication_zh.award %}
+  {% endif %}
+  {% if publication_zh.award_name %}
+    {% assign display_award_name = publication_zh.award_name %}
+  {% endif %}
+  {% if publication_zh.abstract %}
+    {% assign display_abstract = publication_zh.abstract %}
+  {% endif %}
+{% endif %}
 <div class="row">
   {% if site.enable_publication_thumbnails %}
     <div class="col col-sm-2 abbr">
-      {%- if entry.abbr -%}
-        {%- if site.data.venues[entry.abbr] -%}
+      {%- if display_abbr -%}
+        {%- if site.data.venues[display_abbr] -%}
           {% assign venue_style = null %}
-          {% if site.data.venues[entry.abbr].color != blank %}
-            {% assign venue_style = site.data.venues[entry.abbr].color | prepend: 'style="background-color:' | append: '"' %}
+          {% if site.data.venues[display_abbr].color != blank %}
+            {% assign venue_style = site.data.venues[display_abbr].color | prepend: 'style="background-color:' | append: '"' %}
           {%- endif -%}
           <abbr
             class="badge rounded w-100"
@@ -15,21 +83,21 @@
               {{ venue_style }}
             {% endif -%}
           >
-            {% if site.data.venues[entry.abbr].url %}
-              <a href="{{ site.data.venues[entry.abbr].url }}">{{ entry.abbr }}</a>
+            {% if site.data.venues[display_abbr].url %}
+              <a href="{{ site.data.venues[display_abbr].url }}">{{ display_abbr }}</a>
             {% else %}
-              <div>{{- entry.abbr -}}</div>
+              <div>{{- display_abbr -}}</div>
             {% endif %}
           </abbr>
         {% else %}
-          <abbr class="badge rounded w-100">{{ entry.abbr }}</abbr>
+          <abbr class="badge rounded w-100">{{ display_abbr }}</abbr>
         {% endif %}
       {% endif %}
-      {% if entry.preview %}
-        {% if entry.preview contains '://' %}
-          <img class="preview z-depth-1 rounded" src="{{ entry.preview }}">
+      {% if display_preview %}
+        {% if display_preview contains '://' %}
+          <img class="preview z-depth-1 rounded" src="{{ display_preview }}">
         {% else %}
-          {% assign entry_path = entry.preview | prepend: '/assets/img/publication_preview/' %}
+          {% assign entry_path = display_preview | prepend: '/assets/img/publication_preview/' %}
           {%
             include figure.liquid
             loading="eager"
@@ -38,7 +106,7 @@
             class="preview z-depth-1 rounded"
             zoomable=true
             avoid_scaling=true
-            alt=entry.preview
+            alt=display_preview
           %}
         {% endif %}
       {% endif %}
@@ -49,13 +117,17 @@
   <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
     <!-- Title -->
     <div class="title publication-title-with-logo">
-      {% if entry.title_logo %}
-        <img src="{{ entry.title_logo | prepend: '/assets/img/logos/' | relative_url }}" class="publication-title-logo" alt="{{ entry.title_logo }}">
+      {% if display_title_logo %}
+        <img
+          src="{{ display_title_logo | prepend: '/assets/img/logos/' | relative_url }}"
+          class="publication-title-logo"
+          alt="{{ display_title_logo }}"
+        >
       {% endif %}
       {% if entry.url %}
-        <a href="{{ entry.url }}">{{ entry.title }}</a>
+        <a href="{{ entry.url }}">{{ display_title }}</a>
       {% else %}
-        {{ entry.title }}
+        {{ display_title }}
       {% endif %}
     </div>
     <!-- Author -->
@@ -78,6 +150,17 @@
         {%- endif -%}
         {% assign coauthor_url = null %}
         {%- assign clean_last_name = author_last_name | downcase | remove_accents -%}
+        {% capture author_display_name -%}
+          {{- author.first }} {{ author_last_html -}}
+        {%- endcapture %}
+        {% if current_lang == 'zh' %}
+          {% capture author_name_key -%}
+            {{- author.first }} {{ author_last_name -}}
+          {%- endcapture %}
+          {% if site.data.coauthorszh[author_name_key] %}
+            {% assign author_display_name = site.data.coauthorszh[author_name_key] %}
+          {% endif %}
+        {% endif %}
         {% if site.data.coauthors[clean_last_name] %}
           {%- for coauthor in site.data.coauthors[clean_last_name] -%}
             {% if coauthor.firstname contains author.first %}
@@ -88,34 +171,28 @@
         {%- endif -%}
 
         {%- if forloop.length > 1 -%}
-          {% if forloop.first == false -%}
-            {%- if forloop.length > 2 %}, {% elsif forloop.length == 2 %}  {% endif %}
-          {%- endif %}
-          {%- if forloop.last and author_array_limit == author_array_size %}and {% endif -%}
+          {%- if current_lang == 'zh' -%}
+            {%- unless forloop.first -%}、{%- endunless -%}
+          {%- else -%}
+            {% if forloop.first == false -%}
+              {%- if forloop.length > 2 %}, {% elsif forloop.length == 2 %}  {% endif %}
+            {%- endif %}
+            {%- if forloop.last and author_array_limit == author_array_size %}and {% endif -%}
+          {%- endif -%}
         {% endif %}
         {%- if author_is_self -%}
           {%- if coauthor_url -%}
-            <a href="{{ coauthor_url }}">
-              <em>
-                {{- author.first }}
-                {{ author_last_html -}}
-              </em>
-            </a>
+            <a href="{{ coauthor_url }}"
+              ><em>{{- author_display_name -}}</em></a
+            >
           {%- else -%}
-            <em>
-              {{- author.first }}
-              {{ author_last_html -}}
-            </em>
+            <em>{{- author_display_name -}}</em>
           {%- endif -%}
         {%- else -%}
           {%- if coauthor_url -%}
-            <a href="{{ coauthor_url }}">
-              {{- author.first }}
-              {{ author_last_html -}}
-            </a>
+            <a href="{{ coauthor_url }}">{{- author_display_name -}}</a>
           {%- else -%}
-            {{- author.first }}
-            {{ author_last_html -}}
+            {{- author_display_name -}}
           {% endif %}
         {%- endif -%}
       {% endfor %}
@@ -202,106 +279,109 @@
       {{ periodical | strip }}
     </div>
     <div class="periodical">
-      {{ entry.note | strip }}
+      {{ display_note | strip }}
     </div>
 
     <!-- Links/Buttons -->
     <div class="links">
-      {% if entry.award %}
+      {% if display_award %}
         <a class="award btn btn-sm z-depth-0" role="button">
-          {%- if entry.award_name %}{{ entry.award_name }}{% else %}Awarded{% endif -%}
+          {%- if display_award_name %}{{ display_award_name }}{% else %}{{ awarded_label }}{% endif -%}
         </a>
       {% endif %}
-      {% if entry.abstract %}
-        <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+      {% if display_abstract %}
+        <a class="abstract btn btn-sm z-depth-0" role="button">{{ abstract_label }}</a>
       {% endif %}
-      {% if entry.doi %}
-        <a href="https://doi.org/{{ entry.doi }}" class="btn btn-sm z-depth-0" role="button">DOI</a>
+      {% if display_doi %}
+        <a href="https://doi.org/{{ display_doi }}" class="btn btn-sm z-depth-0" role="button">DOI</a>
       {% endif %}
-      {% if entry.arxiv %}
-        <a href="http://arxiv.org/abs/{{ entry.arxiv }}" class="btn btn-sm z-depth-0" role="button">arXiv</a>
+      {% if display_arxiv_id %}
+        <a href="http://arxiv.org/abs/{{ display_arxiv_id }}" class="btn btn-sm z-depth-0" role="button">arXiv</a>
       {% endif %}
-      {% if entry.hal %}
-        <a href="https://hal.science/{{ entry.hal }}" class="btn btn-sm z-depth-0" role="button">HAL</a>
+      {% if current_lang == 'zh' and publication_zh.translation %}
+        <a href="{{ publication_zh.translation }}" class="btn btn-sm z-depth-0" role="button">{{ translation_label }}</a>
       {% endif %}
-      {% if entry.bibtex_show %}
-        <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>
+      {% if display_hal %}
+        <a href="https://hal.science/{{ display_hal }}" class="btn btn-sm z-depth-0" role="button">HAL</a>
       {% endif %}
-      {% if entry.html %}
-        {% if entry.html contains '://' %}
-          <a href="{{ entry.html }}" class="btn btn-sm z-depth-0" role="button">HTML</a>
+      {% if display_bibtex_show %}
+        <a class="bibtex btn btn-sm z-depth-0" role="button">{{ bibtex_label }}</a>
+      {% endif %}
+      {% if display_html %}
+        {% if display_html contains '://' %}
+          <a href="{{ display_html }}" class="btn btn-sm z-depth-0" role="button">HTML</a>
         {% else %}
-          <a href="{{ entry.html | prepend: '/assets/html/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">HTML</a>
+          <a href="{{ display_html | prepend: '/assets/html/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">HTML</a>
         {% endif %}
       {% endif %}
-      {% if entry.pdf %}
-        {% if entry.pdf contains '://' %}
-          <a href="{{ entry.pdf }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
+      {% if display_pdf %}
+        {% if display_pdf contains '://' %}
+          <a href="{{ display_pdf }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
         {% else %}
-          <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
+          <a href="{{ display_pdf | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
         {% endif %}
       {% endif %}
-      {% if entry.supp %}
-        {% if entry.supp contains '://' %}
-          <a href="{{ entry.supp }}" class="btn btn-sm z-depth-0" role="button">Supp</a>
+      {% if display_supp %}
+        {% if display_supp contains '://' %}
+          <a href="{{ display_supp }}" class="btn btn-sm z-depth-0" role="button">Supp</a>
         {% else %}
-          <a href="{{ entry.supp | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Supp</a>
+          <a href="{{ display_supp | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Supp</a>
         {% endif %}
       {% endif %}
-      {% if entry.video and site.enable_video_embedding %}
-        <a class="abstract btn btn-sm z-depth-0" role="button">Video</a>
-      {% elsif entry.video %}
-        <a href="{{ entry.video }}" class="btn btn-sm z-depth-0" role="button">Video</a>
+      {% if display_video and site.enable_video_embedding %}
+        <a class="abstract btn btn-sm z-depth-0" role="button">{{ video_label }}</a>
+      {% elsif display_video %}
+        <a href="{{ display_video }}" class="btn btn-sm z-depth-0" role="button">{{ video_label }}</a>
       {% endif %}
-      {% if entry.blog %}
-        <a href="{{ entry.blog }}" class="btn btn-sm z-depth-0" role="button">Blog</a>
+      {% if display_blog %}
+        <a href="{{ display_blog }}" class="btn btn-sm z-depth-0" role="button">Blog</a>
       {% endif %}
-      {% if entry.code %}
-        <a href="{{ entry.code }}" class="btn btn-sm z-depth-0" role="button">Code</a>
+      {% if display_code %}
+        <a href="{{ display_code }}" class="btn btn-sm z-depth-0" role="button">{{ code_label }}</a>
       {% endif %}
-      {% if entry.x_post %}
-        <a href="{{ entry.x_post }}" class="btn btn-sm z-depth-0" role="button">X Post</a>
+      {% if display_x_post %}
+        <a href="{{ display_x_post }}" class="btn btn-sm z-depth-0" role="button">{{ x_post_label }}</a>
       {% endif %}
-      {% if entry.x_discussion %}
-        <a href="{{ entry.x_discussion }}" class="btn btn-sm z-depth-0" role="button">X Discussion</a>
+      {% if display_x_discussion %}
+        <a href="{{ display_x_discussion }}" class="btn btn-sm z-depth-0" role="button">{{ x_discussion_label }}</a>
       {% endif %}
-      {% if entry.poster %}
-        {% if entry.poster contains '://' %}
-          <a href="{{ entry.poster }}" class="btn btn-sm z-depth-0" role="button">Poster</a>
+      {% if display_poster %}
+        {% if display_poster contains '://' %}
+          <a href="{{ display_poster }}" class="btn btn-sm z-depth-0" role="button">Poster</a>
         {% else %}
-          <a href="{{ entry.poster | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Poster</a>
+          <a href="{{ display_poster | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Poster</a>
         {% endif %}
       {% endif %}
-      {% if entry.slides %}
-        {% if entry.slides contains '://' %}
-          <a href="{{ entry.slides }}" class="btn btn-sm z-depth-0" role="button">Slides</a>
+      {% if display_slides %}
+        {% if display_slides contains '://' %}
+          <a href="{{ display_slides }}" class="btn btn-sm z-depth-0" role="button">Slides</a>
         {% else %}
-          <a href="{{ entry.slides | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Slides</a>
+          <a href="{{ display_slides | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Slides</a>
         {% endif %}
       {% endif %}
-      {% if entry.website %}
-        <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Website</a>
+      {% if display_website %}
+        <a href="{{ display_website }}" class="btn btn-sm z-depth-0" role="button">{{ website_label }}</a>
       {% endif %}
     </div>
-    {% if entry.scholar_citations != null or entry.github_repo %}
+    {% if display_scholar_citations != null or display_github_repo %}
       <div class="pub-metrics">
-        {% if entry.scholar_citations != null %}
+        {% if display_scholar_citations != null %}
           <a
-            href="{% if entry.scholar_url %}{{ entry.scholar_url }}{% else %}https://scholar.google.com/scholar?q={{ entry.title | uri_escape }}{% endif %}"
+            href="{% if display_scholar_url %}{{ display_scholar_url }}{% else %}https://scholar.google.com/scholar?q={{ entry.title | uri_escape }}{% endif %}"
             aria-label="Google Scholar citations"
             role="button"
           >
             <img
-              src="https://img.shields.io/badge/Citations-{{ entry.scholar_citations }}-EBB215"
-              alt="Citations: {{ entry.scholar_citations }}"
+              src="https://img.shields.io/badge/Citations-{{ display_scholar_citations }}-EBB215"
+              alt="Citations: {{ display_scholar_citations }}"
             >
           </a>
         {% endif %}
-        {% if entry.github_repo %}
-          <a href="https://github.com/{{ entry.github_repo }}" aria-label="GitHub stars" role="button">
+        {% if display_github_repo %}
+          <a href="https://github.com/{{ display_github_repo }}" aria-label="GitHub stars" role="button">
             <img
-              src="https://img.shields.io/github/stars/{{ entry.github_repo }}?style=flat&logo=github&label=Stars"
-              alt="GitHub stars for {{ entry.github_repo }}"
+              src="https://img.shields.io/github/stars/{{ display_github_repo }}?style=flat&logo=github&label=Stars"
+              alt="GitHub stars for {{ display_github_repo }}"
             >
           </a>
         {% endif %}
@@ -309,22 +389,22 @@
     {% endif %}
     {% if site.enable_publication_badges %}
       {% assign entry_has_altmetric_badge = false %}
-      {% if entry.altmetric and entry.altmetric != 'false' %}
+      {% if display_altmetric and display_altmetric != 'false' %}
         {% assign entry_has_altmetric_badge = true %}
       {% endif %}
 
       {% assign entry_has_dimensions_badge = false %}
-      {% if entry.dimensions and entry.dimensions != 'false' %}
+      {% if display_dimensions and display_dimensions != 'false' %}
         {% assign entry_has_dimensions_badge = true %}
       {% endif %}
 
       {% assign entry_has_google_scholar_badge = false %}
-      {% if entry.google_scholar_id %}
+      {% if display_google_scholar_id %}
         {% assign entry_has_google_scholar_badge = true %}
       {% endif %}
 
       {% assign entry_has_inspirehep_badge = false %}
-      {% if entry.inspirehep_id %}
+      {% if display_inspirehep_id %}
         {% assign entry_has_inspirehep_badge = true %}
       {% endif %}
       {% if entry_has_altmetric_badge or entry_has_dimensions_badge or entry_has_google_scholar_badge or entry_has_inspirehep_badge %}
@@ -334,14 +414,14 @@
               class="altmetric-embed"
               data-badge-type="2"
               data-badge-popover="right"
-              {% if entry.altmetric != blank and entry.altmetric != 'true' %}
-                data-altmetric-id="{{ entry.altmetric }}"
-              {% elsif entry.arxiv %}
-                data-arxiv-id="{{ entry.arxiv }}"
-              {% elsif entry.eprint %}
-                data-arxiv-id="{{ entry.eprint }}"
-              {% elsif entry.doi %}
-                data-doi="{{ entry.doi }}"
+              {% if display_altmetric != blank and display_altmetric != 'true' %}
+                data-altmetric-id="{{ display_altmetric }}"
+              {% elsif display_arxiv_id %}
+                data-arxiv-id="{{ display_arxiv_id }}"
+              {% elsif display_arxiv_id %}
+                data-arxiv-id="{{ display_arxiv_id }}"
+              {% elsif display_doi %}
+                data-doi="{{ display_doi }}"
               {% elsif entry.pmid %}
                 data-pmid="{{ entry.pmid }}"
               {% elsif entry.isbn %}
@@ -352,10 +432,10 @@
           {% if site.enable_publication_badges.dimensions and entry_has_dimensions_badge %}
             <span
               class="__dimensions_badge_embed__"
-              {% if entry.dimensions != blank and entry.dimensions != 'true' %}
-                data-id="{{ entry.dimensions }}"
-              {% elsif entry.doi %}
-                data-doi="{{ entry.doi }}"
+              {% if display_dimensions != blank and display_dimensions != 'true' %}
+                data-id="{{ display_dimensions }}"
+              {% elsif display_doi %}
+                data-doi="{{ display_doi }}"
               {% else %}
                 data-pmid="{{ entry.pmid }}"
               {% endif %}
@@ -366,13 +446,13 @@
           {% endif %}
           {% if site.enable_publication_badges.google_scholar and entry_has_google_scholar_badge %}
             <a
-              href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user={{ site.data.socials.scholar_userid }}&citation_for_view={{ site.data.socials.scholar_userid }}:{{ entry.google_scholar_id }}"
+              href="https://scholar.google.com/citations?view_op=view_citation&user={{ site.data.socials.scholar_userid }}&citation_for_view={{ site.data.socials.scholar_userid }}:{{ display_google_scholar_id }}"
               aria-label="Google Scholar link"
               role="button"
             >
               {% assign citation_count = 0 %}
-              {% assign scholar_id_key = site.scholar_userid | append: ':' | append: entry.google_scholar_id %}
-              {% assign publication_key = entry.google_scholar_id %}
+              {% assign scholar_id_key = site.scholar_userid | append: ':' | append: display_google_scholar_id %}
+              {% assign publication_key = display_google_scholar_id %}
 
               {% if site.data.citations.papers[scholar_id_key] %}
                 {% assign citation_count = site.data.citations.papers[scholar_id_key].citations %}
@@ -381,7 +461,7 @@
               {% else %}
                 {% for paper in site.data.citations.papers %}
                   {% assign paper_key = paper[0] %}
-                  {% if paper_key contains entry.google_scholar_id %}
+                  {% if paper_key contains display_google_scholar_id %}
                     {% assign citation_count = paper[1].citations %}
                     {% break %}
                   {% endif %}
@@ -396,13 +476,13 @@
           {% endif %}
           {% if site.enable_publication_badges.inspirehep and entry_has_inspirehep_badge %}
             <a
-              href="https://inspirehep.net/literature/{{ entry.inspirehep_id }}"
+              href="https://inspirehep.net/literature/{{ display_inspirehep_id }}"
               aria-label="Inspirehep link"
               role="button"
             >
               <img
-                src="https://img.shields.io/badge/inspire-{% inspirehep_citations entry.inspirehep_id %}-001628?logo=inspire&logoColor=001628&labelColor=beige"
-                alt="{% inspirehep_citations entry.inspirehep_id %} InspireHEP citations"
+                src="https://img.shields.io/badge/inspire-{% inspirehep_citations display_inspirehep_id %}-001628?logo=inspire&logoColor=001628&labelColor=beige"
+                alt="{% inspirehep_citations display_inspirehep_id %} InspireHEP citations"
               >
             </a>
           {% endif %}
@@ -410,21 +490,21 @@
       {% endif %}
     {% endif %}
 
-    {% if entry.award %}
+    {% if display_award %}
       <!-- Hidden Award block -->
       <div class="award hidden d-print-inline">
-        <p>{{ entry.award | markdownify }}</p>
+        <p>{{ display_award | markdownify }}</p>
       </div>
     {% endif %}
 
-    {% if entry.abstract %}
+    {% if display_abstract %}
       <!-- Hidden abstract block -->
       <div class="abstract hidden">
-        <p>{{ entry.abstract }}</p>
+        <p>{{ display_abstract }}</p>
       </div>
     {% endif %}
 
-    {% if entry.bibtex_show %}
+    {% if display_bibtex_show %}
       <!-- Hidden bibtex block -->
       <div class="bibtex hidden">
         {% highlight bibtex %}
@@ -433,10 +513,10 @@
       </div>
     {% endif %}
 
-    {% if entry.video and site.enable_video_embedding %}
+    {% if display_video and site.enable_video_embedding %}
       <!-- Hidden video block -->
       <div class="abstract hidden">
-        <div style="text-align: center;">{% include video.liquid path=entry.video class="img-fluid rounded z-depth-1" controls=true %}</div>
+        <div style="text-align: center;">{% include video.liquid path=display_video class="img-fluid rounded z-depth-1" controls=true %}</div>
       </div>
     {% endif %}
   </div>

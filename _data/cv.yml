@@ -33,7 +33,7 @@ cv:
         end_date: Jul 2027
         score: "GPA: 3.734 / 4.0"
         highlights:
-          - "Advisor: [Prof. Haitao Zheng](https://scholar.google.com/citations?user=7VPeORoAAAAJ&hl=en)."
+          - "Advisor: [Prof. Haitao Zheng](https://scholar.google.com/citations?user=7VPeORoAAAAJ)."
           - "Research focus: long-horizon AI agents, agent harnesses, multi-agent systems, and reliable evaluation."
 
       - institution: China University of Mining and Technology

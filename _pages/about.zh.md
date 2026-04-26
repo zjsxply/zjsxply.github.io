@@ -1,21 +1,21 @@
 ---
 layout: about
-title: about
-permalink: /
-lang: en
+title: 关于
+display_name: 潘林越 (Linyue Pan)
+permalink: /zh/
+lang: zh
 lang_ref: about
-zh_url: /zh/
-lang_redirect: true
-subtitle: M.S. Student at Tsinghua University · AI Agents
+en_url: /
+subtitle: 清华大学硕士研究生 · AI Agents
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false
   more_info: >
-    <p>M.S. Student</p>
-    <p>SIGS, Tsinghua University</p>
-    <p>Shenzhen, China</p>
+    <p>硕士研究生</p>
+    <p>清华大学深圳国际研究生院</p>
+    <p>深圳</p>
 
 selected_papers: true
 home_sections: true
@@ -30,18 +30,18 @@ latest_posts:
   enabled: false
 ---
 
-I am a second-year master's student in Computer Technology at [Shenzhen International Graduate School (SIGS)](https://www.sigs.tsinghua.edu.cn/en/), [Tsinghua University (THU)](https://www.tsinghua.edu.cn/en/), advised by [Prof. Haitao Zheng](https://scholar.google.com/citations?user=7VPeORoAAAAJ).
+我是清华大学[深圳国际研究生院](https://www.sigs.tsinghua.edu.cn/)计算机技术专业二年级硕士研究生，导师是[郑海涛副教授](https://scholar.google.com/citations?user=7VPeORoAAAAJ)。
 
-My research focuses on:
+我的研究兴趣主要包括：
 
-- Building next-generation natural-language agents whose behavior and token budgets are easy for users to steer and control.
-- Building efficient long-horizon agents for real-world productivity scenarios.
-- Building more intelligent agentic models.
+- 构建下一代自然语言 Agent，使用户能够轻松掌控其行为和 token 消耗。
+- 构建面向真实生产力场景的高效长时程 Agent。
+- 构建更智能的 Agentic 模型。
 
-Previously, I interned at the Meituan [LongCat LLM Team](https://github.com/meituan-longcat), where I worked on competitive evaluation frameworks and long-horizon business-simulation environments for self-improving agents.
-I also interned at Tencent, where I explored static-analysis-guided decoding for repository-level code generation.
+此前，我曾在美团 [LongCat 基础模型团队](https://github.com/meituan-longcat) 实习，参与自我进化 Agent 的竞技评测框架与长时程经营模拟环境建设。
+我也曾在腾讯实习，探索用于仓库级代码生成的静态分析引导解码方法。
 
-<div class="profile-contact-icons" aria-label="Contact links">
+<div class="profile-contact-icons" aria-label="联系方式">
   <a href="mailto:ply24@mails.tsinghua.edu.cn" title="Email" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
   <a href="https://x.com/ply_thu" title="X" aria-label="X" rel="external nofollow noopener" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
   <a href="#wechat" title="WeChat" aria-label="WeChat"><i class="fa-brands fa-weixin"></i></a>

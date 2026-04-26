@@ -463,8 +463,17 @@ ul.task-list input[type="checkbox"] {
 
 .wechat-modal__hint {
   margin-top: 0.65rem;
+  padding: 0;
   color: var(--global-text-color-light);
   font-size: 0.85rem;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.wechat-modal__hint:hover,
+.wechat-modal__hint:focus {
+  color: var(--global-theme-color);
 }
 
 // Distill
