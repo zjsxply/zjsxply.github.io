@@ -1,0 +1,1 @@
+document.addEventListener("click",function(t){var e=t.target.closest("[data-lang-switch]");if(e){var a=e.getAttribute("data-lang-target");if("en"===a||"zh"===a)try{localStorage.setItem("preferredLanguage",a)}catch(t){}}});
