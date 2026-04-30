@@ -14,7 +14,7 @@ pan2026naturallanguageagentharnesses:
   bibtex_show: true
 
 fu2026catarenaevaluatingevolutionarycapabilities:
-  abbr: arXiv
+  abbr: ICML
   preview: catarena-logo.png
   title_logo: longcat.svg
   website: https://catarena.ai/
@@ -23,7 +23,7 @@ fu2026catarenaevaluatingevolutionarycapabilities:
   x_post: https://x.com/AGI_Evals/status/2003465968866197828
   x_discussion: https://x.com/rohanpaul_ai/status/2003899979501654413
   video: https://www.youtube.com/watch?v=JMxi5cXsPAk
-  note: Under review
+  note: Accepted to ICML 2026
   abstract: Current evaluation for Large Language Model (LLM) code agents predominantly focus on generating functional code in single-turn scenarios, which fails to evaluate the agent's capability for continuous code optimization and multi-turn iterative development. To bridge this gap, we introduce CATArena, a framework designed to evaluate the evolutionary capabilities of code agents via iterative tournaments. Agents engage in multi-turn tournaments and continuously refine their code through self-reflection and peer-learning based on comprehensive execution feedback. For evaluation, we propose a dual-metric system to decouple static generation proficiency from evolutionary potential. Extensive experiments reveal that an agent's evolutionary potential is not strictly correlated with its initial proficiency. Our analysis further reveals that current agents struggle to concurrently leverage both peer-learning and self-reflection for effective performance gains. Furthermore, the results validate CATArena's high extensibility and resistance to variance tasks, establishing it as a continuous and reliable standard for assessing the evolutionary capability of LLM code agents.
   selected: true
   bibtex_show: true

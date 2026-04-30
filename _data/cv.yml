@@ -70,7 +70,7 @@ cv:
           First-author work introducing [NLAH](https://arxiv.org/abs/2603.25723) and IHR to decouple agent harness mechanisms such as search, persistent memory, compression, and verification into explicit natural-language-executable orchestration.
       - label: CATArena
         details: >
-          Co-first-author work on a multi-round tournament-style benchmark that disentangles one-shot coding-agent performance from dynamic evolutionary potential.
+          Co-first-author ICML 2026 work on a multi-round tournament-style benchmark that disentangles one-shot coding-agent performance from dynamic evolutionary potential.
       - label: Population Evolution of Agents in Competitive Evaluation Ecosystems
         details: >
           Ongoing first-author project on population-level agent evolution, social learning, and adversarial adaptation in heterogeneous competitive environments.
@@ -93,8 +93,8 @@ cv:
         authors:
           - Linyue Pan
           - others
-        publisher: arXiv preprint arXiv:2510.26852
-        releaseDate: 2025
+        publisher: International Conference on Machine Learning (ICML), 2026
+        releaseDate: 2026
         url: https://arxiv.org/abs/2510.26852
         summary: >
           A tournament-style benchmark for evaluating whether coding agents can improve over repeated rounds with feedback, self-reflection, and peer experience.
