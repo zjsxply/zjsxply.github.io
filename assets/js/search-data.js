@@ -61,6 +61,12 @@ ninja.data = [{
           section: "News",},{id: "news-太开心了-nlah-入选-dair-ai-weekly-top-10-papers-非常感谢社区对-natural-language-harnesses-方向的关注和讨论",
           title: '🎉 太开心了：NLAH 入选 DAIR.AI Weekly Top 10 Papers！非常感谢社区对 Natural-Language Harnesses 方向的关注和讨论。',
           description: "",
+          section: "News",},{id: "news-excited-to-share-that-catarena-has-been-accepted-to-icml-2026-grateful-to-the-team-and-looking-forward-to-sharing-more-about-evaluating-the-evolutionary-capacity-of-coding-agents",
+          title: '🎉 Excited to share that CATArena has been accepted to ICML 2026! Grateful...',
+          description: "",
+          section: "News",},{id: "news-很开心-catarena-被-icml-2026-接收-感谢团队所有伙伴-也期待继续和大家交流-coding-agent-进化能力评测这个方向",
+          title: '🎉 很开心，CATArena 被 ICML 2026 接收！感谢团队所有伙伴，也期待继续和大家交流 Coding Agent 进化能力评测这个方向。',
+          description: "",
           section: "News",},{
         id: 'social-email',
         title: 'email',
