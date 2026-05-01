@@ -8,13 +8,15 @@ pan2026naturallanguageagentharnesses:
   x_discussion: https://x.com/rronak_/status/2038401494177694074
   note: Under review
   award_name: Community Attention
-  award: Reached alphaXiv Hot \#1, selected by DAIR.AI Weekly Top 10, and received 550K+ views on X.
+  award: Reached alphaXiv Hot \#1, selected by DAIR.AI Weekly Top 10 and [The AI Timeline](https://x.com/TheAITimeline/status/2038486801564700913)'s Top AI/ML Research Papers of the Week (7 papers total), and received 550K+ views on X.
   abstract: Agent performance increasingly depends on \emph{harness engineering}, yet harness design is usually buried in controller code and runtime-specific conventions, making it hard to transfer, compare, and study as a scientific object. We ask whether the high-level control logic of an agent harness can instead be externalized as a portable executable artifact. We introduce \textbf{Natural-Language Agent Harnesses} (NLAHs), which express harness behavior in editable natural language, and \textbf{Intelligent Harness Runtime} (IHR), a shared runtime that executes these harnesses through explicit contracts, durable artifacts, and lightweight adapters. Across coding and computer-use benchmarks, we conduct controlled evaluations of operational viability, module ablation, and code-to-text harness migration.
+  author_marks:
+    Hai-Tao Zheng: "#"
   selected: true
   bibtex_show: true
 
 fu2026catarenaevaluatingevolutionarycapabilities:
-  abbr: ICML
+  abbr: "ICML'26"
   preview: catarena-logo.png
   title_logo: longcat.svg
   website: https://catarena.ai/
@@ -23,7 +25,13 @@ fu2026catarenaevaluatingevolutionarycapabilities:
   x_post: https://x.com/AGI_Evals/status/2003465968866197828
   x_discussion: https://x.com/rohanpaul_ai/status/2003899979501654413
   video: https://www.youtube.com/watch?v=JMxi5cXsPAk
-  note: Accepted to ICML 2026
+  scholar_citations: 1
+  note: ICML 2026
   abstract: Current evaluation for Large Language Model (LLM) code agents predominantly focus on generating functional code in single-turn scenarios, which fails to evaluate the agent's capability for continuous code optimization and multi-turn iterative development. To bridge this gap, we introduce CATArena, a framework designed to evaluate the evolutionary capabilities of code agents via iterative tournaments. Agents engage in multi-turn tournaments and continuously refine their code through self-reflection and peer-learning based on comprehensive execution feedback. For evaluation, we propose a dual-metric system to decouple static generation proficiency from evolutionary potential. Extensive experiments reveal that an agent's evolutionary potential is not strictly correlated with its initial proficiency. Our analysis further reveals that current agents struggle to concurrently leverage both peer-learning and self-reflection for effective performance gains. Furthermore, the results validate CATArena's high extensibility and resistance to variance tasks, establishing it as a continuous and reliable standard for assessing the evolutionary capability of LLM code agents.
+  author_marks:
+    Lingyue Fu: "*"
+    Xin Ding: "*"
+    Linyue Pan: "*"
+    Weiwen Liu: "#"
   selected: true
   bibtex_show: true

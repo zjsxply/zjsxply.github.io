@@ -8,8 +8,8 @@ internships:
     location: 北京
     period: 2025 年 11 月 – 至今
     bullets:
-      - 🚀 设计面向自我进化 LLM Agents 的竞技评测框架与统一实验流水线。
-      - 🧩 构建长时程经营模拟环境，覆盖持久状态、资源、随机事件、延迟奖励、指标与日志回放。
+      - 研究实习方向：代码 Agent 评测。
+      - "导师：[朱耀明](https://scholar.google.com/citations?user=rQ_HRMYAAAAJ)。"
 
   - company: 腾讯
     company_logo: /assets/img/logos/tencent.svg
@@ -17,7 +17,8 @@ internships:
     location: 深圳
     period: 2025 年 4 月 – 2025 年 6 月
     bullets:
-      - 🧠 探索用于仓库级代码生成的静态分析引导解码方法。
+      - 研究实习方向：静态分析引导的代码生成。
+      - "导师：[陶玮](https://scholar.google.com/citations?user=3RG4Lf4AAAAJ)。"
 
 education:
   - institution: 清华大学
@@ -27,7 +28,7 @@ education:
     period: 2024 年 9 月 – 2027 年 7 月
     bullets:
       - 🎯 清华大学深圳国际研究生院二年级硕士研究生，导师为 [郑海涛副教授](https://scholar.google.com/citations?user=7VPeORoAAAAJ)。
-      - 🤖 研究长时程 AI Agents、Agent Harnesses、多 Agent 系统与可靠评测。
+      - 🤖 研究代码 Agent、Agent Harnesses 与长时程 AI Agents。
 
   - institution: 中国矿业大学（CUMT）
     logo: /assets/img/logos/cumt.png
@@ -35,12 +36,13 @@ education:
     location: 徐州
     period: 2019 年 9 月 – 2024 年 7 月
     bullets:
-      - 📐 系统学习数学、优化、信息论、操作系统与数据库等基础课程。
+      - "📐 本科专业方向为计算、控制与优化，导师为[邵虎教授](https://math.cumt.edu.cn/6d/ce/c9104a355790/page.htm)。"
+      - 系统学习数学、分析、概率统计、优化、信息论、操作系统与数据库等基础课程。
 
 honors:
-  - title: 🥇 一等奖学金
+  - title: 🥇 中国矿业大学校一等奖学金
     date: 2024 年
-    summary: 在中国矿业大学（CUMT）排名 2 / 124。
+    summary: 奖学金排名 2 / 124。
   - title: 🏅 国际数学建模竞赛一等奖
     date: 2021 年
     summary: 由 COMAP 颁发；证书 [2115775](https://www.comap-math.org/mcm/2021Certs/2115775.pdf)。

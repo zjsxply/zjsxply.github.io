@@ -15,8 +15,10 @@ nav_order: 1
 
 {% include bib_search.liquid %}
 
+<p class="publication-author-note"><sup>*</sup> for equal contribution, <sup>#</sup> for corresponding author.</p>
+
 <div class="publications">
 
-{% bibliography %}
+{% bibliography --group_by none %}
 
 </div>

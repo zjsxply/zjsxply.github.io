@@ -79,3 +79,56 @@ For troubleshooting, see:
 - [Common Pitfalls & Workarounds](.github/copilot-instructions.md#common-pitfalls--workarounds) in copilot-instructions.md
 - [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for detailed solutions
 - [GitHub Issues](https://github.com/alshedivat/al-folio/issues) to search for your specific problem.
+
+## Owner Requirement Summary
+
+This section summarizes the site owner's main requirements from the homepage-building session. Keep it concise and use it as preference guidance when making future changes.
+
+### Core Direction
+
+- Build and maintain a polished academic homepage based on al-folio for `https://zjsxply.github.io/`.
+- Keep the style clean, mature, and academic, while allowing energetic news wording and tasteful emoji.
+- Prefer Docker-based local builds and Prettier formatting before commits.
+- Do not commit, push, revert, or force-push unless the user explicitly asks; if undoing commits, prefer direct history edits over revert commits when requested.
+- Never expose or commit credentials, tokens, `.git-credentials`, `auth.json`, or secret values.
+
+### Site Structure
+
+- English is the default site; Chinese lives under `/zh/` with browser-language auto-detection and manual language switching.
+- Use consistent bilingual filenames such as `name.zh.md` and `name.zh.yml`.
+- Keep CV/PDF hidden and keep Projects removed; use the code/repositories page instead.
+- Keep footer and UI text localized, but do not add verbose footer contact text.
+
+### Homepage Content
+
+- Name format: English `Linyue Pan (潘林越)`; Chinese `潘林越 (Linyue Pan)`.
+
+### Contacts
+
+- Primary email is `ply24@mails.tsinghua.edu.cn`; WeChat ID is `fallendown759`.
+- WeChat should open a localized modal and support click-to-copy from both the ID area and the “Click to copy / 点击复制” hint.
+- Visible contact icons should emphasize mail, X, WeChat, LinkedIn, Google Scholar, GitHub, DBLP, and ORCID; avoid showing OpenReview/AMiner icons unless their appearance is improved.
+
+### Bilingual Writing Preferences
+
+- Do not translate `harness`; translate NLAH as `自然语言的 Agent Harness`.
+- Chinese wording preferences include `郑海涛副教授`, `自我进化`, `经营模拟`, and `LongCat 基础模型团队`.
+- Chinese locations should avoid country names; use city names such as `北京`, `深圳`, and `徐州`.
+- Chinese publication UI labels, footer text, WeChat copy text, news text, abstracts, notes, and section titles should be localized.
+- Avoid forcing `&hl=en` in links.
+
+### Publications And Metrics
+
+- `_bibliography/papers.bib` must contain only arXiv-exported BibTeX data; all website-specific metadata belongs in `_data/publications.yml` or `_data/publications.zh.yml`.
+- Preserve exact arXiv author lists and never use `others`.
+- Do not show `HTML` buttons for the current papers.
+- Google Scholar citations should be updated by the SerpAPI GitHub Action into `_data/publications.yml`; do not write citation counts into BibTeX. GitHub stars may be shown separately.
+
+### Chinese Publication Authors
+
+- Use Chinese real names where known.
+- Preserve author profile links in both languages when available.
+
+### News, Experience, Education, Honors
+
+- Homepage news should show five items and use an excited, celebratory tone.

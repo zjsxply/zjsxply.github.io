@@ -11,6 +11,7 @@
 {% assign display_award_name = publication_config.award_name %}
 {% assign display_abstract = publication_config.abstract %}
 {% assign display_bibtex_show = publication_config.bibtex_show %}
+{% assign display_author_marks = publication_config.author_marks %}
 {% assign display_arxiv_id = entry.eprint %}
 {% assign display_doi = publication_config.doi %}
 {% assign display_hal = publication_config.hal %}
@@ -150,13 +151,20 @@
         {%- endif -%}
         {% assign coauthor_url = null %}
         {%- assign clean_last_name = author_last_name | downcase | remove_accents -%}
+        {% capture author_name_key -%}
+          {{- author.first }} {{ author_last_name -}}
+        {%- endcapture %}
+        {% assign author_mark = null %}
+        {% if display_author_marks and display_author_marks[author_name_key] %}
+          {% assign author_mark = display_author_marks[author_name_key] %}
+        {% endif %}
+        {% capture author_marker_html -%}
+          {%- if author_mark -%}<sup>{{ author_mark }}</sup>{%- endif -%}
+        {%- endcapture %}
         {% capture author_display_name -%}
           {{- author.first }} {{ author_last_html -}}
         {%- endcapture %}
         {% if current_lang == 'zh' %}
-          {% capture author_name_key -%}
-            {{- author.first }} {{ author_last_name -}}
-          {%- endcapture %}
           {% if site.data.coauthorszh[author_name_key] %}
             {% assign author_display_name = site.data.coauthorszh[author_name_key] %}
           {% endif %}
@@ -183,16 +191,16 @@
         {%- if author_is_self -%}
           {%- if coauthor_url -%}
             <a href="{{ coauthor_url }}"
-              ><em>{{- author_display_name -}}</em></a
+              ><em>{{- author_display_name -}}</em>{{ author_marker_html }}</a
             >
           {%- else -%}
-            <em>{{- author_display_name -}}</em>
+            <em>{{- author_display_name -}}</em>{{ author_marker_html }}
           {%- endif -%}
         {%- else -%}
           {%- if coauthor_url -%}
-            <a href="{{ coauthor_url }}">{{- author_display_name -}}</a>
+            <a href="{{ coauthor_url }}">{{- author_display_name -}}{{ author_marker_html }}</a>
           {%- else -%}
-            {{- author_display_name -}}
+            {{- author_display_name -}}{{ author_marker_html }}
           {% endif %}
         {%- endif -%}
       {% endfor %}
@@ -274,13 +282,22 @@
       {% include hook/bib.liquid %}
     {% endif %}
     {% assign entrytype_text = entrytype | strip_html | strip %}
-    {% capture periodical %}{{ entrytype }}{% if entrytype_text != "" and entryyear != "" %}, {% endif %}{{ entrymonth }}{{ entryyear }}{% endcapture %}
-    <div class="periodical">
-      {{ periodical | strip }}
-    </div>
-    <div class="periodical">
-      {{ display_note | strip }}
-    </div>
+    {% assign display_entryyear = entryyear %}
+    {% if display_note and entrytype_text == '' %}
+      {% assign display_entryyear = '' %}
+    {% endif %}
+    {% capture periodical %}{{ entrytype }}{% if entrytype_text != "" and display_entryyear != "" %}, {% endif %}{{ entrymonth }}{{ display_entryyear }}{% endcapture %}
+    {% assign periodical_text = periodical | strip %}
+    {% if periodical_text != '' %}
+      <div class="periodical">
+        {{ periodical_text }}
+      </div>
+    {% endif %}
+    {% if display_note %}
+      <div class="periodical">
+        {{ display_note | strip }}
+      </div>
+    {% endif %}
 
     <!-- Links/Buttons -->
     <div class="links">

@@ -6,15 +6,15 @@ lang: en
 lang_ref: about
 zh_url: /zh/
 lang_redirect: true
-subtitle: M.S. Student at Tsinghua University · AI Agents
+subtitle:
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false
   more_info: >
-    <p>M.S. Student</p>
-    <p>SIGS, Tsinghua University</p>
+    <p>M.S. Student @ SIGS, THU</p>
+    <p>Coding Agent; Harness Engineering; Long-Horizon Agent</p>
     <p>Shenzhen, China</p>
 
 selected_papers: true
@@ -30,16 +30,20 @@ latest_posts:
   enabled: false
 ---
 
-I am a second-year master's student in Computer Technology at [Shenzhen International Graduate School (SIGS)](https://www.sigs.tsinghua.edu.cn/en/), [Tsinghua University (THU)](https://www.tsinghua.edu.cn/en/), advised by [Prof. Haitao Zheng](https://scholar.google.com/citations?user=7VPeORoAAAAJ).
+I am currently a second-year master's student in Computer Technology at [Shenzhen International Graduate School (SIGS)](https://www.sigs.tsinghua.edu.cn/en/), [Tsinghua University (THU)](https://www.tsinghua.edu.cn/en/), advised by [Prof. Haitao Zheng](https://scholar.google.com/citations?user=7VPeORoAAAAJ).
+I earned my B.S. in Mathematics and Applied Mathematics from [China University of Mining and Technology (CUMT)](https://en.cumt.edu.cn/), advised by [Prof. Hu Shao](https://math.cumt.edu.cn/6d/ce/c9104a355790/page.htm).
 
-My research focuses on:
+I'm currently a research intern at the Meituan [LongCat LLM Team](https://github.com/meituan-longcat), focusing on evaluation for coding agents.
+Previously, I held research intern positions at Tencent, where I explored static-analysis-guided decoding for repository-level code generation.
+As first author, I proposed [Natural-Language Agent Harnesses](https://arxiv.org/abs/2603.25723), exploring a new form of next-generation intelligent agents.
 
-- Building next-generation natural-language agents whose behavior and token budgets are easy for users to steer and control.
-- Building efficient long-horizon agents for real-world productivity scenarios.
-- Building more intelligent agentic models.
+**Research Interests:**
 
-Previously, I interned at the Meituan [LongCat LLM Team](https://github.com/meituan-longcat), where I worked on competitive evaluation frameworks and long-horizon business-simulation environments for self-improving agents.
-I also interned at Tencent, where I explored static-analysis-guided decoding for repository-level code generation.
+- **Next-Generation Agent Form**: building Natural-Language Agent Harnesses whose behavior and token budgets are easy for users to steer and control.
+- **General Long-Horizon Agent**: building general long-horizon agents for real-world productivity scenarios.
+- **Agentic Model Training**: developing SFT and RL training methods for higher-intelligence general agents.
+
+My long-term goal is to build AGI Agents that can produce useful work efficiently and be deeply adopted by human society.
 
 <div class="profile-contact-icons" aria-label="Contact links">
   <a href="mailto:ply24@mails.tsinghua.edu.cn" title="Email" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>

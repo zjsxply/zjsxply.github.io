@@ -1,13 +1,13 @@
 cv:
   name: Linyue Pan
-  label: M.S. Student in Computer Technology, Tsinghua University
+  label: M.S. Student @ SIGS, THU
   email: zjsxlc@foxmail.com
   location: Beijing, China
   image: assets/img/prof_pic.jpg
   website: https://zjsxply.github.io
   summary: >
-    I work on long-horizon AI agents, natural-language agent harnesses, multi-agent systems, coding agents, and reliable evaluation.
-    My current research asks how agent systems can become persistent, verifiable, and evolvable beyond one-shot task performance.
+    I work on coding agents, harness engineering, long-horizon agents, and agentic model training.
+    My long-term goal is to build AGI Agents that can produce useful work efficiently and be deeply adopted by human society.
 
   social_networks:
     - network: Google Scholar
@@ -34,7 +34,7 @@ cv:
         score: "GPA: 3.734 / 4.0"
         highlights:
           - "Advisor: [Prof. Haitao Zheng](https://scholar.google.com/citations?user=7VPeORoAAAAJ)."
-          - "Research focus: long-horizon AI agents, agent harnesses, multi-agent systems, and reliable evaluation."
+          - "Research focus: coding agents, agent harnesses, and long-horizon AI agents."
 
       - institution: China University of Mining and Technology
         location: Xuzhou, China
@@ -43,7 +43,8 @@ cv:
         start_date: Sep 2019
         end_date: Jul 2024
         highlights:
-          - "Relevant coursework: Information Theory and Coding, Optimization Methods, Operating Systems, Database Systems."
+          - "Completed the Computation, Control, and Optimization track under the supervision of [Prof. Hu Shao](https://math.cumt.edu.cn/6d/ce/c9104a355790/page.htm)."
+          - Built a strong foundation in mathematics, analysis, probability and statistics, optimization, information theory, operating systems, and databases.
 
     Experience:
       - company: Meituan
@@ -52,8 +53,8 @@ cv:
         start_date: Nov 2025
         end_date: Present
         highlights:
-          - Designed a competitive evaluation framework and unified experimental pipeline for self-improving LLM agents in strategy programming, algorithmic competitions, and engineering efficiency optimization.
-          - Built a complex business-simulation benchmark with persistent state, resource constraints, stochastic events, delayed rewards, metrics, and log replay tools.
+          - Research Intern on evaluation for coding agents.
+          - "Mentor: [Yaoming Zhu](https://scholar.google.com/citations?user=rQ_HRMYAAAAJ)."
 
       - company: Tencent
         position: Research Intern in NLP, Photon Technology Development Department
@@ -61,8 +62,8 @@ cv:
         start_date: Apr 2025
         end_date: Jun 2025
         highlights:
-          - Proposed a hybrid static-analysis and decoding-guidance method for repository-level code generation.
-          - Implemented monitoring-guided decoding with type-consistency constraints, improving code generation accuracy by 8.9%.
+          - Research Intern on static-analysis-guided code generation.
+          - "Mentor: [Wei Tao](https://scholar.google.com/citations?user=3RG4Lf4AAAAJ)."
 
     Research Experience:
       - label: "[Natural-Language Agent Harnesses](https://arxiv.org/abs/2603.25723)"
@@ -137,10 +138,10 @@ cv:
         date: 2026
         awarder: Alibaba Cloud Tianchi
         summary: Built a multi-step agent system for deep-search and deep-research question answering.
-      - title: First-Class Scholarship
+      - title: First-Class Scholarship, China University of Mining and Technology
         date: 2024
         awarder: China University of Mining and Technology
-        summary: Ranked 2 / 124.
+        summary: "Scholarship rank: 2 / 124."
       - title: First Prize, International Mathematical Modeling Contest
         date: 2023
         awarder: International Mathematical Modeling Contest

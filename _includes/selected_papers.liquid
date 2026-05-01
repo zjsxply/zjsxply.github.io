@@ -1,3 +1,9 @@
+{% assign current_lang = page.lang | default: site.lang | split: '-' | first %}
+{% if current_lang == 'zh' %}
+  <p class="publication-author-note"><sup>*</sup> 表示共同一作，<sup>#</sup> 表示通讯作者。</p>
+{% else %}
+  <p class="publication-author-note"><sup>*</sup> for equal contribution, <sup>#</sup> for corresponding author.</p>
+{% endif %}
 <div class="publications">
   {% bibliography --group_by none %}
 </div>

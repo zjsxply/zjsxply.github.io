@@ -8,8 +8,8 @@ internships:
     location: Beijing, China
     period: Nov 2025 – Present
     bullets:
-      - 🚀 Designed competitive evaluation frameworks and unified experiment pipelines for self-improving LLM agents.
-      - 🧩 Built long-horizon business-simulation environments with persistent state, resources, stochastic events, delayed rewards, metrics, and log replay.
+      - Research Intern on evaluation for coding agents.
+      - "Mentor: [Yaoming Zhu](https://scholar.google.com/citations?user=rQ_HRMYAAAAJ)."
 
   - company: Tencent
     company_logo: /assets/img/logos/tencent.svg
@@ -17,7 +17,8 @@ internships:
     location: Shenzhen, China
     period: Apr 2025 – Jun 2025
     bullets:
-      - 🧠 Explored static-analysis-guided decoding for repository-level code generation.
+      - Research Intern on static-analysis-guided code generation.
+      - "Mentor: [Wei Tao](https://scholar.google.com/citations?user=3RG4Lf4AAAAJ)."
 
 education:
   - institution: Tsinghua University (THU)
@@ -27,7 +28,7 @@ education:
     period: Sep 2024 – Jul 2027
     bullets:
       - 🎯 Second-year master's student at Tsinghua SIGS advised by [Prof. Haitao Zheng](https://scholar.google.com/citations?user=7VPeORoAAAAJ).
-      - 🤖 Researching long-horizon AI agents, agent harnesses, multi-agent systems, and reliable evaluation.
+      - 🤖 Researching coding agents, agent harnesses, and long-horizon AI agents.
 
   - institution: China University of Mining and Technology (CUMT)
     logo: /assets/img/logos/cumt.png
@@ -35,12 +36,13 @@ education:
     location: Xuzhou, China
     period: Sep 2019 – Jul 2024
     bullets:
-      - 📐 Built a strong foundation in mathematics, optimization, information theory, operating systems, and databases.
+      - "📐 Completed the Computation, Control, and Optimization track under the supervision of [Prof. Hu Shao](https://math.cumt.edu.cn/6d/ce/c9104a355790/page.htm)."
+      - Built a strong foundation in mathematics, analysis, probability and statistics, optimization, information theory, operating systems, and databases.
 
 honors:
-  - title: 🥇 First-Class Scholarship
+  - title: 🥇 First-Class Scholarship, China University of Mining and Technology (CUMT)
     date: 2024
-    summary: Ranked 2 / 124 at China University of Mining and Technology (CUMT).
+    summary: "Scholarship rank: 2 / 124."
   - title: 🏅 Meritorious Winner, The Mathematical Contest in Modeling (MCM)
     date: 2021
     summary: Awarded by COMAP; certificate [2115775](https://www.comap-math.org/mcm/2021Certs/2115775.pdf).

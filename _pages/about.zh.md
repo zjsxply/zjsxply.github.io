@@ -6,15 +6,15 @@ permalink: /zh/
 lang: zh
 lang_ref: about
 en_url: /
-subtitle: 清华大学硕士研究生 · AI Agents
+subtitle:
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false
   more_info: >
-    <p>硕士研究生</p>
-    <p>清华大学深圳国际研究生院</p>
+    <p>清华深研院硕士生</p>
+    <p>代码 Agent；Agent Harness 工程；长时程 Agent</p>
     <p>深圳</p>
 
 selected_papers: true
@@ -30,16 +30,20 @@ latest_posts:
   enabled: false
 ---
 
-我是清华大学[深圳国际研究生院](https://www.sigs.tsinghua.edu.cn/)计算机技术专业二年级硕士研究生，导师是[郑海涛副教授](https://scholar.google.com/citations?user=7VPeORoAAAAJ)。
+我目前是清华大学[深圳国际研究生院](https://www.sigs.tsinghua.edu.cn/)计算机技术专业二年级硕士研究生，导师是[郑海涛副教授](https://scholar.google.com/citations?user=7VPeORoAAAAJ)。
+我本科毕业于[中国矿业大学](https://www.cumt.edu.cn/)数学与应用数学专业，受[邵虎教授](https://math.cumt.edu.cn/6d/ce/c9104a355790/page.htm)指导。
 
-我的研究兴趣主要包括：
+目前，我在美团 [LongCat 基础模型团队](https://github.com/meituan-longcat) 担任研究实习生，专注代码 Agent 评测。
+此前，我曾在腾讯担任研究实习生，探索用于仓库级代码生成的静态分析引导的解码方法。
+我以第一作者身份提出 [Natural-Language Agent Harnesses](https://arxiv.org/abs/2603.25723)，探索了一种全新的下一代智能 Agent 形态。
 
-- 构建下一代自然语言 Agent，使用户能够轻松掌控其行为和 token 消耗。
-- 构建面向真实生产力场景的高效长时程 Agent。
-- 构建更智能的 Agentic 模型。
+**研究兴趣：**
 
-此前，我曾在美团 [LongCat 基础模型团队](https://github.com/meituan-longcat) 实习，参与自我进化 Agent 的竞技评测框架与长时程经营模拟环境建设。
-我也曾在腾讯实习，探索用于仓库级代码生成的静态分析引导解码方法。
+- **下一代智能 Agent 形态**：构建自然语言的 Agent Harness，让用户能够更容易地掌控 Agent 的行为和 token 消耗。
+- **通用长时程 Agent**：构建面向真实生产力场景的通用长时程 Agent。
+- **Agentic 模型训练**：面向更高智能水平的通用 Agent，探索 SFT 与 RL 训练方法。
+
+我的长期目标是打造能够高效生产、并被人类社会深度应用的 AGI Agent。
 
 <div class="profile-contact-icons" aria-label="联系方式">
   <a href="mailto:ply24@mails.tsinghua.edu.cn" title="Email" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>

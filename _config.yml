@@ -8,11 +8,11 @@ middle_name:
 last_name: Pan (潘林越)
 contact_note:
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Linyue Pan is a master's student at Tsinghua University working on long-horizon AI agents, general-purpose agents for real-world productivity scenarios, and agent self-improvement.
+  Linyue Pan is a master's student at SIGS, Tsinghua University working on coding agents, harness engineering, long-horizon agents, and agentic model training.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with the <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-keywords: ai agents, llm agents, coding agents, agent harness, multi-agent systems, reliable evaluation, Tsinghua University
+keywords: ai agents, llm agents, coding agents, harness engineering, long-horizon agents, agentic model training, Tsinghua University
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: 🤖 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 

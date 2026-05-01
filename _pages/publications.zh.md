@@ -14,8 +14,10 @@ nav_order: 1
 
 {% include bib_search.liquid %}
 
+<p class="publication-author-note"><sup>*</sup> 表示共同一作，<sup>#</sup> 表示通讯作者。</p>
+
 <div class="publications">
 
-{% bibliography %}
+{% bibliography --group_by none %}
 
 </div>
