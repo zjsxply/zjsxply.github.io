@@ -1,4 +1,16 @@
 internships:
+  - company: Baidu
+    company_logo: /assets/img/logos/baidu.svg
+    team: Famou Agent
+    team_logo: /assets/img/logos/famou.png
+    team_url: https://cloud.baidu.com/product/famou.html
+    role: Agent Algorithm Researcher (Summer Camp Talent Program)
+    location: Beijing, China
+    period: May 2026 – Present
+    bullets:
+      - Research Intern on AI research agents and self-evolving agents.
+      - "Mentors: [Annan Li](https://openreview.net/profile?id=%7EAnnan_Li4), [Zengle Ge](https://dblp.org/pid/398/9116.html)."
+
   - company: Meituan
     company_logo: /assets/img/logos/meituan.svg
     team: LongCat LLM Team
@@ -6,13 +18,16 @@ internships:
     team_url: https://github.com/meituan-longcat
     role: Algorithm Strategy Intern
     location: Beijing, China
-    period: Nov 2025 – Present
+    period: Nov 2025 – May 2026
     bullets:
       - Research Intern on evaluation for coding agents.
       - "Mentor: [Yaoming Zhu](https://scholar.google.com/citations?user=rQ_HRMYAAAAJ)."
 
   - company: Tencent
     company_logo: /assets/img/logos/tencent.svg
+    team: LightSpeed Studios
+    team_logo: /assets/img/logos/lightspeed-studios.jpg
+    team_url: https://www.lightspeed-studios.com/
     role: Intern, Natural Language Processing
     location: Shenzhen, China
     period: Apr 2025 – Jun 2025
@@ -27,7 +42,7 @@ education:
     location: Shenzhen, China
     period: Sep 2024 – Jul 2027
     bullets:
-      - 🎯 Second-year master's student at Tsinghua SIGS advised by [Prof. Haitao Zheng](https://scholar.google.com/citations?user=7VPeORoAAAAJ).
+      - 🎯 Second-year master's student at Tsinghua SIGS advised by [Prof. Hai-Tao Zheng](https://scholar.google.com/citations?user=7VPeORoAAAAJ).
       - 🤖 Researching coding agents, agent harnesses, and long-horizon AI agents.
 
   - institution: China University of Mining and Technology (CUMT)

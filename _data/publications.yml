@@ -8,7 +8,8 @@ pan2026naturallanguageagentharnesses:
   x_discussion: https://x.com/rronak_/status/2038401494177694074
   award_name: Community Attention
   award: Reached alphaXiv Hot \#1, selected by DAIR.AI Weekly Top 10 and [The AI Timeline](https://x.com/TheAITimeline/status/2038486801564700913)'s Top AI/ML Research Papers of the Week (7 papers total), and received 550K+ views on X.
-  abstract: Agent performance increasingly depends on \emph{harness engineering}, yet harness design is usually buried in controller code and runtime-specific conventions, making it hard to transfer, compare, and study as a scientific object. We ask whether the high-level control logic of an agent harness can instead be externalized as a portable executable artifact. We introduce \textbf{Natural-Language Agent Harnesses} (NLAHs), which express harness behavior in editable natural language, and \textbf{Intelligent Harness Runtime} (IHR), a shared runtime that executes these harnesses through explicit contracts, durable artifacts, and lightweight adapters. Across coding and computer-use benchmarks, we conduct controlled evaluations of operational viability, module ablation, and code-to-text harness migration.
+  abstract: >
+    Agent performance is strongly shaped by the surrounding harness: the external execution system around a model that organizes a task run. Yet this logic is usually buried in tightly coupled controller code, which makes harnesses hard to inspect, compare, transfer, and ablate. This paper asks whether the reusable design pattern of an agent harness can be represented as an executable natural-language object. We introduce Natural-Language Agent Harnesses (NLAHs), editable documents that describe run-level harness policy, and Intelligent Harness Runtime (IHR), a shared runtime that interprets these documents into agent calls, handoffs, state updates, validation gates, and artifact contracts. Across coding, terminal-use, and computer-use benchmarks, IHR-executed NLAHs achieve comparable task outcomes to code and prompted realizations, while exposing much shorter static harness policies. Module ablations further show that explicit harness modules are analyzable. These results suggest that agent harnesses can be turned from incidental glue around models into scientific representation objects.
   author_marks:
     Hai-Tao Zheng: "#"
   selected: true
@@ -18,6 +19,7 @@ fu2026catarenaevaluatingevolutionarycapabilities:
   abbr: "ICML'26"
   preview: catarena-logo.png
   title_logo: longcat.svg
+  title_url: https://icml.cc/virtual/2026/poster/65908
   website: https://catarena.ai/
   code: https://github.com/AGI-Eval-Official/CATArena
   github_repo: AGI-Eval-Official/CATArena
@@ -31,5 +33,13 @@ fu2026catarenaevaluatingevolutionarycapabilities:
     Xin Ding: "*"
     Linyue Pan: "*"
     Weiwen Liu: "#"
+  selected: true
+  bibtex_show: true
+
+pan2026sagequantitativeevaluationsocialized:
+  abbr: arXiv
+  title_logo: longcat.svg
+  abstract: >
+    Self-improving language agents are typically evaluated in isolation: an agent attempts a task, receives feedback, and iteratively refines its own behavior. Yet agents increasingly operate alongside peers whose strategies and outcomes are publicly visible. This raises an under-studied question: when does shared experience produce improvements that self-improvement alone cannot achieve? We introduce SAGE (Social Agent Group Evolution), an evaluation framework that compares two compute-matched conditions: SocialEvo, where agents from five distinct model families co-evolve with access to all peers' histories; and SelfEvo, where each agent receives the same number of task attempts but sees only its own past, which is conventional in self-improving agent studies. We instantiate SAGE in three arenas: open-ended ML research, long-horizon economic planning, and strategic multiplayer play, evaluated across multiple evolutionary rounds. We find that group history is not a universal amplifier: the strongest agent does not exceed its self-evolution ceiling. However, agents that plateau under self-improvement can achieve significant breakthroughs when peer experience is available. In competitive settings, counterfactual controls reveal that agents improve generally rather than developing opponent-specific strategies. Across different forms of shared history, filtered peer traces and reflective summaries often outperform raw logs, indicating that social gains depend on abstraction rather than exposure volume. These findings reveal that peer-history gains are agent-specific, arena-dependent, and contingent on the capacity to abstract transferable knowledge from public traces.
   selected: true
   bibtex_show: true

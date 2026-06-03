@@ -1,4 +1,16 @@
 internships:
+  - company: 百度
+    company_logo: /assets/img/logos/baidu.svg
+    team: 伐谋 Agent
+    team_logo: /assets/img/logos/famou.png
+    team_url: https://cloud.baidu.com/product/famou.html
+    role: Agent 算法研究员（Summer Camp 人才计划）
+    location: 北京
+    period: 2026 年 5 月 – 至今
+    bullets:
+      - 从事科研智能体与自进化 Agent 研究。
+      - "导师：[李安南](https://openreview.net/profile?id=%7EAnnan_Li4)、[葛增乐](https://dblp.org/pid/398/9116.html)。"
+
   - company: 美团
     company_logo: /assets/img/logos/meituan.svg
     team: LongCat 基础模型团队
@@ -6,18 +18,21 @@ internships:
     team_url: https://github.com/meituan-longcat
     role: 算法策略实习生
     location: 北京
-    period: 2025 年 11 月 – 至今
+    period: 2025 年 11 月 – 2026 年 5 月
     bullets:
-      - 研究实习方向：代码 Agent 评测。
+      - 从事代码 Agent 评测研究。
       - "导师：[朱耀明](https://scholar.google.com/citations?user=rQ_HRMYAAAAJ)。"
 
   - company: 腾讯
     company_logo: /assets/img/logos/tencent.svg
+    team_logo: /assets/img/logos/lightspeed-studios.jpg
+    team: 光子工作室群
+    team_url: https://guangzi.qq.com/
     role: 自然语言处理实习生
     location: 深圳
     period: 2025 年 4 月 – 2025 年 6 月
     bullets:
-      - 研究实习方向：静态分析引导的代码生成。
+      - 从事静态分析引导的代码生成研究。
       - "导师：[陶玮](https://scholar.google.com/citations?user=3RG4Lf4AAAAJ)。"
 
 education:
@@ -28,7 +43,7 @@ education:
     period: 2024 年 9 月 – 2027 年 7 月
     bullets:
       - 🎯 清华大学深圳国际研究生院二年级硕士研究生，导师为 [郑海涛副教授](https://scholar.google.com/citations?user=7VPeORoAAAAJ)。
-      - 🤖 研究代码 Agent、Agent Harnesses 与长时程 AI Agents。
+      - 🤖 研究代码 Agent、Agent Harness 与长时程 AI Agent。
 
   - institution: 中国矿业大学（CUMT）
     logo: /assets/img/logos/cumt.png

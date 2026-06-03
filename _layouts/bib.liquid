@@ -6,6 +6,7 @@
 {% assign display_preview = publication_config.preview %}
 {% assign display_title_logo = publication_config.title_logo %}
 {% assign display_title = entry.title %}
+{% assign display_title_url = publication_config.title_url | default: entry.url %}
 {% assign display_note = publication_config.note %}
 {% assign display_award = publication_config.award %}
 {% assign display_award_name = publication_config.award_name %}
@@ -125,8 +126,8 @@
           alt="{{ display_title_logo }}"
         >
       {% endif %}
-      {% if entry.url %}
-        <a href="{{ entry.url }}">{{ display_title }}</a>
+      {% if display_title_url %}
+        <a href="{{ display_title_url }}">{{ display_title }}</a>
       {% else %}
         {{ display_title }}
       {% endif %}

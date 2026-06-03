@@ -6,8 +6,8 @@ cv:
   image: assets/img/prof_pic.jpg
   website: https://zjsxply.github.io
   summary: >
-    I work on coding agents, harness engineering, long-horizon agents, and agentic model training.
-    My long-term goal is to build AGI Agents that can produce useful work efficiently and be deeply adopted by human society.
+    I work on coding agents, harness engineering, long-horizon agents, and agents with stronger insight and creativity.
+    My long-term goal is to build AGI agents that can produce useful work efficiently and become deeply useful across society.
 
   social_networks:
     - network: Google Scholar
@@ -33,7 +33,7 @@ cv:
         end_date: Jul 2027
         score: "GPA: 3.734 / 4.0"
         highlights:
-          - "Advisor: [Prof. Haitao Zheng](https://scholar.google.com/citations?user=7VPeORoAAAAJ)."
+          - "Advisor: [Prof. Hai-Tao Zheng](https://scholar.google.com/citations?user=7VPeORoAAAAJ)."
           - "Research focus: coding agents, agent harnesses, and long-horizon AI agents."
 
       - institution: China University of Mining and Technology
@@ -47,34 +47,44 @@ cv:
           - Built a strong foundation in mathematics, analysis, probability and statistics, optimization, information theory, operating systems, and databases.
 
     Experience:
+      - company: Baidu
+        position: Agent Algorithm Researcher (Summer Camp Talent Program)
+        location: Beijing, China
+        start_date: May 2026
+        end_date: Present
+        highlights:
+          - "Working on [Famou Agent for scientific research and self-evolution](https://cloud.baidu.com/product/famou.html)."
+          - "Mentors: [Annan Li](https://openreview.net/profile?id=%7EAnnan_Li4), [Zengle Ge](https://dblp.org/pid/398/9116.html)."
+          - "The agent currently ranks #1 on the [MLE-Bench](https://github.com/openai/mle-bench) public leaderboard."
+
       - company: Meituan
         position: Algorithm Strategy Intern, LongCat Foundation Model Team
         location: Beijing, China
         start_date: Nov 2025
-        end_date: Present
+        end_date: May 2026
         highlights:
-          - Research Intern on evaluation for coding agents.
+          - Worked on evaluation for coding agents.
           - "Mentor: [Yaoming Zhu](https://scholar.google.com/citations?user=rQ_HRMYAAAAJ)."
 
       - company: Tencent
-        position: Research Intern in NLP, Photon Technology Development Department
-        location: China
+        position: Research Intern in NLP, LightSpeed Studios
+        location: Shenzhen, China
         start_date: Apr 2025
         end_date: Jun 2025
         highlights:
-          - Research Intern on static-analysis-guided code generation.
+          - Worked on static-analysis-guided code generation.
           - "Mentor: [Wei Tao](https://scholar.google.com/citations?user=3RG4Lf4AAAAJ)."
 
     Research Experience:
       - label: "[Natural-Language Agent Harnesses](https://arxiv.org/abs/2603.25723)"
         details: >
-          First-author work introducing [NLAH](https://arxiv.org/abs/2603.25723) and IHR to decouple agent harness mechanisms such as search, persistent memory, compression, and verification into explicit natural-language-executable orchestration.
-      - label: CATArena
+          First-author work introducing [NLAH](https://arxiv.org/abs/2603.25723) and IHR, which express harness mechanisms such as search, persistent memory, compression, and verification as explicit natural-language-executable orchestration.
+      - label: "[CATArena](https://icml.cc/virtual/2026/poster/65908)"
         details: >
           Co-first-author ICML 2026 work on a multi-round tournament-style benchmark that disentangles one-shot coding-agent performance from dynamic evolutionary potential.
-      - label: Population Evolution of Agents in Competitive Evaluation Ecosystems
+      - label: "[SAGE: A Quantitative Evaluation of Socialized Evolution in Agent Ecosystems](https://arxiv.org/abs/2606.03544)"
         details: >
-          Ongoing first-author project on population-level agent evolution, social learning, and adversarial adaptation in heterogeneous competitive environments.
+          First-author arXiv preprint introducing SAGE, a compute-matched evaluation framework comparing socialized group evolution with isolated self-evolution across ML research, economic planning, and strategic multiplayer arenas.
       - label: Trusted Execution Environments for SWE
         details: >
           Ongoing first-author project on automatic construction of trustworthy execution environments for software-engineering agents beyond Python-centric setup pipelines.
@@ -90,15 +100,28 @@ cv:
         summary: >
           Introduces natural-language-executable harness representations and an intelligent runtime for explicit, adaptable agent orchestration.
 
-      - title: "CATArena: Evaluating the Evolutionary Capacity of Coding Agents"
+      - title: "CATArena: Evaluating Evolutionary Capabilities of Code Agents via Iterative Tournaments"
         authors:
           - Linyue Pan
           - others
         publisher: International Conference on Machine Learning (ICML), 2026
         releaseDate: 2026
-        url: https://arxiv.org/abs/2510.26852
+        url: https://icml.cc/virtual/2026/poster/65908
         summary: >
           A tournament-style benchmark for evaluating whether coding agents can improve over repeated rounds with feedback, self-reflection, and peer experience.
+
+      - title: "[SAGE: A Quantitative Evaluation of Socialized Evolution in Agent Ecosystems](https://arxiv.org/abs/2606.03544)"
+        authors:
+          - Linyue Pan
+          - Yaoming Zhu
+          - Lin Qiu
+          - Xuezhi Cao
+          - Xunliang Cai
+        publisher: arXiv preprint arXiv:2606.03544
+        releaseDate: 2026
+        url: https://arxiv.org/abs/2606.03544
+        summary: >
+          A quantitative evaluation framework for when shared peer histories help agents break through isolated self-evolution plateaus.
 
     Open Source Projects:
       - name: LinguaClaw

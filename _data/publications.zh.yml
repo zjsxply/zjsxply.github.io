@@ -2,10 +2,15 @@ pan2026naturallanguageagentharnesses:
   title: 自然语言的 Agent Harness
   award_name: 社区关注
   award: 登顶 alphaXiv 热榜第一，入选 DAIR.AI 每周十佳论文和 [The AI Timeline](https://x.com/TheAITimeline/status/2038486801564700913) 一周 Top AI/ML 研究论文（总共 7 篇），并在 X 上获得 55 万+ 浏览。
-  abstract: Agent 性能越来越依赖 harness 工程，但 harness 设计通常埋藏在控制器代码和特定运行时约定中，难以作为科学对象进行迁移、比较和研究。我们追问：Agent harness 的高层控制逻辑能否被外部化为一种可移植的可执行产物？我们提出自然语言的 Agent Harness（NLAHs），用可编辑的自然语言表达 harness 行为；同时提出 Intelligent Harness Runtime（IHR），通过显式契约、持久化产物和轻量适配器执行这些 harness。在代码与计算机使用基准上，我们对操作可行性、模块消融以及从代码到文本的 harness 迁移进行了受控评估。
+  abstract: Agent 的性能会被其所处的 harness 显著塑造。这里的 harness 指围绕模型、负责组织一次任务运行的外部执行系统。但这套逻辑通常埋藏在紧耦合的控制器代码中，因此很难被检查、比较、迁移和消融。本文追问：Agent harness 这一可复用的设计模式，能否被表示为一种可执行的自然语言对象？我们提出自然语言的 Agent Harness（NLAHs），即描述运行级 harness 策略的可编辑文档；同时提出 Intelligent Harness Runtime（IHR），作为共享运行时，将这些文档解释为 Agent 调用、任务交接、状态更新、验证关卡和产物契约。在代码、终端使用和计算机使用基准上，由 IHR 执行的 NLAH 在任务结果上与代码实现和 prompt 化实现相当，同时暴露出更短的静态 harness 策略。模块消融进一步表明，显式的 harness 模块具有可分析性。这些结果说明，Agent harness 可以从模型周围的偶然性胶水层，转变为一种可被科学研究的表示对象。
   translation: https://hjfy.top/arxiv/2603.25723
 
 fu2026catarenaevaluatingevolutionarycapabilities:
   title: CATArena：通过迭代锦标赛评测代码 Agent 的进化能力
   abstract: 当前针对大型语言模型（LLM）代码 Agent 的评测主要关注单轮场景中的功能性代码生成，无法评估 Agent 持续代码优化和多轮迭代开发的能力。为弥补这一缺口，我们提出 CATArena，一个通过迭代锦标赛评测代码 Agent 进化能力的框架。Agent 参与多轮锦标赛，并基于全面的执行反馈，通过自我反思和同伴学习持续改进代码。评测方面，我们提出双指标体系，将静态生成能力与进化潜力解耦。大量实验表明，Agent 的进化潜力并不严格相关于其初始能力。进一步分析显示，当前 Agent 仍难以同时利用同伴学习和自我反思来获得有效性能提升。此外，结果验证了 CATArena 的高可扩展性和对任务变化的鲁棒性，使其成为评估 LLM 代码 Agent 进化能力的持续、可靠标准。
   translation: https://hjfy.top/arxiv/2510.26852
+
+pan2026sagequantitativeevaluationsocialized:
+  title: SAGE：Agent 生态系统中社会化进化的定量评测
+  abstract: 自我进化语言 Agent 通常在孤立环境中评测：Agent 尝试任务、接收反馈，并迭代优化自身行为。然而，Agent 越来越多地与同伴共同运行，同伴的策略和结果也可能公开可见。这提出了一个尚未充分研究的问题：共享经验何时能带来仅靠自我进化无法获得的提升？我们提出 SAGE（Social Agent Group Evolution），一个比较两种计算量匹配条件的评测框架：SocialEvo 中，来自五个不同模型家族的 Agent 可访问所有同伴历史并共同进化；SelfEvo 中，每个 Agent 获得相同次数的任务尝试，但只能看到自己的历史，这是自我进化 Agent 研究中的常规设置。我们在三个场景实例化 SAGE：开放式机器学习研究、长时程经济规划和策略多人博弈，并跨多轮进化评测。结果表明，群体历史并不是普适放大器：最强 Agent 并未突破其自我进化上限。然而，在自我进化中陷入平台期的 Agent 能够在获得同伴经验后取得显著突破。在竞争场景中，反事实控制实验显示 Agent 获得的是通用提升，而非只针对特定对手的策略。对于不同形式的共享历史，筛选后的同伴轨迹和反思性摘要往往优于原始日志，说明社会化收益依赖抽象而非暴露量。这些发现表明，同伴历史收益具有 Agent 特异性和场景依赖性，并取决于从公开轨迹中抽象可迁移知识的能力。
+  translation: https://hjfy.top/arxiv/2606.03544
