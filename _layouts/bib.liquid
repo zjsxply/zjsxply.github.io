@@ -27,7 +27,11 @@
 {% assign display_poster = publication_config.poster %}
 {% assign display_slides = publication_config.slides %}
 {% assign display_website = publication_config.website %}
-{% assign display_scholar_url = publication_config.scholar_url %}
+{% if publication_config.scholar_citation_ids %}
+  {% assign display_scholar_citation_id = publication_config.scholar_citation_ids | join: ',' %}
+{% else %}
+  {% assign display_scholar_citation_id = publication_config.scholar_citation_id %}
+{% endif %}
 {% assign display_scholar_citations = publication_config.scholar_citations %}
 {% assign display_github_repo = publication_config.github_repo %}
 {% assign display_altmetric = publication_config.altmetric %}
@@ -192,16 +196,20 @@
         {%- if author_is_self -%}
           {%- if coauthor_url -%}
             <a href="{{ coauthor_url }}"
-              ><em>{{- author_display_name -}}</em>{{ author_marker_html }}</a
-            >
+              ><em>{{- author_display_name -}}</em>{{ author_marker_html -}}
+            </a>
           {%- else -%}
             <em>{{- author_display_name -}}</em>{{ author_marker_html }}
           {%- endif -%}
         {%- else -%}
           {%- if coauthor_url -%}
-            <a href="{{ coauthor_url }}">{{- author_display_name -}}{{ author_marker_html }}</a>
+            <a href="{{ coauthor_url }}">
+              {{- author_display_name -}}
+              {{ author_marker_html -}}
+            </a>
           {%- else -%}
-            {{- author_display_name -}}{{ author_marker_html }}
+            {{- author_display_name -}}
+            {{ author_marker_html }}
           {% endif %}
         {%- endif -%}
       {% endfor %}
@@ -383,9 +391,9 @@
     </div>
     {% if display_scholar_citations != null or display_github_repo %}
       <div class="pub-metrics">
-        {% if display_scholar_citations != null %}
+        {% if display_scholar_citations != null and display_scholar_citation_id %}
           <a
-            href="{% if display_scholar_url %}{{ display_scholar_url }}{% else %}https://scholar.google.com/scholar?q={{ entry.title | uri_escape }}{% endif %}"
+            href="https://scholar.google.com/scholar?cites={{ display_scholar_citation_id }}"
             aria-label="Google Scholar citations"
             role="button"
           >

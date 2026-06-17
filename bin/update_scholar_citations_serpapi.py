@@ -1,9 +1,19 @@
 #!/usr/bin/env python3
 """Update manual Scholar citation badges in _data/publications.yml via SerpApi.
 
-The script updates only publication config entries that already contain a
-scholar_citations field, so papers without a citation badge stay untouched. The
-BibTeX file remains a clean arXiv-exported metadata source.
+The script updates only publication config entries that contain a
+scholar_citations field. If scholar_citation_id is present, it is matched
+against the Google Scholar "cites" ID from the Cited by URL:
+
+    https://scholar.google.com/scholar?cites=<scholar_citation_id>
+
+If Scholar splits one paper across records, scholar_citation_ids may list
+multiple cites IDs. The script then queries the combined Cited by search:
+
+    https://scholar.google.com/scholar?cites=<id_1>,<id_2>
+
+Entries without scholar_citation_id or scholar_citation_ids fall back to exact
+normalized title matching against the corresponding BibTeX title.
 """
 
 from __future__ import annotations
@@ -16,7 +26,6 @@ import urllib.parse
 import urllib.request
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable
 
 BIB_PATH = Path("_bibliography/papers.bib")
 PUBLICATIONS_PATH = Path("_data/publications.yml")
@@ -91,7 +100,10 @@ def find_bib_entries(text: str) -> list[BibEntry]:
 
 def find_publication_blocks(text: str) -> list[PublicationBlock]:
     pattern = re.compile(r"(?ms)^([A-Za-z0-9_.:-]+):\n(.*?)(?=^[A-Za-z0-9_.:-]+:\n|\Z)")
-    return [PublicationBlock(key=match.group(1), start=match.start(), end=match.end(), text=match.group(0)) for match in pattern.finditer(text)]
+    return [
+        PublicationBlock(key=match.group(1), start=match.start(), end=match.end(), text=match.group(0))
+        for match in pattern.finditer(text)
+    ]
 
 
 def extract_field(entry_text: str, field_name: str) -> str | None:
@@ -128,6 +140,78 @@ def extract_yaml_scalar(block_text: str, field_name: str) -> str | None:
     if not match:
         return None
     return match.group(1).strip().strip('"\'')
+
+
+def split_scholar_citation_ids(value: str) -> list[str]:
+    return [part.strip().strip('"\'') for part in value.split(",") if part.strip()]
+
+
+def parse_yaml_inline_list(value: str) -> list[str] | None:
+    value = value.strip()
+    if not value.startswith("[") or not value.endswith("]"):
+        return None
+
+    inner = value[1:-1].strip()
+    if not inner:
+        return []
+
+    return split_scholar_citation_ids(inner)
+
+
+def extract_yaml_values(block_text: str, field_name: str) -> list[str] | None:
+    lines = block_text.splitlines()
+    field_pattern = re.compile(rf"^\s{{2}}{re.escape(field_name)}:\s*(.*?)\s*$")
+    item_pattern = re.compile(r"^\s{4}-\s*(.*?)\s*$")
+
+    for index, line in enumerate(lines):
+        match = field_pattern.match(line)
+        if not match:
+            continue
+
+        value = match.group(1).strip()
+        inline_values = parse_yaml_inline_list(value)
+        if inline_values is not None:
+            return inline_values
+        if value:
+            return split_scholar_citation_ids(value)
+
+        values: list[str] = []
+        for item_line in lines[index + 1 :]:
+            if item_line.strip() == "":
+                continue
+
+            item_match = item_pattern.match(item_line)
+            if not item_match:
+                break
+
+            values.extend(split_scholar_citation_ids(item_match.group(1)))
+
+        return values
+
+    return None
+
+
+def extract_scholar_citation_ids(block_text: str) -> list[str]:
+    citation_ids: list[str] = []
+
+    multiple_ids = extract_yaml_values(block_text, "scholar_citation_ids")
+    if multiple_ids is not None:
+        citation_ids.extend(multiple_ids)
+
+    single_id = extract_yaml_scalar(block_text, "scholar_citation_id")
+    if single_id:
+        citation_ids.extend(split_scholar_citation_ids(single_id))
+
+    normalized_ids: list[str] = []
+    seen: set[str] = set()
+    for citation_id in citation_ids:
+        if not re.fullmatch(r"\d+", citation_id):
+            raise ValueError(f"Invalid Scholar cites ID: {citation_id}")
+        if citation_id not in seen:
+            normalized_ids.append(citation_id)
+            seen.add(citation_id)
+
+    return normalized_ids
 
 
 def normalize_title(title: str) -> str:
@@ -187,6 +271,34 @@ def fetch_serpapi_articles(author_id: str, api_key: str) -> list[dict]:
     return articles
 
 
+def fetch_serpapi_combined_citation_count(citation_ids: list[str], api_key: str) -> int:
+    params = {
+        "engine": "google_scholar",
+        "cites": ",".join(citation_ids),
+        "hl": "en",
+        "num": "1",
+        "api_key": api_key,
+    }
+    url = f"{SERPAPI_URL}?{urllib.parse.urlencode(params)}"
+    with urllib.request.urlopen(url, timeout=30) as response:
+        payload = json.loads(response.read().decode("utf-8"))
+
+    if "error" in payload:
+        raise RuntimeError(f"SerpApi error: {payload['error']}")
+
+    search_information = payload.get("search_information")
+    if not isinstance(search_information, dict):
+        raise RuntimeError(f"SerpApi response for cites={','.join(citation_ids)} has no search_information")
+
+    total_results = search_information.get("total_results")
+    if isinstance(total_results, int):
+        return total_results
+    if isinstance(total_results, str) and total_results.isdigit():
+        return int(total_results)
+
+    raise RuntimeError(f"SerpApi response for cites={','.join(citation_ids)} has no total_results")
+
+
 def article_citations(article: dict) -> int | None:
     cited_by = article.get("cited_by")
     if isinstance(cited_by, dict):
@@ -198,20 +310,56 @@ def article_citations(article: dict) -> int | None:
     return None
 
 
-def index_articles(articles: Iterable[dict]) -> tuple[dict[str, dict], dict[str, dict]]:
+def extract_cites_id(url: str) -> str | None:
+    values = urllib.parse.parse_qs(urllib.parse.urlparse(url).query).get("cites")
+    if not values:
+        return None
+    return values[0]
+
+
+def article_scholar_citation_id(article: dict) -> str | None:
+    cited_by = article.get("cited_by")
+    if not isinstance(cited_by, dict):
+        return None
+
+    for link_field in ("link", "serpapi_link"):
+        link = cited_by.get(link_field)
+        if isinstance(link, str):
+            cites_id = extract_cites_id(link)
+            if cites_id:
+                return cites_id
+
+    return None
+
+
+def index_articles_by_scholar_citation_id(articles: list[dict]) -> dict[str, dict]:
+    by_scholar_citation_id: dict[str, dict] = {}
+
+    for article in articles:
+        scholar_citation_id = article_scholar_citation_id(article)
+        if not scholar_citation_id:
+            continue
+        if scholar_citation_id in by_scholar_citation_id:
+            raise ValueError(f"Duplicate SerpApi article with cites={scholar_citation_id}")
+        by_scholar_citation_id[scholar_citation_id] = article
+
+    return by_scholar_citation_id
+
+
+def index_articles_by_title(articles: list[dict]) -> dict[str, dict]:
     by_title: dict[str, dict] = {}
-    by_citation_id: dict[str, dict] = {}
 
     for article in articles:
         title = article.get("title")
-        if isinstance(title, str):
-            by_title[normalize_title(title)] = article
+        if not isinstance(title, str):
+            continue
 
-        citation_id = article.get("citation_id")
-        if isinstance(citation_id, str):
-            by_citation_id[citation_id] = article
+        normalized_title = normalize_title(title)
+        if normalized_title in by_title:
+            raise ValueError(f"Duplicate SerpApi article title after normalization: {title}")
+        by_title[normalized_title] = article
 
-    return by_title, by_citation_id
+    return by_title
 
 
 def bib_titles_by_key() -> dict[str, str]:
@@ -225,15 +373,17 @@ def bib_titles_by_key() -> dict[str, str]:
     return titles
 
 
-def update_publication_data(articles: list[dict]) -> bool:
+def update_publication_data(articles: list[dict], api_key: str) -> bool:
     original = PUBLICATIONS_PATH.read_text(encoding="utf-8")
     blocks = find_publication_blocks(original)
     titles = bib_titles_by_key()
-    by_title, by_citation_id = index_articles(articles)
+    by_scholar_citation_id = index_articles_by_scholar_citation_id(articles)
+    by_title = index_articles_by_title(articles)
 
     rebuilt_parts: list[str] = []
     cursor = 0
     changed = False
+    errors: list[str] = []
 
     for block in blocks:
         rebuilt_parts.append(original[cursor:block.start])
@@ -244,34 +394,61 @@ def update_publication_data(articles: list[dict]) -> bool:
             rebuilt_parts.append(block_text)
             continue
 
-        title = titles.get(block.key)
-        scholar_pub_id = extract_yaml_scalar(block_text, "scholar_pub_id") or extract_yaml_scalar(block_text, "scholar_citation_id")
+        scholar_citation_ids = extract_scholar_citation_ids(block_text)
+        if scholar_citation_ids:
+            if len(scholar_citation_ids) > 1:
+                try:
+                    citations = fetch_serpapi_combined_citation_count(scholar_citation_ids, api_key)
+                except Exception as error:
+                    errors.append(f"{block.key}: failed combined cites lookup: {error}")
+                    rebuilt_parts.append(block_text)
+                    continue
 
-        article = None
-        if scholar_pub_id:
-            article = by_citation_id.get(scholar_pub_id)
-        if article is None and title:
+                old_citations = extract_yaml_scalar(block_text, "scholar_citations")
+                print(f"{block.key}: {old_citations} -> {citations} (cites={','.join(scholar_citation_ids)})")
+                new_block_text = update_yaml_citation_field(block_text, citations)
+                if new_block_text != block_text:
+                    changed = True
+                rebuilt_parts.append(new_block_text)
+                continue
+
+            scholar_citation_id = scholar_citation_ids[0]
+            article = by_scholar_citation_id.get(scholar_citation_id)
+            if article is None:
+                errors.append(f"{block.key}: no SerpApi article matched cites={scholar_citation_id}")
+                rebuilt_parts.append(block_text)
+                continue
+        else:
+            title = titles.get(block.key)
+            if not title:
+                errors.append(f"{block.key}: missing BibTeX title for title fallback")
+                rebuilt_parts.append(block_text)
+                continue
+
             article = by_title.get(normalize_title(title))
-
-        if article is None:
-            print(f"Warning: no Scholar match for publication config key: {block.key}")
-            rebuilt_parts.append(block_text)
-            continue
+            if article is None:
+                errors.append(f"{block.key}: no SerpApi article matched title fallback: {title}")
+                rebuilt_parts.append(block_text)
+                continue
 
         citations = article_citations(article)
         if citations is None:
-            print(f"Warning: matched Scholar article has no citation count: {article.get('title')}")
+            errors.append(f"{block.key}: matched SerpApi article has no citation count")
             rebuilt_parts.append(block_text)
             continue
 
         old_citations = extract_yaml_scalar(block_text, "scholar_citations")
-        print(f"{title or block.key}: {old_citations} -> {citations}")
+        title = article.get("title") or block.key
+        print(f"{title}: {old_citations} -> {citations}")
         new_block_text = update_yaml_citation_field(block_text, citations)
         if new_block_text != block_text:
             changed = True
         rebuilt_parts.append(new_block_text)
 
     rebuilt_parts.append(original[cursor:])
+    if errors:
+        raise RuntimeError("Scholar citation update failed:\n- " + "\n- ".join(errors))
+
     updated = "".join(rebuilt_parts)
     if changed:
         PUBLICATIONS_PATH.write_text(updated, encoding="utf-8")
@@ -289,7 +466,7 @@ def main() -> int:
     articles = fetch_serpapi_articles(author_id, api_key)
     print(f"Fetched {len(articles)} Scholar articles")
 
-    changed = update_publication_data(articles)
+    changed = update_publication_data(articles, api_key)
     print("Updated citation counts." if changed else "Citation counts already up to date.")
     return 0
 
