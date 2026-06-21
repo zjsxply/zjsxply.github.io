@@ -11,6 +11,6 @@ fu2026catarenaevaluatingevolutionarycapabilities:
   translation: https://hjfy.top/arxiv/2510.26852
 
 pan2026sagequantitativeevaluationsocialized:
-  title: SAGE：Agent 生态系统中社会化进化的定量评测
+  title: SAGE：Agent 生态系统中社会进化的定量评测
   abstract: 自我进化语言 Agent 通常在孤立环境中评测：Agent 尝试任务、接收反馈，并迭代优化自身行为。然而，Agent 越来越多地与同伴共同运行，同伴的策略和结果也可能公开可见。这提出了一个尚未充分研究的问题：共享经验何时能带来仅靠自我进化无法获得的提升？我们提出 SAGE（Social Agent Group Evolution），一个比较两种计算量匹配条件的评测框架：SocialEvo 中，来自五个不同模型家族的 Agent 可访问所有同伴历史并共同进化；SelfEvo 中，每个 Agent 获得相同次数的任务尝试，但只能看到自己的历史，这是自我进化 Agent 研究中的常规设置。我们在三个场景实例化 SAGE：开放式机器学习研究、长时程经济规划和策略多人博弈，并跨多轮进化评测。结果表明，群体历史并不是普适放大器：最强 Agent 并未突破其自我进化上限。然而，在自我进化中陷入平台期的 Agent 能够在获得同伴经验后取得显著突破。在竞争场景中，反事实控制实验显示 Agent 获得的是通用提升，而非只针对特定对手的策略。对于不同形式的共享历史，筛选后的同伴轨迹和反思性摘要往往优于原始日志，说明社会化收益依赖抽象而非暴露量。这些发现表明，同伴历史收益具有 Agent 特异性和场景依赖性，并取决于从公开轨迹中抽象可迁移知识的能力。
   translation: https://hjfy.top/arxiv/2606.03544

@@ -27,12 +27,18 @@
 {% assign display_poster = publication_config.poster %}
 {% assign display_slides = publication_config.slides %}
 {% assign display_website = publication_config.website %}
+{% assign display_scholar_citation_id = '' %}
 {% if publication_config.scholar_citation_ids %}
   {% assign display_scholar_citation_id = publication_config.scholar_citation_ids | join: ',' %}
-{% else %}
-  {% assign display_scholar_citation_id = publication_config.scholar_citation_id %}
 {% endif %}
 {% assign display_scholar_citations = publication_config.scholar_citations %}
+{% assign display_semantic_scholar_citations = publication_config.semantic_scholar_citations %}
+{% assign display_combined_citations = publication_config.combined_citations | default: display_scholar_citations %}
+{% assign display_scholar_citation_count = display_scholar_citations | default: 0 %}
+{% assign display_semantic_scholar_extra_citations = display_combined_citations | default: 0 | minus: display_scholar_citation_count %}
+{% if display_semantic_scholar_extra_citations < 0 %}
+  {% assign display_semantic_scholar_extra_citations = 0 %}
+{% endif %}
 {% assign display_github_repo = publication_config.github_repo %}
 {% assign display_altmetric = publication_config.altmetric %}
 {% assign display_dimensions = publication_config.dimensions %}
@@ -47,6 +53,14 @@
 {% assign website_label = 'Website' %}
 {% assign translation_label = 'Translation' %}
 {% assign code_label = 'Code' %}
+{% assign citation_badge_label = 'Citations' %}
+{% assign merged_citations_label = 'Merged citations' %}
+{% assign google_scholar_tooltip_label = 'Google Scholar' %}
+{% assign semantic_scholar_extra_tooltip_label = 'Semantic Scholar extra unique' %}
+{% assign stars_badge_label = 'Stars' %}
+{% assign github_stars_label = 'GitHub stars' %}
+{% assign tooltip_separator = ': ' %}
+{% assign tooltip_delimiter = '; ' %}
 {% if current_lang == 'zh' %}
   {% assign publication_zh = site.data.publicationszh[entry.key] %}
   {% assign abstract_label = '摘要' %}
@@ -58,6 +72,14 @@
   {% assign website_label = '网站' %}
   {% assign translation_label = '中文翻译' %}
   {% assign code_label = '代码' %}
+  {% assign citation_badge_label = '引用' %}
+  {% assign merged_citations_label = '聚合引用' %}
+  {% assign google_scholar_tooltip_label = 'Google Scholar' %}
+  {% assign semantic_scholar_extra_tooltip_label = 'Semantic Scholar 额外不重复' %}
+  {% assign stars_badge_label = '星标' %}
+  {% assign github_stars_label = 'GitHub 星标' %}
+  {% assign tooltip_separator = '：' %}
+  {% assign tooltip_delimiter = '；' %}
   {% if publication_zh.title %}
     {% assign display_title = publication_zh.title %}
   {% endif %}
@@ -389,25 +411,35 @@
         <a href="{{ display_website }}" class="btn btn-sm z-depth-0" role="button">{{ website_label }}</a>
       {% endif %}
     </div>
-    {% if display_scholar_citations != null or display_github_repo %}
+    {% if display_combined_citations != null or display_github_repo %}
       <div class="pub-metrics">
-        {% if display_scholar_citations != null and display_scholar_citation_id %}
+        {% if display_combined_citations != null %}
+          {% if display_scholar_citation_id %}
+            {% assign display_scholar_citation_url = 'https://scholar.google.com/scholar?cites=' | append: display_scholar_citation_id %}
+          {% else %}
+            {% assign display_scholar_citation_url = 'https://scholar.google.com/scholar?q=' | append: entry.title | url_encode %}
+          {% endif %}
+          {% capture citation_tooltip -%}
+            {{ google_scholar_tooltip_label }}{{ tooltip_separator }}{{ display_scholar_citation_count }}{{ tooltip_delimiter }}{{ semantic_scholar_extra_tooltip_label }}{{ tooltip_separator }}{{ display_semantic_scholar_extra_citations }}
+          {%- endcapture %}
           <a
-            href="https://scholar.google.com/scholar?cites={{ display_scholar_citation_id }}"
-            aria-label="Google Scholar citations"
+            href="{{ display_scholar_citation_url }}"
+            aria-label="{{ merged_citations_label }}; {{ citation_tooltip | strip }}"
             role="button"
+            title="{{ citation_tooltip | strip }}"
           >
             <img
-              src="https://img.shields.io/badge/Citations-{{ display_scholar_citations }}-EBB215"
-              alt="Citations: {{ display_scholar_citations }}"
+              src="https://img.shields.io/badge/{{ citation_badge_label | url_encode }}-{{ display_combined_citations }}-EBB215"
+              alt="{{ citation_badge_label }}: {{ display_combined_citations }}"
+              title="{{ citation_tooltip | strip }}"
             >
           </a>
         {% endif %}
         {% if display_github_repo %}
-          <a href="https://github.com/{{ display_github_repo }}" aria-label="GitHub stars" role="button">
+          <a href="https://github.com/{{ display_github_repo }}" aria-label="{{ github_stars_label }}" role="button">
             <img
-              src="https://img.shields.io/github/stars/{{ display_github_repo }}?style=flat&logo=github&label=Stars"
-              alt="GitHub stars for {{ display_github_repo }}"
+              src="https://img.shields.io/github/stars/{{ display_github_repo }}?style=flat&logo=github&label={{ stars_badge_label | url_encode }}"
+              alt="{{ github_stars_label }}: {{ display_github_repo }}"
             >
           </a>
         {% endif %}
