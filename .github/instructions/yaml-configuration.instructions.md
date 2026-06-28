@@ -110,16 +110,23 @@ CV content in **RenderCV format** (recommended approach for generating professio
 
 **For more details:** See [CUSTOMIZE.md § Modifying the CV information](CUSTOMIZE.md#modifying-the-cv-information) for setup, switching formats, and PDF generation configuration.
 
-### citations.yml
+### publication_cited_documents.yml
 
-Social media citation counts and metrics.
+Per-publication cited-paper caches written by the citation updater.
 
-**Format:** Varies by platform (Google Scholar, ORCID, etc.)
+**Format:** A top-level `metadata` block plus `papers`, where each paper stores `google_scholar`, `semantic_scholar`, and `ads` document lists.
 
 **Example:**
 
 ```yaml
-scholar_userid: YOUR_SCHOLAR_ID
+metadata:
+  last_updated: "2026-06-28"
+papers:
+  example-paper:
+    google_scholar:
+      documents:
+        - title: Example title
+          link: https://example.com
 ```
 
 ### repositories.yml

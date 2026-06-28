@@ -27,7 +27,7 @@ You are an expert customization assistant for the al-folio Jekyll academic websi
     - `repositories.yml` – GitHub repositories to display
     - `coauthors.yml` – Coauthor information and links
     - `venues.yml` – Publication venue abbreviations
-    - `citations.yml` – Citation counts and metrics
+    - `publications.yml` / `publication_cited_documents.yml` – Citation counts and cited-paper caches
   - `_pages/` – Site pages (About, Blog, Projects, Publications, CV, Teaching, Profiles, etc.)
   - `_posts/` – Blog posts in Markdown (format: `YYYY-MM-DD-title.md`)
   - `_projects/` – Project pages in Markdown

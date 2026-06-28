@@ -5,16 +5,13 @@ echo "Entry point script running"
 
 CONFIG_FILE=_config.yml
 
-# Function to manage Gemfile.lock
 manage_gemfile_lock() {
     git config --global --add safe.directory '*'
-    if command -v git &> /dev/null && [ -f Gemfile.lock ]; then
-        if git ls-files --error-unmatch Gemfile.lock &> /dev/null; then
+    if [ -f Gemfile.lock ]; then
+        if command -v git &> /dev/null && git ls-files --error-unmatch Gemfile.lock &> /dev/null; then
             echo "Gemfile.lock is tracked by git, keeping it intact"
-            git restore Gemfile.lock 2>/dev/null || true
         else
-            echo "Gemfile.lock is not tracked by git, removing it"
-            rm Gemfile.lock
+            echo "Gemfile.lock is present, keeping local lockfile intact"
         fi
     fi
 }

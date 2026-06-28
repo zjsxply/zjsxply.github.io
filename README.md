@@ -15,17 +15,17 @@ The repository should be named `zjsxply.github.io`. The deployment workflow buil
 
 ## Citation Updates
 
-Citation badges are updated weekly by `.github/workflows/update-scholar-citations.yml`.
-The workflow uses SerpApi for Google Scholar and the Semantic Scholar Graph API, then deduplicates citing papers across both sources before updating `_data/publications.yml`.
+Citation data is updated weekly by `.github/workflows/update-scholar-citations.yml`.
+The workflow uses SerpApi for Google Scholar, the Semantic Scholar Graph API, and ADS, then deduplicates citing papers across the three sources before updating `_data/publications.yml` and `_data/publication_cited_documents.yml`.
 HTTP 429 responses are retried once per second up to 120 times.
-If either source still fails for a publication, that publication keeps its previous citation values for the run.
-Use `scholar_citation_ids` for the numeric `cites` IDs from Google Scholar "Cited by" URLs.
+If any source fails for a publication, that publication keeps its previous citation values for the run.
+Use `citations.google_scholar.ids` for the numeric `cites` IDs from Google Scholar "Cited by" URLs.
 If Google Scholar splits one paper across records, include all numeric `cites` IDs; the workflow will query the combined Cited by URL.
-Entries without `scholar_citation_ids` fall back to normalized title matching against `_bibliography/papers.bib`.
-Semantic Scholar is matched by `semantic_scholar_paper_id`, or by BibTeX arXiv/DOI metadata when that field is missing.
+Entries without `citations.google_scholar.ids` fall back to normalized title matching against `_bibliography/papers.bib`.
+Semantic Scholar is matched by `citations.semantic_scholar.id`, or by BibTeX arXiv/DOI metadata when that field is missing.
 
 To enable it, add a repository secret named `SERPAPI_API_KEY` in GitHub Actions secrets.
-Optionally add `SEMANTIC_SCHOLAR_API_KEY` to reduce Semantic Scholar rate limits.
+Add `ADS_API_TOKEN` for ADS lookups and optionally `SEMANTIC_SCHOLAR_API_KEY` to reduce Semantic Scholar rate limits.
 Without `SERPAPI_API_KEY`, the workflow exits successfully and leaves citation counts unchanged.
 
 ## Local Preview

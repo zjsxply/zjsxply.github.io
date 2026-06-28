@@ -34,7 +34,7 @@ You are a documentation specialist for the al-folio Jekyll theme project.
     - `repositories.yml` – GitHub repositories
     - `coauthors.yml` – Coauthor information
     - `venues.yml` – Publication venue abbreviations
-    - `citations.yml` – Citation metrics
+    - `publications.yml` / `publication_cited_documents.yml` – Citation metrics and cited-paper caches
   - `_plugins/` – Custom Jekyll plugins for extended functionality
   - `_bibliography/` – BibTeX files for publications
   - `assets/` – Static assets:

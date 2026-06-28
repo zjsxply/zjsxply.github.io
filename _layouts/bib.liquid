@@ -27,22 +27,68 @@
 {% assign display_poster = publication_config.poster %}
 {% assign display_slides = publication_config.slides %}
 {% assign display_website = publication_config.website %}
-{% assign display_scholar_citation_id = '' %}
-{% if publication_config.scholar_citation_ids %}
-  {% assign display_scholar_citation_id = publication_config.scholar_citation_ids | join: ',' %}
+{% assign display_citations = publication_config.citations %}
+{% assign display_citations_google_ids = '' %}
+{% assign display_citations_google_total = null %}
+{% assign display_citations_semantic_total = null %}
+{% assign display_citations_semantic_extra = null %}
+{% assign display_citations_ads_extra = null %}
+{% if display_citations %}
+  {% if display_citations.google_scholar.ids %}
+    {% if display_citations.google_scholar.ids.first %}
+      {% assign display_citations_google_ids = display_citations.google_scholar.ids | join: ',' %}
+    {% else %}
+      {% assign display_citations_google_ids = display_citations.google_scholar.ids %}
+    {% endif %}
+  {% elsif display_citations.google_scholar.id %}
+    {% if display_citations.google_scholar.id.first %}
+      {% assign display_citations_google_ids = display_citations.google_scholar.id | join: ',' %}
+    {% else %}
+      {% assign display_citations_google_ids = display_citations.google_scholar.id %}
+    {% endif %}
+  {% endif %}
+  {% if display_citations.google_scholar.total != null %}
+    {% assign display_citations_google_total = display_citations.google_scholar.total %}
+  {% elsif display_citations.google_scholar.citations != null %}
+    {% assign display_citations_google_total = display_citations.google_scholar.citations %}
+  {% elsif display_citations.google_scholar != blank %}
+    {% assign display_citations_google_total = display_citations.google_scholar %}
+  {% endif %}
+  {% if display_citations.semantic_scholar.citations != null %}
+    {% assign display_citations_semantic_total = display_citations.semantic_scholar.citations %}
+  {% endif %}
+  {% if display_citations.semantic_scholar.extra_non_duplicate != null %}
+    {% assign display_citations_semantic_extra = display_citations.semantic_scholar.extra_non_duplicate %}
+  {% elsif display_citations.semantic_scholar.extra != null %}
+    {% assign display_citations_semantic_extra = display_citations.semantic_scholar.extra %}
+  {% elsif display_citations_semantic_total != null and display_citations_google_total != null %}
+    {% assign display_citations_semantic_extra = display_citations_semantic_total | minus: display_citations_google_total %}
+    {% if display_citations_semantic_extra < 0 %}
+      {% assign display_citations_semantic_extra = 0 %}
+    {% endif %}
+  {% endif %}
+  {% if display_citations.ads.extra_non_duplicate != null %}
+    {% assign display_citations_ads_extra = display_citations.ads.extra_non_duplicate %}
+  {% elsif display_citations.ads.extra != null %}
+    {% assign display_citations_ads_extra = display_citations.ads.extra %}
+  {% elsif display_citations.ads.citations != null %}
+    {% assign display_citations_ads_extra = display_citations.ads.citations %}
+  {% endif %}
 {% endif %}
-{% assign display_scholar_citations = publication_config.scholar_citations %}
-{% assign display_semantic_scholar_citations = publication_config.semantic_scholar_citations %}
-{% assign display_combined_citations = publication_config.combined_citations | default: display_scholar_citations %}
-{% assign display_scholar_citation_count = display_scholar_citations | default: 0 %}
-{% assign display_semantic_scholar_extra_citations = display_combined_citations | default: 0 | minus: display_scholar_citation_count %}
-{% if display_semantic_scholar_extra_citations < 0 %}
-  {% assign display_semantic_scholar_extra_citations = 0 %}
+{% assign display_citations_total = null %}
+{% if display_citations.total != null %}
+  {% assign display_citations_total = display_citations.total %}
+{% elsif display_citations_google_total != null %}
+  {% assign display_citations_total = display_citations_google_total %}
+{% endif %}
+{% assign display_has_citation_metrics = false %}
+{% assign display_citations_total_value = display_citations_total | default: 0 | plus: 0 %}
+{% if display_citations_total_value > 0 %}
+  {% assign display_has_citation_metrics = true %}
 {% endif %}
 {% assign display_github_repo = publication_config.github_repo %}
 {% assign display_altmetric = publication_config.altmetric %}
 {% assign display_dimensions = publication_config.dimensions %}
-{% assign display_google_scholar_id = publication_config.google_scholar_id %}
 {% assign display_inspirehep_id = publication_config.inspirehep_id %}
 {% assign abstract_label = 'Abs' %}
 {% assign awarded_label = 'Awarded' %}
@@ -57,12 +103,13 @@
 {% assign merged_citations_label = 'Merged citations' %}
 {% assign google_scholar_tooltip_label = 'Google Scholar' %}
 {% assign semantic_scholar_extra_tooltip_label = 'Semantic Scholar extra unique' %}
+{% assign ads_extra_tooltip_label = 'ADS extra unique' %}
 {% assign stars_badge_label = 'Stars' %}
 {% assign github_stars_label = 'GitHub stars' %}
 {% assign tooltip_separator = ': ' %}
 {% assign tooltip_delimiter = '; ' %}
 {% if current_lang == 'zh' %}
-  {% assign publication_zh = site.data.publicationszh[entry.key] %}
+  {% assign publication_zh = site.data.publications.zh[entry.key] %}
   {% assign abstract_label = '摘要' %}
   {% assign awarded_label = '获奖' %}
   {% assign bibtex_label = '引用' %}
@@ -76,6 +123,7 @@
   {% assign merged_citations_label = '聚合引用' %}
   {% assign google_scholar_tooltip_label = 'Google Scholar' %}
   {% assign semantic_scholar_extra_tooltip_label = 'Semantic Scholar 额外不重复' %}
+  {% assign ads_extra_tooltip_label = 'ADS 额外不重复' %}
   {% assign stars_badge_label = '星标' %}
   {% assign github_stars_label = 'GitHub 星标' %}
   {% assign tooltip_separator = '：' %}
@@ -411,16 +459,16 @@
         <a href="{{ display_website }}" class="btn btn-sm z-depth-0" role="button">{{ website_label }}</a>
       {% endif %}
     </div>
-    {% if display_combined_citations != null or display_github_repo %}
+    {% if display_has_citation_metrics or display_github_repo %}
       <div class="pub-metrics">
-        {% if display_combined_citations != null %}
-          {% if display_scholar_citation_id %}
-            {% assign display_scholar_citation_url = 'https://scholar.google.com/scholar?cites=' | append: display_scholar_citation_id %}
+        {% if display_has_citation_metrics %}
+          {% if display_citations_google_ids %}
+            {% assign display_scholar_citation_url = 'https://scholar.google.com/scholar?cites=' | append: display_citations_google_ids %}
           {% else %}
             {% assign display_scholar_citation_url = 'https://scholar.google.com/scholar?q=' | append: entry.title | url_encode %}
           {% endif %}
           {% capture citation_tooltip -%}
-            {{ google_scholar_tooltip_label }}{{ tooltip_separator }}{{ display_scholar_citation_count }}{{ tooltip_delimiter }}{{ semantic_scholar_extra_tooltip_label }}{{ tooltip_separator }}{{ display_semantic_scholar_extra_citations }}
+            {{ google_scholar_tooltip_label }}{{ tooltip_separator }}{{ display_citations_google_total | default: 0 }}{{ tooltip_delimiter }}{{ semantic_scholar_extra_tooltip_label }}{{ tooltip_separator }}{{ display_citations_semantic_extra | default: 0 }}{{ tooltip_delimiter }}{{ ads_extra_tooltip_label }}{{ tooltip_separator }}{{ display_citations_ads_extra | default: 0 }}
           {%- endcapture %}
           <a
             href="{{ display_scholar_citation_url }}"
@@ -429,8 +477,8 @@
             title="{{ citation_tooltip | strip }}"
           >
             <img
-              src="https://img.shields.io/badge/{{ citation_badge_label | url_encode }}-{{ display_combined_citations }}-EBB215"
-              alt="{{ citation_badge_label }}: {{ display_combined_citations }}"
+              src="https://img.shields.io/badge/{{ citation_badge_label | url_encode }}-{{ display_citations_total }}-EBB215"
+              alt="{{ citation_badge_label }}: {{ display_citations_total }}"
               title="{{ citation_tooltip | strip }}"
             >
           </a>
@@ -456,16 +504,11 @@
         {% assign entry_has_dimensions_badge = true %}
       {% endif %}
 
-      {% assign entry_has_google_scholar_badge = false %}
-      {% if display_google_scholar_id %}
-        {% assign entry_has_google_scholar_badge = true %}
-      {% endif %}
-
       {% assign entry_has_inspirehep_badge = false %}
       {% if display_inspirehep_id %}
         {% assign entry_has_inspirehep_badge = true %}
       {% endif %}
-      {% if entry_has_altmetric_badge or entry_has_dimensions_badge or entry_has_google_scholar_badge or entry_has_inspirehep_badge %}
+      {% if entry_has_altmetric_badge or entry_has_dimensions_badge or entry_has_inspirehep_badge %}
         <div class="badges">
           {% if site.enable_publication_badges.altmetric and entry_has_altmetric_badge %}
             <span
@@ -501,36 +544,6 @@
               data-legend="hover-right"
               style="margin-bottom: 3px;"
             ></span>
-          {% endif %}
-          {% if site.enable_publication_badges.google_scholar and entry_has_google_scholar_badge %}
-            <a
-              href="https://scholar.google.com/citations?view_op=view_citation&user={{ site.data.socials.scholar_userid }}&citation_for_view={{ site.data.socials.scholar_userid }}:{{ display_google_scholar_id }}"
-              aria-label="Google Scholar link"
-              role="button"
-            >
-              {% assign citation_count = 0 %}
-              {% assign scholar_id_key = site.scholar_userid | append: ':' | append: display_google_scholar_id %}
-              {% assign publication_key = display_google_scholar_id %}
-
-              {% if site.data.citations.papers[scholar_id_key] %}
-                {% assign citation_count = site.data.citations.papers[scholar_id_key].citations %}
-              {% elsif site.data.citations.papers[publication_key] %}
-                {% assign citation_count = site.data.citations.papers[publication_key].citations %}
-              {% else %}
-                {% for paper in site.data.citations.papers %}
-                  {% assign paper_key = paper[0] %}
-                  {% if paper_key contains display_google_scholar_id %}
-                    {% assign citation_count = paper[1].citations %}
-                    {% break %}
-                  {% endif %}
-                {% endfor %}
-              {% endif %}
-
-              <img
-                src="https://img.shields.io/badge/scholar-{{ citation_count }}-4285F4?logo=googlescholar&labelColor=beige"
-                alt="{{ citation_count }} Google Scholar citations"
-              >
-            </a>
           {% endif %}
           {% if site.enable_publication_badges.inspirehep and entry_has_inspirehep_badge %}
             <a
