@@ -723,8 +723,12 @@ def fetch_ads_citing_items(bibcode: str, token: str) -> list[CitationItem]:
     return unique_items(items)
 
 
+def citation_item_sort_key(item: CitationItem) -> tuple[str, str, str]:
+    return (normalize_title(item.title), item.title.casefold(), normalize_url(item.link) or item.link.casefold())
+
+
 def citation_item_list(items: list[CitationItem]) -> list[dict[str, str]]:
-    return [item_dict(item) for item in items]
+    return [item_dict(item) for item in sorted(items, key=citation_item_sort_key)]
 
 
 def generate_publication_citations(

@@ -1,113 +1,121 @@
 metadata:
-  last_updated: '2026-06-28'
+  last_updated: '2026-07-01'
 papers:
   pan2026naturallanguageagentharnesses:
     google_scholar:
       documents:
-      - title: 'Agent-world: Scaling real-world environment synthesis for evolving general agent intelligence'
-        link: https://arxiv.org/abs/2604.18292
-      - title: 'Agentic world modeling: Foundations, capabilities, laws, and beyond'
-        link: https://arxiv.org/abs/2604.22748
-      - title: 'Agent harness for large language model agents: A survey'
-        link: https://www.preprints.org/manuscript/202604.0428
-      - title: Code as Agent Harness
-        link: https://arxiv.org/abs/2605.18747
-      - title: 'Agent harness engineering: A survey'
-        link: https://openreview.net/pdf?id=eONq7FdiHa
-      - title: 'AION: Next-Generation Tasks and Practical Harness for Time Series'
-        link: https://arxiv.org/abs/2605.25045
-      - title: 'Harness engineering for language agents: The harness layer as control, agency, and runtime'
-        link: https://www.preprints.org/frontend/manuscript/567757f184a1af99de64c01b54a2d366/download_pub
-      - title: 'A Survey on the Security of Long-Term Memory in LLM Agents: Toward Mnemonic Sovereignty'
-        link: https://arxiv.org/abs/2604.16548
-      - title: 'Remember the Decision, Not the Description: A Rate-Distortion Framework for Agent Memory'
-        link: https://arxiv.org/abs/2605.10870
-      - title: 'Agentic MIP Research: Accelerated Constraint Handler Generation'
-        link: https://arxiv.org/abs/2605.09186
-      - title: 'From Agent Loops to Deterministic Graphs: Execution Lineage for Reproducible AI-Native Work'
-        link: https://arxiv.org/abs/2605.06365
-      - title: 'SafeHarness: Lifecycle-Integrated Security Architecture for LLM-based Agent Deployment'
-        link: https://arxiv.org/abs/2604.13630
       - title: A Survey on AI Agent Harness
         link: https://www.researchgate.net/profile/Zhongwei-Xie-3/publication/404675561_A_Survey_on_AI_Agent_Harness/links/6a187d5c2f87006ac07dc739/A-Survey-on-AI-Agent-Harness.pdf
-      - title: 'Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents'
-        link: https://arxiv.org/abs/2605.30621
-      - title: 'OPD-Evolver: Cultivating Holistic Agent Evolver via On-Policy Distillation'
-        link: https://arxiv.org/abs/2606.17628
+      - title: 'A Survey on the Security of Long-Term Memory in LLM Agents: Toward Mnemonic Sovereignty'
+        link: https://arxiv.org/abs/2604.16548
+      - title: 'Agent harness engineering: A survey'
+        link: https://openreview.net/pdf?id=eONq7FdiHa
+      - title: 'Agent harness for large language model agents: A survey'
+        link: https://www.preprints.org/manuscript/202604.0428
+      - title: 'Agent-world: Scaling real-world environment synthesis for evolving general agent intelligence'
+        link: https://arxiv.org/abs/2604.18292
+      - title: 'Agentic MIP Research: Accelerated Constraint Handler Generation'
+        link: https://arxiv.org/abs/2605.09186
+      - title: 'Agentic world modeling: Foundations, capabilities, laws, and beyond'
+        link: https://arxiv.org/abs/2604.22748
+      - title: 'AION: Next-Generation Tasks and Practical Harness for Time Series'
+        link: https://arxiv.org/abs/2605.25045
       - title: Autonomous heterogeneous catalyst discovery with a self-evolving multi-agent digital twin
         link: https://arxiv.org/abs/2606.05050
-      - title: Metacognition Should Be the Scientific Framework for Bounded and Effective Self-Governance in Generative AI
-        link: https://arxiv.org/abs/2605.23981
-      - title: 'Orchestra-o1: Omnimodal Agent Orchestration'
-        link: https://arxiv.org/abs/2606.13707
-      - title: 'Harness Engineering for Physical AI: Robot Middleware Is the Harness Layer'
-        link: https://arxiv.org/abs/2606.09416
-      - title: 'SEAGym: An Evaluation Environment for Self-Evolving LLM Agents'
-        link: https://arxiv.org/abs/2606.17546
       - title: 'AutoPyVerifier: Learning Compact Executable Verifiers for Large Language Model Outputs'
         link: https://arxiv.org/abs/2604.22937
-      - title: 'SkillHarm: Lifecycle-Aware Skill-Based Attacks via Automated Construction'
-        link: https://arxiv.org/abs/2606.02540
-      - title: 'Intermediate Artifacts as First-Class Citizens: A Data Model for Durable Intermediate Artifacts in Agentic Systems'
-        link: https://arxiv.org/abs/2605.12087
+      - title: Code as agent harness
+        link: https://arxiv.org/abs/2605.18747
+      - title: 'From Agent Loops to Deterministic Graphs: Execution Lineage for Reproducible AI-Native Work'
+        link: https://arxiv.org/abs/2605.06365
       - title: 'From Chatbot to Digital Colleague: The Paradigm Shift Toward Persistent Autonomous AI'
         link: https://arxiv.org/abs/2606.14502
-      - title: 'SkillGuard: A Permission Framework for Agent Skills'
-        link: https://arxiv.org/abs/2606.03024
-      - title: 'Statistical Priors for Implicit Preferences: Decoupling Skill Selection as a Local Harness in Personal Agents'
-        link: https://arxiv.org/abs/2606.05828
-      - title: Scaling Laws for Agent Harnesses via Effective Feedback Compute
-        link: https://arxiv.org/abs/2605.29682
+      - title: 'From Question Answering to Task Completion: A Survey on Agent System and Harness Design'
+        link: https://arxiv.org/abs/2606.20683
+      - title: 'Harness engineering for language agents: The harness layer as control, agency, and runtime'
+        link: https://www.preprints.org/frontend/manuscript/567757f184a1af99de64c01b54a2d366/download_pub
+      - title: 'Harness Engineering for Physical AI: Robot Middleware Is the Harness Layer'
+        link: https://arxiv.org/abs/2606.09416
+      - title: 'Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents'
+        link: https://arxiv.org/abs/2605.30621
       - title: Harnesses for Inference-Time Alignment over Execution Trajectories
         link: https://arxiv.org/abs/2605.21516
       - title: 'Harnessing Agent Skills: Architectural Patterns and a Reference Architecture for Skill-Mediated LLM Agents'
-        link: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6871959
-      - title: 'From Question Answering to Task Completion: A Survey on Agent System and Harness Design'
-        link: https://www.preprints.org/manuscript/202606.1312
+        link: https://arxiv.org/abs/2606.20631
+      - title: 'Intermediate Artifacts as First-Class Citizens: A Data Model for Durable Intermediate Artifacts in Agentic Systems'
+        link: https://arxiv.org/abs/2605.12087
+      - title: Metacognition Should Be the Scientific Framework for Bounded and Effective Self-Governance in Generative AI
+        link: https://arxiv.org/abs/2605.23981
+      - title: 'OPD-Evolver: Cultivating Holistic Agent Evolver via On-Policy Distillation'
+        link: https://arxiv.org/abs/2606.17628
+      - title: 'Orchestra-o1: Omnimodal Agent Orchestration'
+        link: https://arxiv.org/abs/2606.13707
+      - title: 'Remember the Decision, Not the Description: A Rate-Distortion Framework for Agent Memory'
+        link: https://arxiv.org/abs/2605.10870
+      - title: 'SafeHarness: Lifecycle-Integrated Security Architecture for LLM-based Agent Deployment'
+        link: https://arxiv.org/abs/2604.13630
+      - title: Scaling Laws for Agent Harnesses via Effective Feedback Compute
+        link: https://arxiv.org/abs/2605.29682
+      - title: 'SEAGym: An Evaluation Environment for Self-Evolving LLM Agents'
+        link: https://arxiv.org/abs/2606.17546
+      - title: 'SkillGuard: A Permission Framework for Agent Skills'
+        link: https://arxiv.org/abs/2606.03024
+      - title: 'SkillHarm: Lifecycle-Aware Skill-Based Attacks via Automated Construction'
+        link: https://arxiv.org/abs/2606.02540
+      - title: 'Statistical Priors for Implicit Preferences: Decoupling Skill Selection as a Local Harness in Personal Agents'
+        link: https://arxiv.org/abs/2606.05828
     semantic_scholar:
       documents:
-      - title: 'Dr-DCI: Scaling Direct Corpus Interaction via Dynamic Workspace Expansion'
-        link: http://www.semanticscholar.org/paper/aa6278a3fdab65afa144d5e562a13d183bedc74d
-      - title: 'HarnessBridge: Learnable Bidirectional Controller for LLM Agent Harness'
-        link: http://www.semanticscholar.org/paper/c884e41056de27be1e904edf8cdc596a16d0ff23
-      - title: 'OCELOT: Inference-Leakage Budgets for Privacy-Preserving LLM Agents'
-        link: http://www.semanticscholar.org/paper/120aa7a7375575257a4319faae8e3bcf1cd4650f
-      - title: 'Orchestra-o1: Omnimodal Agent Orchestration'
-        link: http://www.semanticscholar.org/paper/07ef99f203b26fb3926eca74583db90ee1f8e44f
-      - title: 'From Failed Trajectories to Reliable LLM Agents: Diagnosing and Repairing Harness Flaws'
-        link: http://www.semanticscholar.org/paper/e35b844662092111ede2d52bdfe3d2a15c13b73b
+      - title: 'Agentic MIP Research: Accelerated Constraint Handler Generation'
+        link: http://www.semanticscholar.org/paper/4ce8ae242c5783853a64b92cd4160141cf8fb23a
+      - title: 'AI4BayesCode: From Natural Language Descriptions to Validated Modular Stateful Bayesian Samplers'
+        link: http://www.semanticscholar.org/paper/f94b4e06293ba06df67e9e89012dd6e1375140b2
+      - title: 'AION: Next-Generation Tasks and Practical Harness for Time Series'
+        link: http://www.semanticscholar.org/paper/6c405a1e47984ccbbe45087332b0812b12615c0f
       - title: Autonomous heterogeneous catalyst discovery with a self-evolving multi-agent digital twin
         link: http://www.semanticscholar.org/paper/98e2b287bc1687738f965347d9eb80a9f4c873fb
+      - title: 'AutoPyVerifier: Learning Compact Executable Verifiers for Large Language Model Outputs'
+        link: http://www.semanticscholar.org/paper/f6b9b3a6be2e3513a0003e4adbcd88b33f020aa2
+      - title: 'Crafter: A Multi-Agent Harness for Editable Scientific Figure Generation from Diverse Inputs'
+        link: http://www.semanticscholar.org/paper/ef1530727228713e8f1c34373477e1ffcac1bda4
+      - title: 'Dr-DCI: Scaling Direct Corpus Interaction via Dynamic Workspace Expansion'
+        link: http://www.semanticscholar.org/paper/aa6278a3fdab65afa144d5e562a13d183bedc74d
+      - title: 'From Agent Loops to Deterministic Graphs: Execution Lineage for Reproducible AI-Native Work'
+        link: http://www.semanticscholar.org/paper/645ea8d2d1e412551a3d55a55b857b35987f6b1b
+      - title: 'From Failed Trajectories to Reliable LLM Agents: Diagnosing and Repairing Harness Flaws'
+        link: http://www.semanticscholar.org/paper/e35b844662092111ede2d52bdfe3d2a15c13b73b
+      - title: 'From Question Answering to Task Completion: A Survey on Agent System and Harness Design'
+        link: http://www.semanticscholar.org/paper/9b180665463ee9eca4a85b3d146fc00d0f159149
+      - title: Harness Engineering as Categorical Architecture
+        link: http://www.semanticscholar.org/paper/68004f1c20175ee44fa2cef4cc496fbdf6c6db3b
+      - title: 'Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents'
+        link: http://www.semanticscholar.org/paper/c5c1607d44b3a08187367a1a77fee0effb8307db
+      - title: 'HarnessBridge: Learnable Bidirectional Controller for LLM Agent Harness'
+        link: http://www.semanticscholar.org/paper/c884e41056de27be1e904edf8cdc596a16d0ff23
+      - title: Harnesses for Inference-Time Alignment over Execution Trajectories
+        link: http://www.semanticscholar.org/paper/7f712dda886aa0317388e34ecc754acf26581212
+      - title: 'Harnessing Agent Skills: Architectural Patterns and a Reference Architecture for Skill-Mediated LLM Agents'
+        link: http://www.semanticscholar.org/paper/0ccf0c6b3c70f037375c37517347c82117246dc3
+      - title: 'Intermediate Artifacts as First-Class Citizens: A Data Model for Durable Intermediate Artifacts in Agentic Systems'
+        link: http://www.semanticscholar.org/paper/f089a82395ecdf29ca31d2cd535d1d96b0b0d3f3
+      - title: 'OCELOT: Inference-Leakage Budgets for Privacy-Preserving LLM Agents'
+        link: http://www.semanticscholar.org/paper/120aa7a7375575257a4319faae8e3bcf1cd4650f
+      - title: 'OPD-Evolver: Cultivating Holistic Agent Evolver via On-Policy Distillation'
+        link: http://www.semanticscholar.org/paper/dd2f438304fe6a9915841db9f74114922b179f65
+      - title: 'Orchestra-o1: Omnimodal Agent Orchestration'
+        link: http://www.semanticscholar.org/paper/07ef99f203b26fb3926eca74583db90ee1f8e44f
+      - title: 'SafeHarness: Lifecycle-Integrated Security Architecture for LLM-based Agent Deployment'
+        link: http://www.semanticscholar.org/paper/dc80f1113a0087e81f47cc746590b802c8ef6013
+      - title: Scaling Laws for Agent Harnesses via Effective Feedback Compute
+        link: http://www.semanticscholar.org/paper/9fa36859fd4a79b304076d319ad5f4cf353d1ee9
+      - title: 'SEAGym: An Evaluation Environment for Self-Evolving LLM Agents'
+        link: http://www.semanticscholar.org/paper/35e3b25c1deade62609ef026d745167839d7403c
       - title: 'SkillGuard: A Permission Framework for Agent Skills'
         link: http://www.semanticscholar.org/paper/ad1fb6d7d43a06d11395815c31530dee4d0a0d0f
       - title: 'SkillHarm: Lifecycle-Aware Skill-Based Attacks via Automated Construction'
         link: http://www.semanticscholar.org/paper/9c1410f32500114b251e75da4674cc18deaa1c37
-      - title: Scaling Laws for Agent Harnesses via Effective Feedback Compute
-        link: http://www.semanticscholar.org/paper/9fa36859fd4a79b304076d319ad5f4cf353d1ee9
-      - title: 'Crafter: A Multi-Agent Harness for Editable Scientific Figure Generation from Diverse Inputs'
-        link: http://www.semanticscholar.org/paper/ef1530727228713e8f1c34373477e1ffcac1bda4
-      - title: 'Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents'
-        link: http://www.semanticscholar.org/paper/c5c1607d44b3a08187367a1a77fee0effb8307db
-      - title: 'AION: Next-Generation Tasks and Practical Harness for Time Series'
-        link: http://www.semanticscholar.org/paper/6c405a1e47984ccbbe45087332b0812b12615c0f
-      - title: 'AI4BayesCode: From Natural Language Descriptions to Validated Modular Stateful Bayesian Samplers'
-        link: http://www.semanticscholar.org/paper/f94b4e06293ba06df67e9e89012dd6e1375140b2
-      - title: Harnesses for Inference-Time Alignment over Execution Trajectories
-        link: http://www.semanticscholar.org/paper/7f712dda886aa0317388e34ecc754acf26581212
-      - title: Harness Engineering as Categorical Architecture
-        link: http://www.semanticscholar.org/paper/68004f1c20175ee44fa2cef4cc496fbdf6c6db3b
-      - title: 'Intermediate Artifacts as First-Class Citizens: A Data Model for Durable Intermediate Artifacts in Agentic Systems'
-        link: http://www.semanticscholar.org/paper/f089a82395ecdf29ca31d2cd535d1d96b0b0d3f3
-      - title: 'Agentic MIP Research: Accelerated Constraint Handler Generation'
-        link: http://www.semanticscholar.org/paper/4ce8ae242c5783853a64b92cd4160141cf8fb23a
       - title: 'Training with Harnesses: On-Policy Harness Self-Distillation for Complex Reasoning'
         link: http://www.semanticscholar.org/paper/9632ba51e5b7470b040fdc94b4b9840e4419a342
-      - title: 'From Agent Loops to Deterministic Graphs: Execution Lineage for Reproducible AI-Native Work'
-        link: http://www.semanticscholar.org/paper/645ea8d2d1e412551a3d55a55b857b35987f6b1b
-      - title: 'AutoPyVerifier: Learning Compact Executable Verifiers for Large Language Model Outputs'
-        link: http://www.semanticscholar.org/paper/f6b9b3a6be2e3513a0003e4adbcd88b33f020aa2
-      - title: 'SafeHarness: Lifecycle-Integrated Security Architecture for LLM-based Agent Deployment'
-        link: http://www.semanticscholar.org/paper/dc80f1113a0087e81f47cc746590b802c8ef6013
     ads:
       documents:
       - title: 'A Survey on Long-Term Memory Security in LLM Agents: Attacks, Defenses, and Governance Across the Memory Lifecycle'
@@ -116,34 +124,34 @@ papers:
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260418292D/abstract
       - title: 'Agentic World Modeling: Foundations, Capabilities, Laws, and Beyond'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260422748C/abstract
-      - title: 'SafeHarness: Lifecycle-Integrated Security Architecture for LLM-based Agent Deployment'
-        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260413630L/abstract
+      - title: 'AION: Next-Generation Tasks and Practical Harness for Time Series'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260525045Z/abstract
       - title: 'AutoPyVerifier: Learning Compact Executable Verifiers for Large Language Model Outputs'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260422937P/abstract
+      - title: Building Agent Harnesses for Scientific Curation from Multimodal Sources
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260621005Z/abstract
+      - title: 'From Agent Loops to Deterministic Graphs: Execution Lineage for Reproducible AI-Native Work'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260506365R/abstract
+      - title: 'From Chatbot to Digital Colleague: The Paradigm Shift Toward Persistent Autonomous AI'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260614502Z/abstract
       - title: Harness Engineering as Categorical Architecture
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260512239B/abstract
       - title: 'Intermediate Artifacts as First-Class Citizens: A Data Model for Durable Intermediate Artifacts in Agentic Systems'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260512087R/abstract
       - title: Metacognition Should Be the Scientific Framework for Bounded and Effective Self-Governance in Generative AI
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260523981J/abstract
-      - title: 'From Agent Loops to Deterministic Graphs: Execution Lineage for Reproducible AI-Native Work'
-        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260506365R/abstract
       - title: 'OCELOT: Inference-Leakage Budgets for Privacy-Preserving LLM Agents'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260612341X/abstract
-      - title: 'SEAGym: An Evaluation Environment for Self-Evolving LLM Agents'
-        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260617546Z/abstract
       - title: 'Remember the Decision, Not the Description: A Rate-Distortion Framework for Agent Memory'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260510870Z/abstract
-      - title: Building Agent Harnesses for Scientific Curation from Multimodal Sources
-        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260621005Z/abstract
-      - title: Scaling Laws for Agent Harnesses via Effective Feedback Compute
-        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260529682Z/abstract
-      - title: 'From Chatbot to Digital Colleague: The Paradigm Shift Toward Persistent Autonomous AI'
-        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260614502Z/abstract
-      - title: 'AION: Next-Generation Tasks and Practical Harness for Time Series'
-        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260525045Z/abstract
       - title: 'RHO: Your Coding Agent is Secretly a Roboticist'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260616458E/abstract
+      - title: 'SafeHarness: Lifecycle-Integrated Security Architecture for LLM-based Agent Deployment'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260413630L/abstract
+      - title: Scaling Laws for Agent Harnesses via Effective Feedback Compute
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260529682Z/abstract
+      - title: 'SEAGym: An Evaluation Environment for Self-Evolving LLM Agents'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260617546Z/abstract
   fu2026catarenaevaluatingevolutionarycapabilities:
     google_scholar:
       documents:
@@ -151,12 +159,12 @@ papers:
         link: https://arxiv.org/abs/2606.03544
     semantic_scholar:
       documents:
-      - title: 'SAGE: A Quantitative Evaluation of Socialized Evolution in Agent Ecosystems'
-        link: http://www.semanticscholar.org/paper/8787603312268b45d8e39daab6a741e8bb51b442
       - title: Frontier Coding Agents Can Now Implement an AlphaZero Self-Play Machine Learning Pipeline For Connect Four That Performs Comparably to an External Solver
         link: http://www.semanticscholar.org/paper/e28464b8a6dd6f0f50bc549b598e9d82f10b45ab
       - title: 'MonoScale: Scaling Multi-Agent System with Monotonic Improvement'
         link: http://www.semanticscholar.org/paper/cd90d68127074b07c0bb55a66275ee2f3ee88a63
+      - title: 'SAGE: A Quantitative Evaluation of Socialized Evolution in Agent Ecosystems'
+        link: http://www.semanticscholar.org/paper/8787603312268b45d8e39daab6a741e8bb51b442
     ads:
       documents:
       - title: Frontier Coding Agents Can Now Implement an AlphaZero Self-Play Machine Learning Pipeline For Connect Four That Performs Comparably to an External Solver

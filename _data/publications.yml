@@ -13,7 +13,7 @@ pan2026naturallanguageagentharnesses:
     semantic_scholar:
       id: arXiv:2603.25723
       url: https://www.semanticscholar.org/paper/88b12da49b820f56f9552d13a3be578de7c6c77b
-      citations: 21
+      citations: 25
       extra_non_duplicate: 8
     ads:
       id: 2026arXiv260325723P
