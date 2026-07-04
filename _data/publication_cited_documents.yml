@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-07-01'
+  last_updated: '2026-07-04'
 papers:
   pan2026naturallanguageagentharnesses:
     google_scholar:
@@ -34,6 +34,8 @@ papers:
         link: https://arxiv.org/abs/2606.20683
       - title: 'Harness engineering for language agents: The harness layer as control, agency, and runtime'
         link: https://www.preprints.org/frontend/manuscript/567757f184a1af99de64c01b54a2d366/download_pub
+      - title: 'Harness Engineering for LLM Agents: A Survey of Harness Component Taxonomy, Evaluation, and Model–Harness Coevolution'
+        link: https://www.preprints.org/manuscript/202606.2203
       - title: 'Harness Engineering for Physical AI: Robot Middleware Is the Harness Layer'
         link: https://arxiv.org/abs/2606.09416
       - title: 'Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents'
@@ -76,6 +78,8 @@ papers:
         link: http://www.semanticscholar.org/paper/98e2b287bc1687738f965347d9eb80a9f4c873fb
       - title: 'AutoPyVerifier: Learning Compact Executable Verifiers for Large Language Model Outputs'
         link: http://www.semanticscholar.org/paper/f6b9b3a6be2e3513a0003e4adbcd88b33f020aa2
+      - title: 'COMFYCLAW: Self-Evolving Skill Harnesses for Image Generation Workflows'
+        link: http://www.semanticscholar.org/paper/523634d4428176bcd737d6664ed400fb756a59a8
       - title: 'Crafter: A Multi-Agent Harness for Editable Scientific Figure Generation from Diverse Inputs'
         link: http://www.semanticscholar.org/paper/ef1530727228713e8f1c34373477e1ffcac1bda4
       - title: 'Dr-DCI: Scaling Direct Corpus Interaction via Dynamic Workspace Expansion'

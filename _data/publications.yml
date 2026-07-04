@@ -9,18 +9,18 @@ pan2026naturallanguageagentharnesses:
       - '5554083676653175677'
       - '10581113726319067053'
       url: https://scholar.google.com/scholar?cites=5554083676653175677,10581113726319067053
-      citations: 30
+      citations: 31
     semantic_scholar:
       id: arXiv:2603.25723
       url: https://www.semanticscholar.org/paper/88b12da49b820f56f9552d13a3be578de7c6c77b
-      citations: 25
-      extra_non_duplicate: 8
+      citations: 26
+      extra_non_duplicate: 9
     ads:
       id: 2026arXiv260325723P
       url: https://ui.adsabs.harvard.edu/abs/2026arXiv260325723P/citations
       citations: 17
       extra_non_duplicate: 3
-    total: 41
+    total: 43
   x_discussion: https://x.com/rronak_/status/2038401494177694074
   award_name: Community Attention
   award: Reached alphaXiv Hot \#1, selected by DAIR.AI Weekly Top 10 and [The AI Timeline](https://x.com/TheAITimeline/status/2038486801564700913)'s Top AI/ML Research Papers of the Week (7 papers total), and received 550K+ views on X.
