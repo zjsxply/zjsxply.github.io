@@ -29,22 +29,22 @@
 {% assign display_website = publication_config.website %}
 {% assign display_citations = publication_config.citations %}
 {% assign display_citations_google_ids = '' %}
+{% assign display_citations_google_ids_source = null %}
 {% assign display_citations_google_total = null %}
 {% assign display_citations_semantic_total = null %}
 {% assign display_citations_semantic_extra = null %}
 {% assign display_citations_ads_extra = null %}
 {% if display_citations %}
   {% if display_citations.google_scholar.ids %}
-    {% if display_citations.google_scholar.ids.first %}
-      {% assign display_citations_google_ids = display_citations.google_scholar.ids | join: ',' %}
-    {% else %}
-      {% assign display_citations_google_ids = display_citations.google_scholar.ids %}
-    {% endif %}
+    {% assign display_citations_google_ids_source = display_citations.google_scholar.ids %}
   {% elsif display_citations.google_scholar.id %}
-    {% if display_citations.google_scholar.id.first %}
-      {% assign display_citations_google_ids = display_citations.google_scholar.id | join: ',' %}
-    {% else %}
-      {% assign display_citations_google_ids = display_citations.google_scholar.id %}
+    {% assign display_citations_google_ids_source = display_citations.google_scholar.id %}
+  {% endif %}
+  {% if display_citations_google_ids_source %}
+    {% if display_citations_google_ids_source.first %}
+      {% assign display_citations_google_ids = display_citations_google_ids_source | join: ',' %}
+    {% elsif display_citations_google_ids_source != empty %}
+      {% assign display_citations_google_ids = display_citations_google_ids_source %}
     {% endif %}
   {% endif %}
   {% if display_citations.google_scholar.total != null %}
@@ -462,8 +462,11 @@
     {% if display_has_citation_metrics or display_github_repo %}
       <div class="pub-metrics">
         {% if display_has_citation_metrics %}
-          {% if display_citations_google_ids %}
+          {% if display_citations_google_ids != blank %}
             {% assign display_scholar_citation_url = 'https://scholar.google.com/scholar?cites=' | append: display_citations_google_ids %}
+          {% elsif display_arxiv_id %}
+            {% assign display_scholar_lookup_arxiv_id = display_arxiv_id | remove: 'arXiv:' | remove: 'arxiv:' | strip | url_encode %}
+            {% assign display_scholar_citation_url = 'https://scholar.google.com/scholar_lookup?arxiv_id=' | append: display_scholar_lookup_arxiv_id %}
           {% else %}
             {% assign display_scholar_citation_url = 'https://scholar.google.com/scholar?q=' | append: entry.title | url_encode %}
           {% endif %}

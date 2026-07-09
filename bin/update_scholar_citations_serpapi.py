@@ -74,6 +74,10 @@ def load_env(name: str) -> str | None:
     return value if value else None
 
 
+def redact_url(url: str) -> str:
+    return re.sub(r"([?&]api_key=)[^&]+", r"\1***", url)
+
+
 def fetch_json(
     url: str,
     headers: dict[str, str] | None = None,
@@ -88,9 +92,14 @@ def fetch_json(
 
     for attempt in range(total_attempts):
         request = urllib.request.Request(url, headers=request_headers)
+        safe_url = redact_url(url)
         try:
             with urllib.request.urlopen(request, timeout=timeout) as response:
-                return json.loads(response.read().decode("utf-8"))
+                payload = json.loads(response.read().decode("utf-8"))
+                error = payload.get("error")
+                if error:
+                    raise RuntimeError(f"API error for {safe_url}: {error}")
+                return payload
         except urllib.error.HTTPError as error:
             if error.code == 429 and attempt < HTTP_429_RETRIES:
                 time.sleep(HTTP_429_RETRY_DELAY_SECONDS)
@@ -103,14 +112,14 @@ def fetch_json(
                 continue
 
             body = error.read().decode("utf-8", errors="replace")[:500]
-            raise RuntimeError(f"HTTP {error.code} for {url}: {body}") from error
+            raise RuntimeError(f"HTTP {error.code} for {safe_url}: {body}") from error
         except urllib.error.URLError as error:
             if attempt < transient_retries:
                 time.sleep(2**attempt)
                 continue
-            raise RuntimeError(f"URL error for {url}: {error}") from error
+            raise RuntimeError(f"URL error for {safe_url}: {error}") from error
 
-    raise RuntimeError(f"Failed to fetch {url}")
+    raise RuntimeError(f"Failed to fetch {redact_url(url)}")
 
 
 def fetch_serpapi(params: dict[str, str], api_key: str) -> dict[str, Any]:
@@ -344,6 +353,15 @@ def load_existing_cited_documents() -> dict[str, dict[str, Any]]:
     loaded = yaml.safe_load(CITED_DOCUMENTS_PATH.read_text(encoding="utf-8")) or {}
     papers = loaded.get("papers")
     return papers if isinstance(papers, dict) else {}
+
+
+def cached_document_count(cache: dict[str, Any], source: str) -> int:
+    source_data = cache.get(source)
+    if not isinstance(source_data, dict):
+        return 0
+
+    documents = source_data.get("documents")
+    return len(documents) if isinstance(documents, list) else 0
 
 
 def publication_source_section(publication: dict[str, Any], source: str) -> dict[str, Any]:
@@ -913,7 +931,8 @@ def update_publications_file(
             rebuilt_parts.append(block.text)
             continue
 
-        cache_by_paper[block.key] = existing_cache_by_paper.get(block.key, empty_cited_documents_entry())
+        existing_cache = existing_cache_by_paper.get(block.key, empty_cited_documents_entry())
+        cache_by_paper[block.key] = existing_cache
 
         if not publication or bib_metadata is None:
             rebuilt_parts.append(block.text)
@@ -928,6 +947,11 @@ def update_publications_file(
                 semantic_scholar_key,
                 ads_token,
             )
+            if (
+                cached_document_count(existing_cache, "google_scholar") > 0
+                and cached_document_count(cache, "google_scholar") == 0
+            ):
+                raise RuntimeError("Google Scholar returned zero citing documents; preserving previous citation data")
         except Exception as error:
             print(f"Warning: skipping citation update for {block.key}: {error}", file=sys.stderr)
             rebuilt_parts.append(block.text)

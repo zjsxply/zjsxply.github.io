@@ -9,18 +9,18 @@ pan2026naturallanguageagentharnesses:
       - '5554083676653175677'
       - '10581113726319067053'
       url: https://scholar.google.com/scholar?cites=5554083676653175677,10581113726319067053
-      citations: 0
+      citations: 32
     semantic_scholar:
       id: arXiv:2603.25723
       url: https://www.semanticscholar.org/paper/88b12da49b820f56f9552d13a3be578de7c6c77b
       citations: 26
-      extra_non_duplicate: 26
+      extra_non_duplicate: 8
     ads:
       id: 2026arXiv260325723P
       url: https://ui.adsabs.harvard.edu/abs/2026arXiv260325723P/citations
-      citations: 17
-      extra_non_duplicate: 8
-    total: 34
+      citations: 18
+      extra_non_duplicate: 3
+    total: 43
   x_discussion: https://x.com/rronak_/status/2038401494177694074
   award_name: Community Attention
   award: Reached alphaXiv Hot \#1, selected by DAIR.AI Weekly Top 10 and [The AI Timeline](https://x.com/TheAITimeline/status/2038486801564700913)'s Top AI/ML Research Papers of the Week (7 papers total), and received 550K+ views on X.
@@ -46,12 +46,12 @@ fu2026catarenaevaluatingevolutionarycapabilities:
       ids:
       - '9187625130475749521'
       url: https://scholar.google.com/scholar?cites=9187625130475749521
-      citations: 0
+      citations: 1
     semantic_scholar:
       id: arXiv:2510.26852
       url: https://www.semanticscholar.org/paper/58d3ae4169ef9ebc46206ffd8c41cd3e4f9b20f3
       citations: 3
-      extra_non_duplicate: 3
+      extra_non_duplicate: 2
     ads:
       id: 2025arXiv251026852F
       url: https://ui.adsabs.harvard.edu/abs/2025arXiv251026852F/citations
@@ -76,14 +76,14 @@ pan2026sagequantitativeevaluationsocialized:
     semantic_scholar:
       id: arXiv:2606.03544
       url: https://www.semanticscholar.org/paper/8787603312268b45d8e39daab6a741e8bb51b442
-      citations: 0
-      extra_non_duplicate: 0
+      citations: 1
+      extra_non_duplicate: 1
     ads:
       id: 2026arXiv260603544P
       url: https://ui.adsabs.harvard.edu/abs/2026arXiv260603544P/citations
       citations: 0
       extra_non_duplicate: 0
-    total: 0
+    total: 1
   abstract: >
     Self-improving language agents are typically evaluated in isolation: an agent attempts a task, receives feedback, and iteratively refines its own behavior. Yet agents increasingly operate alongside peers whose strategies and outcomes are publicly visible. This raises an under-studied question: when does shared experience produce improvements that self-improvement alone cannot achieve? We introduce SAGE (Social Agent Group Evolution), an evaluation framework that compares two compute-matched conditions: SocialEvo, where agents from five distinct model families co-evolve with access to all peers' histories; and SelfEvo, where each agent receives the same number of task attempts but sees only its own past, which is conventional in self-improving agent studies. We instantiate SAGE in three arenas: open-ended ML research, long-horizon economic planning, and strategic multiplayer play, evaluated across multiple evolutionary rounds. We find that group history is not a universal amplifier: the strongest agent does not exceed its self-evolution ceiling. However, agents that plateau under self-improvement can achieve significant breakthroughs when peer experience is available. In competitive settings, counterfactual controls reveal that agents improve generally rather than developing opponent-specific strategies. Across different forms of shared history, filtered peer traces and reflective summaries often outperform raw logs, indicating that social gains depend on abstraction rather than exposure volume. These findings reveal that peer-history gains are agent-specific, arena-dependent, and contingent on the capacity to abstract transferable knowledge from public traces.
   selected: true
