@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-07-09'
+  last_updated: '2026-07-13'
 papers:
   pan2026naturallanguageagentharnesses:
     google_scholar:
@@ -11,7 +11,7 @@ papers:
       - title: 'Agent harness engineering: A survey'
         link: https://openreview.net/pdf?id=eONq7FdiHa
       - title: 'Agent harness for large language model agents: A survey'
-        link: https://www.preprints.org/manuscript/202604.0428
+        link: https://www.preprints.org/manuscript/202604.0428?utm_source=blog&utm_medium=externo&utm_campaign=blog&utm_term=link-2&utm_content=harness-em-ia
       - title: 'Agent-world: Scaling real-world environment synthesis for evolving general agent intelligence'
         link: https://arxiv.org/abs/2604.18292
       - title: 'Agentic MIP Research: Accelerated Constraint Handler Generation'
