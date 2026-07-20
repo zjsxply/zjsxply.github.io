@@ -1,12 +1,12 @@
 metadata:
-  last_updated: '2026-07-13'
+  last_updated: '2026-07-20'
 papers:
   pan2026naturallanguageagentharnesses:
     google_scholar:
       documents:
       - title: A Survey on AI Agent Harness
         link: https://www.researchgate.net/profile/Zhongwei-Xie-3/publication/404675561_A_Survey_on_AI_Agent_Harness/links/6a187d5c2f87006ac07dc739/A-Survey-on-AI-Agent-Harness.pdf
-      - title: 'A Survey on the Security of Long-Term Memory in LLM Agents: Toward Mnemonic Sovereignty'
+      - title: 'A survey on the security of long-term memory in llm agents: Toward mnemonic sovereignty'
         link: https://arxiv.org/abs/2604.16548
       - title: 'Agent harness engineering: A survey'
         link: https://openreview.net/pdf?id=eONq7FdiHa
@@ -24,6 +24,8 @@ papers:
         link: https://arxiv.org/abs/2606.05050
       - title: 'AutoPyVerifier: Learning Compact Executable Verifiers for Large Language Model Outputs'
         link: https://arxiv.org/abs/2604.22937
+      - title: Can Large Language Models Approximate Human Editorial Judgment?
+        link: https://indexerlabs.com/IndexerLabs_Overlap_Report.pdf
       - title: Code as agent harness
         link: https://arxiv.org/abs/2605.18747
       - title: 'COMFYCLAW: Self-Evolving Skill Harnesses for Image Generation Workflows'
@@ -40,6 +42,8 @@ papers:
         link: https://www.preprints.org/manuscript/202606.2203
       - title: 'Harness Engineering for Physical AI: Robot Middleware Is the Harness Layer'
         link: https://arxiv.org/abs/2606.09416
+      - title: 'Harness Handbook: Making Evolving Agent Harnesses Readable, Navigable, and Editable'
+        link: https://arxiv.org/abs/2607.13285
       - title: 'Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents'
         link: https://arxiv.org/abs/2605.30621
       - title: Harnesses for Inference-Time Alignment over Execution Trajectories
@@ -48,6 +52,8 @@ papers:
         link: https://arxiv.org/abs/2606.20631
       - title: 'Intermediate Artifacts as First-Class Citizens: A Data Model for Durable Intermediate Artifacts in Agentic Systems'
         link: https://arxiv.org/abs/2605.12087
+      - title: 'Loop Engineering for Agentic Software Systems: LEAF Architecture, Pattern Taxonomy, Use Cases, Evaluation, Challenges, and Future Directions'
+        link: https://www.researchgate.net/profile/Partha-Ray-11/publication/408733345_Loop_Engineering_for_Agentic_Software_Systems_LEAF_Architecture_Pattern_Taxonomy_Use_Cases_Evaluation_Challenges_and_Future_Directions/links/6a510bf45ec6581029907331/Loop-Engineering-for-Agentic-Software-Systems-LEAF-Architecture-Pattern-Taxonomy-Use-Cases-Evaluation-Challenges-and-Future-Directions.pdf
       - title: Metacognition Should Be the Scientific Framework for Bounded and Effective Self-Governance in Generative AI
         link: https://arxiv.org/abs/2605.23981
       - title: 'OPD-Evolver: Cultivating Holistic Agent Evolver via On-Policy Distillation'
@@ -56,10 +62,10 @@ papers:
         link: https://arxiv.org/abs/2606.13707
       - title: 'Remember the Decision, Not the Description: A Rate-Distortion Framework for Agent Memory'
         link: https://arxiv.org/abs/2605.10870
+      - title: Reproducible and shareable bioinformatics pipelines from natural-language prompts
+        link: https://www.biorxiv.org/content/10.64898/2026.05.28.719125.abstract
       - title: 'SafeHarness: Lifecycle-Integrated Security Architecture for LLM-based Agent Deployment'
         link: https://arxiv.org/abs/2604.13630
-      - title: Scaling Laws for Agent Harnesses via Effective Feedback Compute
-        link: https://arxiv.org/abs/2605.29682
       - title: 'SEAGym: An Evaluation Environment for Self-Evolving LLM Agents'
         link: https://arxiv.org/abs/2606.17546
       - title: 'SkillGuard: A Permission Framework for Agent Skills'
@@ -68,6 +74,8 @@ papers:
         link: https://arxiv.org/abs/2606.02540
       - title: 'Statistical Priors for Implicit Preferences: Decoupling Skill Selection as a Local Harness in Personal Agents'
         link: https://arxiv.org/abs/2606.05828
+      - title: 'The Path to Self-Evolving Clinical Systems: Scaling Medical Agents from Assistance to Autonomy'
+        link: https://arxiv.org/abs/2607.11175
     semantic_scholar:
       documents:
       - title: 'Agentic MIP Research: Accelerated Constraint Handler Generation'
@@ -94,6 +102,8 @@ papers:
         link: http://www.semanticscholar.org/paper/9b180665463ee9eca4a85b3d146fc00d0f159149
       - title: Harness Engineering as Categorical Architecture
         link: http://www.semanticscholar.org/paper/68004f1c20175ee44fa2cef4cc496fbdf6c6db3b
+      - title: 'Harness Handbook: Making Evolving Agent Harnesses Readable,Navigable, and Editable'
+        link: http://www.semanticscholar.org/paper/825fa78213d014d9edb89f8f5c738e4ce49ab2f2
       - title: 'Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents'
         link: http://www.semanticscholar.org/paper/c5c1607d44b3a08187367a1a77fee0effb8307db
       - title: 'HarnessBridge: Learnable Bidirectional Controller for LLM Agent Harness'
@@ -104,6 +114,8 @@ papers:
         link: http://www.semanticscholar.org/paper/0ccf0c6b3c70f037375c37517347c82117246dc3
       - title: 'Intermediate Artifacts as First-Class Citizens: A Data Model for Durable Intermediate Artifacts in Agentic Systems'
         link: http://www.semanticscholar.org/paper/f089a82395ecdf29ca31d2cd535d1d96b0b0d3f3
+      - title: 'MemoHarness: Agent Harnesses That Learn from Experience'
+        link: http://www.semanticscholar.org/paper/b1e7c6c4c8d9dcfb7c8c8961c9428db036c61d9e
       - title: 'OCELOT: Inference-Leakage Budgets for Privacy-Preserving LLM Agents'
         link: http://www.semanticscholar.org/paper/120aa7a7375575257a4319faae8e3bcf1cd4650f
       - title: 'OPD-Evolver: Cultivating Holistic Agent Evolver via On-Policy Distillation'
@@ -116,12 +128,18 @@ papers:
         link: http://www.semanticscholar.org/paper/9fa36859fd4a79b304076d319ad5f4cf353d1ee9
       - title: 'SEAGym: An Evaluation Environment for Self-Evolving LLM Agents'
         link: http://www.semanticscholar.org/paper/35e3b25c1deade62609ef026d745167839d7403c
+      - title: 'SkillGuard: A Permission-Centric Framework for Agent Skill Security'
+        link: http://www.semanticscholar.org/paper/6a29c296d64cc042db12f8154fe2edccede49499
       - title: 'SkillGuard: A Permission Framework for Agent Skills'
         link: http://www.semanticscholar.org/paper/ad1fb6d7d43a06d11395815c31530dee4d0a0d0f
       - title: 'SkillHarm: Lifecycle-Aware Skill-Based Attacks via Automated Construction'
         link: http://www.semanticscholar.org/paper/9c1410f32500114b251e75da4674cc18deaa1c37
+      - title: 'The Path to Self-Evolving Clinical Systems: Scaling Medical Agents from Assistance to Autonomy'
+        link: http://www.semanticscholar.org/paper/fdb32134191927d529fe7166155400332d0da6c4
       - title: 'Training with Harnesses: On-Policy Harness Self-Distillation for Complex Reasoning'
         link: http://www.semanticscholar.org/paper/9632ba51e5b7470b040fdc94b4b9840e4419a342
+      - title: 'Who&When Pro: Can LLMs Really Attribute Failures in AI Agents?'
+        link: http://www.semanticscholar.org/paper/1ce252ed4e7bbb6482cacaa1270bb777069bddec
     ads:
       documents:
       - title: 'A Survey on Long-Term Memory Security in LLM Agents: Attacks, Defenses, and Governance Across the Memory Lifecycle'
@@ -144,8 +162,12 @@ papers:
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260614502Z/abstract
       - title: Harness Engineering as Categorical Architecture
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260512239B/abstract
+      - title: 'Harness Handbook: Making Evolving Agent Harnesses Readable,Navigable, and Editable'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260713285W/abstract
       - title: 'Intermediate Artifacts as First-Class Citizens: A Data Model for Durable Intermediate Artifacts in Agentic Systems'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260512087R/abstract
+      - title: 'MemoHarness: Agent Harnesses That Learn from Experience'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260714159H/abstract
       - title: Metacognition Should Be the Scientific Framework for Bounded and Effective Self-Governance in Generative AI
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260523981J/abstract
       - title: 'OCELOT: Inference-Leakage Budgets for Privacy-Preserving LLM Agents'
