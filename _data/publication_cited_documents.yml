@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-07-20'
+  last_updated: '2026-07-23'
 papers:
   pan2026naturallanguageagentharnesses:
     google_scholar:
@@ -68,7 +68,7 @@ papers:
         link: https://arxiv.org/abs/2604.13630
       - title: 'SEAGym: An Evaluation Environment for Self-Evolving LLM Agents'
         link: https://arxiv.org/abs/2606.17546
-      - title: 'SkillGuard: A Permission Framework for Agent Skills'
+      - title: 'SkillGuard: A Permission-Centric Framework for Agent Skill Security'
         link: https://arxiv.org/abs/2606.03024
       - title: 'SkillHarm: Lifecycle-Aware Skill-Based Attacks via Automated Construction'
         link: https://arxiv.org/abs/2606.02540
