@@ -74,9 +74,28 @@ class CitationItem:
     publication_date: str | None = None
 
 
+@dataclass
+class UpdateSummary:
+    citation_configured: int = 0
+    updated: int = 0
+    changed_blocks: int = 0
+    skipped_invalid: int = 0
+    skipped_missing_bib: int = 0
+    failed: int = 0
+
+
 def load_env(name: str) -> str | None:
     value = os.environ.get(name)
     return value if value else None
+
+
+def log(message: str) -> None:
+    print(message, flush=True)
+
+
+def warn(message: str) -> None:
+    prefix = "::warning::" if os.environ.get("GITHUB_ACTIONS") == "true" else "Warning: "
+    print(f"{prefix}{message}", file=sys.stderr, flush=True)
 
 
 def redact_url(url: str) -> str:
@@ -578,6 +597,15 @@ def normalize_google_ids(publication: dict[str, Any]) -> list[str]:
     return []
 
 
+def has_explicit_google_id_config(publication: dict[str, Any]) -> bool:
+    google = publication_source_section(publication, "google_scholar")
+    if "ids" in google or "id" in google:
+        return True
+    if "scholar_citation_ids" in publication:
+        return True
+    return bool(extract_cites_ids_from_url(google.get("url")))
+
+
 def normalize_semantic_id(publication: dict[str, Any], bib_metadata: BibMetadata | None) -> str | None:
     semantic = publication_source_section(publication, "semantic_scholar")
     if semantic:
@@ -649,6 +677,8 @@ def resolve_google_ids(
     ids = normalize_google_ids(publication)
     if ids:
         return ids
+    if has_explicit_google_id_config(publication):
+        return []
 
     if not articles_by_title or not bib_metadata or not bib_metadata.title:
         return []
@@ -667,6 +697,24 @@ def resolve_google_ids(
             if ids:
                 return ids
     return []
+
+
+def publications_needing_google_author_lookup(path: Path) -> list[str]:
+    original = path.read_text(encoding="utf-8")
+    metadata = bib_metadata_by_key()
+    paper_keys: list[str] = []
+
+    for block in find_publication_blocks(original):
+        publication = parse_publication(block)
+        if not publication_has_citation_config(publication):
+            continue
+        if normalize_google_ids(publication) or has_explicit_google_id_config(publication):
+            continue
+        bib_metadata = metadata.get(block.key)
+        if bib_metadata and bib_metadata.title:
+            paper_keys.append(block.key)
+
+    return paper_keys
 
 
 def fetch_serpapi_citing_items(cites_ids: list[str], api_key: str) -> list[CitationItem]:
@@ -721,7 +769,7 @@ def fetch_serpapi_citing_items(cites_ids: list[str], api_key: str) -> list[Citat
 
         if not page_results:
             break
-        if total_results is not None and len(items) >= total_results:
+        if total_results is not None and start + len(page_results) >= total_results:
             break
 
         start += len(page_results)
@@ -1071,11 +1119,15 @@ def update_publications_file(
     serpapi_key: str,
     semantic_scholar_key: str | None,
     ads_token: str,
-) -> tuple[bool, dict[str, dict[str, Any]]]:
+) -> tuple[bool, dict[str, dict[str, Any]], UpdateSummary]:
     original = path.read_text(encoding="utf-8")
     blocks = find_publication_blocks(original)
     metadata = bib_metadata_by_key()
     existing_cache_by_paper = load_existing_cited_documents()
+    configured_keys = [block.key for block in blocks if publication_has_citation_config(parse_publication(block))]
+    summary = UpdateSummary(citation_configured=len(configured_keys))
+
+    log(f"Updating {summary.citation_configured} citation-enabled publication(s).")
 
     rebuilt_parts: list[str] = []
     cursor = 0
@@ -1095,7 +1147,15 @@ def update_publications_file(
         existing_cache = existing_cache_by_paper.get(block.key, empty_cited_documents_entry())
         cache_by_paper[block.key] = existing_cache
 
-        if not publication or bib_metadata is None:
+        if not publication:
+            summary.skipped_invalid += 1
+            warn(f"Skipping {block.key}: publication YAML block could not be parsed")
+            rebuilt_parts.append(block.text)
+            continue
+
+        if bib_metadata is None:
+            summary.skipped_missing_bib += 1
+            warn(f"Skipping {block.key}: no matching BibTeX metadata found in {BIB_PATH}")
             rebuilt_parts.append(block.text)
             continue
 
@@ -1114,29 +1174,46 @@ def update_publications_file(
             ):
                 raise RuntimeError("Google Scholar returned zero citing documents; preserving previous citation data")
         except Exception as error:
-            print(f"Warning: skipping citation update for {block.key}: {error}", file=sys.stderr)
+            summary.failed += 1
+            warn(f"Skipping citation update for {block.key}: {error}")
             rebuilt_parts.append(block.text)
             continue
 
         cache_by_paper[block.key] = cache
 
         new_block_text = replace_or_insert_citations_block(block.text, citations)
-        changed = changed or new_block_text != block.text
+        block_changed = new_block_text != block.text
+        changed = changed or block_changed
+        summary.updated += 1
+        if block_changed:
+            summary.changed_blocks += 1
+        google = citations.get("google_scholar", {})
+        semantic = citations.get("semantic_scholar", {})
+        ads = citations.get("ads", {})
+        state = "changed" if block_changed else "unchanged"
+        log(
+            f"{block.key}: total={citations.get('total', 0)}; "
+            f"google={google.get('citations', 0)} ({len(google.get('ids') or [])} id(s)), "
+            f"s2={semantic.get('citations', 0)} (+{semantic.get('extra_non_duplicate', 0)}), "
+            f"ads={ads.get('citations', 0)} (+{ads.get('extra_non_duplicate', 0)}); "
+            f"{state}."
+        )
         rebuilt_parts.append(new_block_text)
 
     rebuilt_parts.append(original[cursor:])
     if changed:
         path.write_text("".join(rebuilt_parts), encoding="utf-8")
 
-    return changed, cache_by_paper
+    return changed, cache_by_paper, summary
 
 
-def write_cited_documents(cache_by_paper: dict[str, dict[str, Any]]) -> None:
+def write_cited_documents(cache_by_paper: dict[str, dict[str, Any]]) -> bool:
     data = {"papers": cache_by_paper}
-    CITED_DOCUMENTS_PATH.write_text(
-        yaml.safe_dump(data, sort_keys=False, allow_unicode=True, width=1000),
-        encoding="utf-8",
-    )
+    content = yaml.safe_dump(data, sort_keys=False, allow_unicode=True, width=1000)
+    if CITED_DOCUMENTS_PATH.exists() and CITED_DOCUMENTS_PATH.read_text(encoding="utf-8") == content:
+        return False
+    CITED_DOCUMENTS_PATH.write_text(content, encoding="utf-8")
+    return True
 
 
 def main() -> int:
@@ -1144,37 +1221,63 @@ def main() -> int:
     ads_token = load_env("ADS_API_TOKEN")
     semantic_scholar_key = load_env("SEMANTIC_SCHOLAR_API_KEY")
 
+    log(
+        "API keys: "
+        f"SerpApi={'configured' if serpapi_key else 'missing'}, "
+        f"ADS={'configured' if ads_token else 'missing'}, "
+        f"Semantic Scholar={'configured' if semantic_scholar_key else 'missing (unauthenticated)'}."
+    )
+
     if not serpapi_key:
-        print("SERPAPI_API_KEY is not set; skipping citation update.")
+        warn("SERPAPI_API_KEY is not set; skipping citation update.")
         return 0
     if not ads_token:
-        print("ADS_API_TOKEN is not set; skipping citation update.")
+        warn("ADS_API_TOKEN is not set; skipping citation update.")
         return 0
 
-    scholar_user_id = load_scholar_user_id()
-    print(f"Fetching Google Scholar author data for {scholar_user_id} via SerpApi")
+    author_lookup_keys = publications_needing_google_author_lookup(PUBLICATIONS_PATH)
+    articles_by_title = None
 
-    try:
-        articles = fetch_google_author_articles(scholar_user_id, serpapi_key)
-        articles_by_title = index_articles_by_title(articles)
-        print(f"Fetched {len(articles)} Scholar author articles")
-    except Exception as error:
-        articles_by_title = None
-        print(
-            f"Warning: failed to fetch Scholar author data; title fallback is disabled for this run: {error}",
-            file=sys.stderr,
+    if author_lookup_keys:
+        scholar_user_id = load_scholar_user_id()
+        log(
+            "Google Scholar author fallback needed for paper(s) without explicit citation IDs: "
+            + ", ".join(author_lookup_keys)
         )
+        try:
+            articles = fetch_google_author_articles(scholar_user_id, serpapi_key)
+            articles_by_title = index_articles_by_title(articles)
+            log(f"Google Scholar author fallback ready: fetched {len(articles)} author article(s).")
+        except Exception as error:
+            articles_by_title = None
+            warn(f"Failed to fetch Scholar author data; title fallback is disabled for this run: {error}")
+    else:
+        log("Google Scholar author fallback skipped: Google citation ID config is explicit for all citation-enabled papers.")
 
-    changed, cache_by_paper = update_publications_file(
+    publications_changed, cache_by_paper, summary = update_publications_file(
         PUBLICATIONS_PATH,
         articles_by_title,
         serpapi_key,
         semantic_scholar_key,
         ads_token,
     )
-    write_cited_documents(cache_by_paper)
+    cited_documents_changed = write_cited_documents(cache_by_paper)
 
-    print("Updated citation counts." if changed else "Citation counts already up to date.")
+    skipped_parts = []
+    if summary.skipped_invalid:
+        skipped_parts.append(f"invalid={summary.skipped_invalid}")
+    if summary.skipped_missing_bib:
+        skipped_parts.append(f"missing_bib={summary.skipped_missing_bib}")
+    skipped_text = f", skipped({', '.join(skipped_parts)})" if skipped_parts else ""
+
+    log(
+        f"Summary: updated={summary.updated}/{summary.citation_configured}, "
+        f"changed={summary.changed_blocks}, failed={summary.failed}{skipped_text}; "
+        f"{PUBLICATIONS_PATH}={'changed' if publications_changed else 'unchanged'}, "
+        f"{CITED_DOCUMENTS_PATH}={'changed' if cited_documents_changed else 'unchanged'}."
+    )
+    if not publications_changed and not cited_documents_changed:
+        log("Citation counts already up to date.")
     return 0
 
 

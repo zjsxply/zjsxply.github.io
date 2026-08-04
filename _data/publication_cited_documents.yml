@@ -26,6 +26,8 @@ papers:
         link: https://arxiv.org/abs/2605.18747
       - title: 'Comfyclaw: Self-evolving skill harnesses for image generation workflows'
         link: https://arxiv.org/abs/2607.01709
+      - title: 'COVENANT: Natural-Language Workflow Compilation for Aligned Agent Execution'
+        link: https://arxiv.org/abs/2607.25400
       - title: 'From Agent Loops to Deterministic Graphs: Execution Lineage for Reproducible AI-Native Work'
         link: https://arxiv.org/abs/2605.06365
       - title: 'From Chatbot to Digital Colleague: The Paradigm Shift Toward Persistent Autonomous AI'
@@ -70,6 +72,8 @@ papers:
         link: https://arxiv.org/abs/2606.02540
       - title: 'Statistical Priors for Implicit Preferences: Decoupling Skill Selection as a Local Harness in Personal Agents'
         link: https://arxiv.org/abs/2606.05828
+      - title: Task-Specialized Harness Refinement\\Across Financial Decision Tasks
+        link: https://openreview.net/forum?id=9LHVuRrbYx
       - title: 'The Path to Self-Evolving Clinical Systems: Scaling Medical Agents from Assistance to Autonomy'
         link: https://arxiv.org/abs/2607.11175
     semantic_scholar:
