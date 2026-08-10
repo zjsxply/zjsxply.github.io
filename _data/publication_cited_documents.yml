@@ -130,6 +130,8 @@ papers:
         link: https://www.semanticscholar.org/paper/35e3b25c1deade62609ef026d745167839d7403c
       - title: 'SkillGuard: A Permission-Centric Framework for Agent Skill Security'
         link: https://www.semanticscholar.org/paper/6a29c296d64cc042db12f8154fe2edccede49499
+      - title: 'SkillGuard: A Permission Framework for Agent Skills'
+        link: https://www.semanticscholar.org/paper/ad1fb6d7d43a06d11395815c31530dee4d0a0d0f
       - title: 'SkillHarm: Lifecycle-Aware Skill-Based Attacks via Automated Construction'
         link: https://www.semanticscholar.org/paper/9c1410f32500114b251e75da4674cc18deaa1c37
       - title: 'The Path to Self-Evolving Clinical Systems: Scaling Medical Agents from Assistance to Autonomy'
