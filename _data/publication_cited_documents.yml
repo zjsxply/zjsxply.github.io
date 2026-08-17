@@ -128,6 +128,8 @@ papers:
         link: https://www.semanticscholar.org/paper/9fa36859fd4a79b304076d319ad5f4cf353d1ee9
       - title: 'SEAGym: An Evaluation Environment for Self-Evolving LLM Agents'
         link: https://www.semanticscholar.org/paper/35e3b25c1deade62609ef026d745167839d7403c
+      - title: Self-Evolving Embodied Agents via Skill-Harness Evolution
+        link: https://www.semanticscholar.org/paper/2db19095dae718f2ab9522aae9469934902dac76
       - title: 'SkillGuard: A Permission-Centric Framework for Agent Skill Security'
         link: https://www.semanticscholar.org/paper/6a29c296d64cc042db12f8154fe2edccede49499
       - title: 'SkillGuard: A Permission Framework for Agent Skills'
