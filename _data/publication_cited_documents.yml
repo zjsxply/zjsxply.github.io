@@ -72,6 +72,8 @@ papers:
         link: https://arxiv.org/abs/2606.02540
       - title: 'Statistical Priors for Implicit Preferences: Decoupling Skill Selection as a Local Harness in Personal Agents'
         link: https://arxiv.org/abs/2606.05828
+      - title: Task-Aware Harness Provisioning for LLM Agents in Mission-Critical Infrastructure Operations
+        link: https://arxiv.org/abs/2608.17433
       - title: Task-Specialized Harness Refinement\\Across Financial Decision Tasks
         link: https://openreview.net/forum?id=9LHVuRrbYx
       - title: 'The Path to Self-Evolving Clinical Systems: Scaling Medical Agents from Assistance to Autonomy'
@@ -104,6 +106,8 @@ papers:
         link: https://www.semanticscholar.org/paper/68004f1c20175ee44fa2cef4cc496fbdf6c6db3b
       - title: 'Harness Handbook: Making Evolving Agent Harnesses Readable,Navigable, and Editable'
         link: https://www.semanticscholar.org/paper/825fa78213d014d9edb89f8f5c738e4ce49ab2f2
+      - title: 'Harness the Memory: A Holistic Evaluation of Memory Substrates in Memory Agents'
+        link: https://www.semanticscholar.org/paper/188e4015ea1a4efcd7015ef6071a24bcf8a27a13
       - title: 'Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents'
         link: https://www.semanticscholar.org/paper/c5c1607d44b3a08187367a1a77fee0effb8307db
       - title: 'HarnessBridge: Learnable Bidirectional Controller for LLM Agent Harness'
@@ -136,6 +140,8 @@ papers:
         link: https://www.semanticscholar.org/paper/ad1fb6d7d43a06d11395815c31530dee4d0a0d0f
       - title: 'SkillHarm: Lifecycle-Aware Skill-Based Attacks via Automated Construction'
         link: https://www.semanticscholar.org/paper/9c1410f32500114b251e75da4674cc18deaa1c37
+      - title: Task-Aware Harness Provisioning for LLM Agents in Mission-Critical Infrastructure Operations
+        link: https://www.semanticscholar.org/paper/bef41fb49d3fce0a38392e9f6d90f5ddfcc73c61
       - title: 'The Path to Self-Evolving Clinical Systems: Scaling Medical Agents from Assistance to Autonomy'
         link: https://www.semanticscholar.org/paper/fdb32134191927d529fe7166155400332d0da6c4
       - title: 'Training with Harnesses: On-Policy Harness Self-Distillation for Complex Reasoning'
