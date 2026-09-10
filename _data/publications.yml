@@ -9,18 +9,18 @@ pan2026naturallanguageagentharnesses:
       - '5554083676653175677'
       - '10581113726319067053'
       url: https://scholar.google.com/scholar?cites=5554083676653175677,10581113726319067053
-      citations: 49
+      citations: 50
     semantic_scholar:
       id: arXiv:2603.25723
       url: https://www.semanticscholar.org/paper/88b12da49b820f56f9552d13a3be578de7c6c77b
-      citations: 39
-      extra_non_duplicate: 14
+      citations: 40
+      extra_non_duplicate: 15
     ads:
       id: 2026arXiv260325723P
       url: https://ui.adsabs.harvard.edu/abs/2026arXiv260325723P/citations
       citations: 21
       extra_non_duplicate: 3
-    total: 66
+    total: 68
   x_discussion: https://x.com/rronak_/status/2038401494177694074
   award_name: Community Attention
   award: Hit \#1 on alphaXiv’s Hot list, was selected for DAIR.AI’s Weekly Top 10 and [The AI Timeline](https://x.com/TheAITimeline/status/2038486801564700913)’s Top AI/ML Research Papers of the Week (7 papers total), and drew 550K+ views on X.
@@ -46,12 +46,12 @@ fu2026catarenaevaluatingevolutionarycapabilities:
       ids:
       - '9187625130475749521'
       url: https://scholar.google.com/scholar?cites=9187625130475749521
-      citations: 3
+      citations: 2
     semantic_scholar:
       id: arXiv:2510.26852
       url: https://www.semanticscholar.org/paper/58d3ae4169ef9ebc46206ffd8c41cd3e4f9b20f3
       citations: 3
-      extra_non_duplicate: 2
+      extra_non_duplicate: 3
     ads:
       id: 2025arXiv251026852F
       url: https://ui.adsabs.harvard.edu/abs/2025arXiv251026852F/citations

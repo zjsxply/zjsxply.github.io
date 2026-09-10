@@ -10,9 +10,15 @@ permissions:
   actions: write
   contents: write
 
+concurrency:
+  group: citations-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   update:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
       SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
       ADS_API_TOKEN: ${{ secrets.ADS_API_TOKEN }}
@@ -30,12 +36,15 @@ jobs:
         run: python -m pip install pyyaml
 
       - name: Update citation counts from SerpApi, Semantic Scholar, and ADS
+        id: citations
+        # Publish validated partial updates first; the final step still marks the run failed.
+        continue-on-error: true
         run: python bin/update_scholar_citations_serpapi.py
 
       - name: Commit updated citation counts
         id: commit
         run: |
-          status="$(git status --porcelain --untracked-files=all -- _data/publications.yml _data/publications.zh.yml _data/publication_cited_documents.yml)"
+          status="$(git status --porcelain --untracked-files=all -- _data/publications.yml _data/publication_cited_documents.yml)"
           if [ -z "$status" ]; then
             echo "No citation changes to commit."
             echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -45,7 +54,7 @@ jobs:
           echo "$status"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add _data/publications.yml _data/publications.zh.yml _data/publication_cited_documents.yml
+          git add _data/publications.yml _data/publication_cited_documents.yml
           git commit -m "Update citation counts"
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -62,3 +71,9 @@ jobs:
             -H "X-GitHub-Api-Version: 2022-11-28" \
             -d '{"ref":"main"}' \
             "https://api.github.com/repos/$REPO/actions/workflows/deploy.yml/dispatches"
+
+      - name: Report incomplete citation update
+        if: always() && steps.citations.outcome == 'failure'
+        run: |
+          echo "::error::Citation update failed or was partial; cached data was retained."
+          exit 1

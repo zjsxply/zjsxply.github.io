@@ -51,7 +51,7 @@
     {% assign display_citations_google_total = display_citations.google_scholar.total %}
   {% elsif display_citations.google_scholar.citations != null %}
     {% assign display_citations_google_total = display_citations.google_scholar.citations %}
-  {% elsif display_citations.google_scholar != blank %}
+  {% elsif display_citations.google_scholar != blank and display_citations.google_scholar.first == null %}
     {% assign display_citations_google_total = display_citations.google_scholar %}
   {% endif %}
   {% if display_citations.semantic_scholar.citations != null %}
@@ -470,7 +470,7 @@
               | append: display_scholar_lookup_arxiv_id
             %}
           {% else %}
-            {% assign display_scholar_citation_url = 'https://scholar.google.com/scholar?q=' | append: entry.title | url_encode %}
+            {% assign display_scholar_citation_url = entry.title | url_encode | prepend: 'https://scholar.google.com/scholar?q=' %}
           {% endif %}
           {% capture citation_tooltip -%}
             {{ google_scholar_tooltip_label }}{{ tooltip_separator }}{{ display_citations_google_total | default: 0 }}{{ tooltip_delimiter }}{{ semantic_scholar_extra_tooltip_label }}{{ tooltip_separator }}{{ display_citations_semantic_extra | default: 0 }}{{ tooltip_delimiter }}{{ ads_extra_tooltip_label }}{{ tooltip_separator }}{{ display_citations_ads_extra | default: 0 }}
