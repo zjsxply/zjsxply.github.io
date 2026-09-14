@@ -37,6 +37,13 @@ ADS_API_URL = "https://api.adsabs.harvard.edu/v1/search/query"
 
 GOOGLE_AUTHOR_PAGE_SIZE = 100
 SERPAPI_CITATION_PAGE_SIZE = 20
+# Google Scholar's `as_sdt` is overloaded. SerpApi documents `0` as excluding
+# patents, but does not document the second component in values such as `0,27`.
+# We tested this against the NLAH citation IDs: `as_sdt=0`, omitted `as_sdt`,
+# and `as_sdt=0,26` returned 27-28 unique works; `as_sdt=0,27` returned 51
+# unique works in three consecutive runs. Keep this empirical value explicit
+# until Google Scholar/SerpApi documents the meaning of the second component.
+GOOGLE_SCHOLAR_AS_SDT = "0,27"
 SEMANTIC_SCHOLAR_CITATION_PAGE_SIZE = 100
 ADS_CITATION_PAGE_SIZE = 2000
 HTTP_ATTEMPTS = 5
@@ -855,18 +862,16 @@ def fetch_serpapi_citing_items(
 ) -> list[CitationItem]:
     unique_ids = list(dict.fromkeys(cites_ids))
     best_items: list[CitationItem] = []
-    for retry in range(GOOGLE_RESULT_RETRIES + 1):
+    retry_params = [
+        {},
+        {"no_cache": "true"},
+    ]
+    for retry, extra_params in enumerate(retry_params[: GOOGLE_RESULT_RETRIES + 1]):
         items: list[CitationItem] = []
-        try:
-            # Fetch each Scholar record independently; merged queries have returned incomplete lists.
-            for cites_id in unique_ids:
-                page_params = {"no_cache": "true"} if retry else None
-                items.extend(fetch_serpapi_citation_cluster(cites_id, api_key, page_params))
-            items = unique_items(items)
-        except ApiError:
-            # Transport and schema failures are already retried by fetch_json; do not
-            # hide a malformed pagination response behind another whole-cluster pass.
-            raise
+        # Fetch each Scholar record independently; merged queries have returned incomplete lists.
+        for cites_id in unique_ids:
+            items.extend(fetch_serpapi_citation_cluster(cites_id, api_key, extra_params))
+        items = unique_items(items)
 
         if len(citation_item_groups(items)) > len(citation_item_groups(best_items)):
             best_items = items
@@ -874,7 +879,7 @@ def fetch_serpapi_citing_items(
             break
         log(
             f"Google Scholar returned {len(citation_item_groups(best_items))} citing works; "
-            f"retrying with a fresh SerpApi result (attempt {retry + 2}/{GOOGLE_RESULT_RETRIES + 1})."
+            f"retrying with another Scholar pagination strategy (attempt {retry + 2}/{len(retry_params)})."
         )
     return best_items
 
@@ -908,7 +913,7 @@ def fetch_serpapi_citation_cluster(
     start = 0
     expected_page = False
     # Use documented article scope and disable omitted-result filtering; deduplicate locally.
-    page_params: dict[str, str] = {"as_sdt": "0", "filter": "0", **(extra_params or {})}
+    page_params: dict[str, str] = {"as_sdt": GOOGLE_SCHOLAR_AS_SDT, "filter": "0", **(extra_params or {})}
     seen_pages: set[str] = set()
     for _ in range(MAX_API_PAGES):
         try:

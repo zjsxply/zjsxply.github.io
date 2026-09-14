@@ -9,12 +9,12 @@ pan2026naturallanguageagentharnesses:
       - '5554083676653175677'
       - '10581113726319067053'
       url: https://scholar.google.com/scholar?cites=5554083676653175677,10581113726319067053
-      citations: 50
+      citations: 51
     semantic_scholar:
       id: arXiv:2603.25723
       url: https://www.semanticscholar.org/paper/88b12da49b820f56f9552d13a3be578de7c6c77b
       citations: 40
-      extra_non_duplicate: 15
+      extra_non_duplicate: 14
     ads:
       id: 2026arXiv260325723P
       url: https://ui.adsabs.harvard.edu/abs/2026arXiv260325723P/citations

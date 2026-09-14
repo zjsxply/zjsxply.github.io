@@ -4,7 +4,7 @@ papers:
       query:
       - '5554083676653175677'
       - '10581113726319067053'
-      citations: 50
+      citations: 51
       documents:
       - title: A Survey on AI Agent Harness
         link: https://www.researchgate.net/profile/Zhongwei-Xie-3/publication/404675561_A_Survey_on_AI_Agent_Harness/links/6a187d5c2f87006ac07dc739/A-Survey-on-AI-Agent-Harness.pdf
@@ -51,7 +51,7 @@ papers:
       - title: 'Comfyclaw: Self-evolving skill harnesses for image generation workflows'
         link: https://arxiv.org/abs/2607.01709
         arxiv_id: '2607.01709'
-      - title: 'Context Scaling: A New Frontier of AI Scaling'
+      - title: 'Context scaling: a new frontier of AI scaling'
         link: https://www.the-innovation.org/article/doi/10.59717/ipj.aiplus.2026.100010
       - title: 'COVENANT: Natural-language workflow compilation for aligned agent execution'
         link: https://arxiv.org/abs/2607.25400
@@ -59,6 +59,9 @@ papers:
       - title: 'DS-Lighting: Making Agent Harnesses Explicit for Data-Science Automation'
         link: https://arxiv.org/abs/2608.28590
         arxiv_id: '2608.28590'
+      - title: 'EvoSafeHarness: Evolving Model-and Domain-Specific Harnesses for Securing Agents'
+        link: https://arxiv.org/abs/2609.05903
+        arxiv_id: '2609.05903'
       - title: 'From Agent Loops to Deterministic Graphs: Execution Lineage for Reproducible AI-Native Work'
         link: https://arxiv.org/abs/2605.06365
         arxiv_id: '2605.06365'
