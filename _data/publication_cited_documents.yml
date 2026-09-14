@@ -390,12 +390,15 @@ papers:
     google_scholar:
       query:
       - '9187625130475749521'
-      citations: 2
+      citations: 3
       documents:
       - title: 'EvoLedger: Evidence-Preserving Test-Time Evolution for LLM Agents'
         link: https://openreview.net/pdf?id=hPlWAXPb5l
       - title: 'Read, Route, Patch: Robust Test-Time Evolution for LLM Agents'
         link: https://openreview.net/pdf?id=JyMFWdeeaG
+      - title: 'SAGE: A Quantitative Evaluation of Socialized Evolution in Agent Ecosystems'
+        link: https://arxiv.org/abs/2606.03544
+        arxiv_id: '2606.03544'
     semantic_scholar:
       query: arXiv:2510.26852
       citations: 3

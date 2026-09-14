@@ -46,12 +46,12 @@ fu2026catarenaevaluatingevolutionarycapabilities:
       ids:
       - '9187625130475749521'
       url: https://scholar.google.com/scholar?cites=9187625130475749521
-      citations: 2
+      citations: 3
     semantic_scholar:
       id: arXiv:2510.26852
       url: https://www.semanticscholar.org/paper/58d3ae4169ef9ebc46206ffd8c41cd3e4f9b20f3
       citations: 3
-      extra_non_duplicate: 3
+      extra_non_duplicate: 2
     ads:
       id: 2025arXiv251026852F
       url: https://ui.adsabs.harvard.edu/abs/2025arXiv251026852F/citations
