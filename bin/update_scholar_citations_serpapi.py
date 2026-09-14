@@ -40,6 +40,7 @@ SERPAPI_CITATION_PAGE_SIZE = 20
 SEMANTIC_SCHOLAR_CITATION_PAGE_SIZE = 100
 ADS_CITATION_PAGE_SIZE = 2000
 HTTP_ATTEMPTS = 5
+GOOGLE_RESULT_RETRIES = 2
 MAX_API_PAGES = 100
 MAX_SCHOLAR_AUTHOR_ARTICLES = 500
 
@@ -849,12 +850,33 @@ def publications_needing_google_author_lookup(path: Path) -> list[str]:
     return paper_keys
 
 
-def fetch_serpapi_citing_items(cites_ids: list[str], api_key: str) -> list[CitationItem]:
-    items: list[CitationItem] = []
-    # Fetch each Scholar record independently; merged queries have returned incomplete lists.
-    for cites_id in dict.fromkeys(cites_ids):
-        items.extend(fetch_serpapi_citation_cluster(cites_id, api_key))
-    return unique_items(items)
+def fetch_serpapi_citing_items(
+    cites_ids: list[str], api_key: str, minimum_count: int = 0
+) -> list[CitationItem]:
+    unique_ids = list(dict.fromkeys(cites_ids))
+    best_items: list[CitationItem] = []
+    for retry in range(GOOGLE_RESULT_RETRIES + 1):
+        items: list[CitationItem] = []
+        try:
+            # Fetch each Scholar record independently; merged queries have returned incomplete lists.
+            for cites_id in unique_ids:
+                page_params = {"no_cache": "true"} if retry else None
+                items.extend(fetch_serpapi_citation_cluster(cites_id, api_key, page_params))
+            items = unique_items(items)
+        except ApiError:
+            # Transport and schema failures are already retried by fetch_json; do not
+            # hide a malformed pagination response behind another whole-cluster pass.
+            raise
+
+        if len(citation_item_groups(items)) > len(citation_item_groups(best_items)):
+            best_items = items
+        if len(citation_item_groups(best_items)) >= minimum_count:
+            break
+        log(
+            f"Google Scholar returned {len(citation_item_groups(best_items))} citing works; "
+            f"retrying with a fresh SerpApi result (attempt {retry + 2}/{GOOGLE_RESULT_RETRIES + 1})."
+        )
+    return best_items
 
 
 def next_scholar_page(payload: dict[str, Any], start: int, cites_id: str) -> dict[str, str] | None:
@@ -879,12 +901,14 @@ def next_scholar_page(payload: dict[str, Any], start: int, cites_id: str) -> dic
     return None
 
 
-def fetch_serpapi_citation_cluster(cites_id: str, api_key: str) -> list[CitationItem]:
+def fetch_serpapi_citation_cluster(
+    cites_id: str, api_key: str, extra_params: dict[str, str] | None = None
+) -> list[CitationItem]:
     items: list[CitationItem] = []
     start = 0
     expected_page = False
     # Use documented article scope and disable omitted-result filtering; deduplicate locally.
-    page_params: dict[str, str] = {"as_sdt": "0", "filter": "0"}
+    page_params: dict[str, str] = {"as_sdt": "0", "filter": "0", **(extra_params or {})}
     seen_pages: set[str] = set()
     for _ in range(MAX_API_PAGES):
         try:
@@ -1224,7 +1248,10 @@ def generate_publication_citations(
     def fetch_google() -> list[CitationItem]:
         if not google_ids and not has_explicit_google_id_config(publication) and articles_by_title is None:
             raise ApiError("author lookup unavailable and no explicit citation IDs")
-        return fetch_serpapi_citing_items(google_ids, serpapi_key)
+        cached = existing_cache.get("google_scholar", {})
+        previous = publication_source_section(publication, "google_scholar").get("citations", 0)
+        baseline = cached.get("citations", previous) if isinstance(cached, dict) else previous
+        return fetch_serpapi_citing_items(google_ids, serpapi_key, max(previous, baseline))
 
     google_ids = resolve_google_ids(publication, bib_metadata, articles_by_title)
     queries["google_scholar"] = google_ids
