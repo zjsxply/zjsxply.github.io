@@ -148,7 +148,7 @@ papers:
         arxiv_id: '2607.11175'
     semantic_scholar:
       query: arXiv:2603.25723
-      citations: 40
+      citations: 42
       documents:
       - title: 'Agentic MIP Research: Accelerated Constraint Handler Generation'
         link: https://www.semanticscholar.org/paper/4ce8ae242c5783853a64b92cd4160141cf8fb23a
@@ -274,6 +274,9 @@ papers:
       - title: Self-Evolving Embodied Agents via Skill-Harness Evolution
         link: https://www.semanticscholar.org/paper/2db19095dae718f2ab9522aae9469934902dac76
         arxiv_id: '2608.11350'
+      - title: Skill-based Agentic Evaluation for Real-time Data Science Tasks
+        link: https://www.semanticscholar.org/paper/98a925ae85a1feaa63791df2a995640f515419be
+        arxiv_id: '2609.16487'
       - title: 'SkillGuard: A Permission-Centric Framework for Agent Skill Security'
         link: https://www.semanticscholar.org/paper/6a29c296d64cc042db12f8154fe2edccede49499
         arxiv_id: '2606.03024'
@@ -297,6 +300,9 @@ papers:
       - title: 'WeAgent-MMGenEdit: A Full-Stack Recipe for Multimodal Agentic Image Generation and Editing'
         link: https://www.semanticscholar.org/paper/896ced93fea57a00324d293f33c685b59ade53a7
         arxiv_id: '2609.05171'
+      - title: 'When Malicious Instructions Persist: Persistent Memory Poisoning Attack on Harness-Based Agents'
+        link: https://www.semanticscholar.org/paper/41c41a32fb51055a51c9a4c13230491c56a052da
+        arxiv_id: '2609.13889'
       - title: 'Who&When Pro: Can LLMs Really Attribute Failures in AI Agents?'
         link: https://www.semanticscholar.org/paper/1ce252ed4e7bbb6482cacaa1270bb777069bddec
         arxiv_id: '2607.09996'
