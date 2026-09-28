@@ -148,7 +148,7 @@ papers:
         arxiv_id: '2607.11175'
     semantic_scholar:
       query: arXiv:2603.25723
-      citations: 42
+      citations: 45
       documents:
       - title: 'Agentic MIP Research: Accelerated Constraint Handler Generation'
         link: https://www.semanticscholar.org/paper/4ce8ae242c5783853a64b92cd4160141cf8fb23a
@@ -224,6 +224,9 @@ papers:
         link: https://www.semanticscholar.org/paper/c5c1607d44b3a08187367a1a77fee0effb8307db
         arxiv_id: '2605.30621'
         doi: 10.48550/arxiv.2605.30621
+      - title: 'Harness-Zero: Harness Distillation via Agent-as-Harness'
+        link: https://www.semanticscholar.org/paper/4b69bb6013b619adf35886db4a8a1364307e8d41
+        arxiv_id: '2609.24974'
       - title: 'HarnessBridge: Learnable Bidirectional Controller for LLM Agent Harness'
         link: https://www.semanticscholar.org/paper/c884e41056de27be1e904edf8cdc596a16d0ff23
         arxiv_id: '2606.12882'
@@ -259,6 +262,9 @@ papers:
         link: https://www.semanticscholar.org/paper/07ef99f203b26fb3926eca74583db90ee1f8e44f
         arxiv_id: '2606.13707'
         doi: 10.48550/arxiv.2606.13707
+      - title: 'Qwen-Planner-Agent: A Closed-Loop AI-for-AI Framework for Real-World Mobile Planner Agents'
+        link: https://www.semanticscholar.org/paper/3cb2820a9596920429598b9745200b94e7883ba0
+        arxiv_id: '2609.29892'
       - title: 'SafeHarness: Lifecycle-Integrated Security Architecture for LLM-based Agent Deployment'
         link: https://www.semanticscholar.org/paper/dc80f1113a0087e81f47cc746590b802c8ef6013
         arxiv_id: '2604.13630'
@@ -300,6 +306,9 @@ papers:
       - title: 'WeAgent-MMGenEdit: A Full-Stack Recipe for Multimodal Agentic Image Generation and Editing'
         link: https://www.semanticscholar.org/paper/896ced93fea57a00324d293f33c685b59ade53a7
         arxiv_id: '2609.05171'
+      - title: 'When Agents Act Unwatched: The Reduced-Supervision Paradox in Agentic AI'
+        link: https://www.semanticscholar.org/paper/8001963c4f1ac8f8506d48165b2b6ce73b8c9a6d
+        arxiv_id: '2609.29547'
       - title: 'When Malicious Instructions Persist: Persistent Memory Poisoning Attack on Harness-Based Agents'
         link: https://www.semanticscholar.org/paper/41c41a32fb51055a51c9a4c13230491c56a052da
         arxiv_id: '2609.13889'
@@ -309,7 +318,7 @@ papers:
         doi: 10.48550/arxiv.2607.09996
     ads:
       query: 2026arXiv260325723P
-      citations: 21
+      citations: 23
       documents:
       - title: 'A Survey on Long-Term Memory Security in LLM Agents: Attacks, Defenses, and Governance Across the Memory Lifecycle'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260416548L/abstract
@@ -359,6 +368,10 @@ papers:
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260713285W/abstract
         arxiv_id: '2607.13285'
         doi: 10.48550/arxiv.2607.13285
+      - title: 'HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260901437W/abstract
+        arxiv_id: '2609.01437'
+        doi: 10.48550/arxiv.2609.01437
       - title: 'Intermediate Artifacts as First-Class Citizens: A Data Model for Durable Intermediate Artifacts in Agentic Systems'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260512087R/abstract
         arxiv_id: '2605.12087'
@@ -395,6 +408,10 @@ papers:
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260617546Z/abstract
         arxiv_id: '2606.17546'
         doi: 10.48550/arxiv.2606.17546
+      - title: 'SpatialGuard: Harness-Guided Verifiable Spatial Reasoning for Text-to-Image Generation'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260901582Q/abstract
+        arxiv_id: '2609.01582'
+        doi: 10.48550/arxiv.2609.01582
   fu2026catarenaevaluatingevolutionarycapabilities:
     google_scholar:
       query:
