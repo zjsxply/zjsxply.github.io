@@ -4,7 +4,7 @@ papers:
       query:
       - '5554083676653175677'
       - '10581113726319067053'
-      citations: 51
+      citations: 59
       documents:
       - title: A Survey on AI Agent Harness
         link: https://www.researchgate.net/profile/Zhongwei-Xie-3/publication/404675561_A_Survey_on_AI_Agent_Harness/links/6a187d5c2f87006ac07dc739/A-Survey-on-AI-Agent-Harness.pdf
@@ -53,12 +53,16 @@ papers:
         arxiv_id: '2607.01709'
       - title: 'Context scaling: a new frontier of AI scaling'
         link: https://www.the-innovation.org/article/doi/10.59717/ipj.aiplus.2026.100010
+      - title: 'Control-Plane Placement and Memory Substrates in Modern Agentic AI: A Comparative Method for Prompt-Native Systems, Agent Shells, and Durable Runtimes'
+        link: https://reference-global.com/article/10.2478/lpts-2026-0036
       - title: 'COVENANT: Natural-language workflow compilation for aligned agent execution'
         link: https://arxiv.org/abs/2607.25400
         arxiv_id: '2607.25400'
       - title: 'DS-Lighting: Making Agent Harnesses Explicit for Data-Science Automation'
         link: https://arxiv.org/abs/2608.28590
         arxiv_id: '2608.28590'
+      - title: Embodied Agentic Harnesses for Physical Intelligence A Survey
+        link: https://engrxiv.org/preprint/view/8297
       - title: 'EvoSafeHarness: Evolving Model-and Domain-Specific Harnesses for Securing Agents'
         link: https://arxiv.org/abs/2609.05903
         arxiv_id: '2609.05903'
@@ -71,6 +75,8 @@ papers:
       - title: 'From Question Answering to Task Completion: A Survey on Agent System and Harness Design'
         link: https://arxiv.org/abs/2606.20683
         arxiv_id: '2606.20683'
+      - title: 'Harness-Aware Evaluation of LLM Agents: Systems, Benchmarks, and Protocols'
+        link: https://www.preprints.org/manuscript/202609.2140
       - title: 'Harness engineering for language agents: The harness layer as control, agency, and runtime'
         link: https://www.preprints.org/frontend/manuscript/567757f184a1af99de64c01b54a2d366/download_pub
       - title: 'Harness Engineering for LLM Agents: A Survey of Harness Component Taxonomy, Evaluation, and Model–Harness Coevolution'
@@ -84,6 +90,9 @@ papers:
       - title: 'Harness updating is not harness benefit: Disentangling evolution capabilities in self-evolving llm agents'
         link: https://arxiv.org/abs/2605.30621
         arxiv_id: '2605.30621'
+      - title: 'Harness-Zero: Harness Distillation via Agent-as-Harness'
+        link: https://arxiv.org/abs/2609.24974
+        arxiv_id: '2609.24974'
       - title: 'HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?'
         link: https://arxiv.org/abs/2609.01437
         arxiv_id: '2609.01437'
@@ -126,6 +135,9 @@ papers:
       - title: 'SEAGym: An Evaluation Environment for Self-Evolving LLM Agents'
         link: https://arxiv.org/abs/2606.17546
         arxiv_id: '2606.17546'
+      - title: Skill-based Agentic Evaluation for Real-time Data Science Tasks
+        link: https://arxiv.org/abs/2609.16487
+        arxiv_id: '2609.16487'
       - title: 'SkillGuard: A Permission-Centric Framework for Agent Skill Security'
         link: https://arxiv.org/abs/2606.03024
         arxiv_id: '2606.03024'
@@ -146,6 +158,14 @@ papers:
       - title: 'The Path to Self-Evolving Clinical Systems: Scaling Medical Agents from Assistance to Autonomy'
         link: https://arxiv.org/abs/2607.11175
         arxiv_id: '2607.11175'
+      - title: 'The Work Behind Delegation: A Framework for Supervising AI Coding Agents'
+        link: https://arxiv.org/abs/2609.24234
+        arxiv_id: '2609.24234'
+      - title: 'Toward the Science of Multi-Agent Communication: A Comprehensive Survey'
+        link: https://www.preprints.org/manuscript/202609.1298
+      - title: 'When Malicious Instructions Persist: Persistent Memory Poisoning Attack on Harness-Based Agents'
+        link: https://arxiv.org/abs/2609.13889
+        arxiv_id: '2609.13889'
     semantic_scholar:
       query: arXiv:2603.25723
       citations: 45

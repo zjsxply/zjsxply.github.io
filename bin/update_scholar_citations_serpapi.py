@@ -37,17 +37,17 @@ ADS_API_URL = "https://api.adsabs.harvard.edu/v1/search/query"
 
 GOOGLE_AUTHOR_PAGE_SIZE = 100
 SERPAPI_CITATION_PAGE_SIZE = 20
-# Google Scholar's `as_sdt` is overloaded. SerpApi documents `0` as excluding
-# patents, but does not document the second component in values such as `0,27`.
-# We tested this against the NLAH citation IDs: `as_sdt=0`, omitted `as_sdt`,
-# and `as_sdt=0,26` returned 27-28 unique works; `as_sdt=0,27` returned 51
-# unique works in three consecutive runs. Keep this empirical value explicit
-# until Google Scholar/SerpApi documents the meaning of the second component.
-GOOGLE_SCHOLAR_AS_SDT = "0,27"
+# Google serves one cites list from inconsistent index snapshots. A page can
+# advertise fewer results than an earlier page, or a next link can return an
+# empty page. `as_sdt` changes the sampling path rather than guaranteeing a
+# complete list, so first-page requests intentionally do not set it. Each page
+# is requested without cache, stale pages are retried, and complete rounds are
+# repeated until the same result IDs are observed twice.
+GOOGLE_CITATION_ROUNDS = 4
+GOOGLE_PAGE_RETRIES = 3
 SEMANTIC_SCHOLAR_CITATION_PAGE_SIZE = 100
 ADS_CITATION_PAGE_SIZE = 2000
 HTTP_ATTEMPTS = 5
-GOOGLE_RESULT_RETRIES = 2
 MAX_API_PAGES = 100
 MAX_SCHOLAR_AUTHOR_ARTICLES = 500
 
@@ -862,15 +862,11 @@ def fetch_serpapi_citing_items(
 ) -> list[CitationItem]:
     unique_ids = list(dict.fromkeys(cites_ids))
     best_items: list[CitationItem] = []
-    retry_params = [
-        {},
-        {"no_cache": "true"},
-    ]
-    for retry, extra_params in enumerate(retry_params[: GOOGLE_RESULT_RETRIES + 1]):
+    for _ in range(GOOGLE_CITATION_ROUNDS):
         items: list[CitationItem] = []
         # Fetch each Scholar record independently; merged queries have returned incomplete lists.
         for cites_id in unique_ids:
-            items.extend(fetch_serpapi_citation_cluster(cites_id, api_key, extra_params))
+            items.extend(fetch_serpapi_citation_cluster(cites_id, api_key))
         items = unique_items(items)
 
         if len(citation_item_groups(items)) > len(citation_item_groups(best_items)):
@@ -879,7 +875,7 @@ def fetch_serpapi_citing_items(
             break
         log(
             f"Google Scholar returned {len(citation_item_groups(best_items))} citing works; "
-            f"retrying with another Scholar pagination strategy (attempt {retry + 2}/{len(retry_params)})."
+            f"retrying fresh rounds until the cached baseline is reached."
         )
     return best_items
 
@@ -907,71 +903,101 @@ def next_scholar_page(payload: dict[str, Any], start: int, cites_id: str) -> dic
 
 
 def fetch_serpapi_citation_cluster(
-    cites_id: str, api_key: str, extra_params: dict[str, str] | None = None
+    cites_id: str, api_key: str
 ) -> list[CitationItem]:
-    items: list[CitationItem] = []
-    start = 0
-    expected_page = False
-    # Use documented article scope and disable omitted-result filtering; deduplicate locally.
-    page_params: dict[str, str] = {"as_sdt": GOOGLE_SCHOLAR_AS_SDT, "filter": "0", **(extra_params or {})}
-    seen_pages: set[str] = set()
-    for _ in range(MAX_API_PAGES):
-        try:
-            payload = fetch_serpapi(
-                {"engine": "google_scholar", "cites": cites_id, "hl": "en",
-                 "num": str(SERPAPI_CITATION_PAGE_SIZE), **page_params, "start": str(start)},
-                api_key,
-            )
-        except NoScholarResults:
-            if expected_page:
-                raise ApiError(f"Google Scholar ID {cites_id}: advertised page at {start} returned no results") from None
-            break
-        page_results = payload.get("organic_results")
-        if page_results is None and (payload.get("search_information") or {}).get("total_results") == 0:
-            page_results = []
-        if not isinstance(page_results, list):
-            raise ApiError(f"Google Scholar ID {cites_id}: missing organic_results")
-        next_page = next_scholar_page(payload, start, cites_id)
-        if not page_results:
-            if expected_page or next_page is not None:
-                raise ApiError(f"Google Scholar ID {cites_id}: empty page before end of pagination")
-            break
-        signature = json.dumps(page_results, sort_keys=True)
-        if signature in seen_pages:
-            raise ApiError(f"Google Scholar ID {cites_id}: repeated page at {start}")
-        seen_pages.add(signature)
-        for result in page_results:
-            if not isinstance(result, dict):
-                raise ApiError("Google Scholar: malformed citing document")
-            title = result.get("title")
-            if not isinstance(title, str) or not title.strip():
-                raise ApiError("Google Scholar: citing document has no title")
-            link = result.get("link")
-            if not isinstance(link, str) or not link.strip():
-                link = "https://scholar.google.com/scholar?" + urllib.parse.urlencode({"q": f'"{title.strip()}"'})
-            items.append(
-                CitationItem(
-                    title=title.strip(),
-                    link=link.strip(),
-                    arxiv_id=arxiv_id_from_url(link),
-                    doi=doi_from_url(link),
-                )
-            )
+    observed: dict[str, CitationItem] = {}
+    previous_round_ids: set[str] | None = None
+    advertised_total: int | None = None
 
-        # Scholar has reported total_results=20 with more pages still available. A full
-        # page without a next link needs a probe; an advertised page must not fail silently.
-        if next_page is None and len(page_results) < SERPAPI_CITATION_PAGE_SIZE:
-            break
-        expected_page = next_page is not None
-        if next_page is not None:
-            page_params.update(next_page)
-            start = int(next_page["start"])
+    for _ in range(GOOGLE_CITATION_ROUNDS):
+        round_ids: set[str] = set()
+        current: dict[str, str] = {
+            "engine": "google_scholar",
+            "cites": cites_id,
+            "hl": "en",
+            "num": str(SERPAPI_CITATION_PAGE_SIZE),
+            "filter": "0",
+            "no_cache": "true",
+            "start": "0",
+        }
+        finished = False
+        retries_left = GOOGLE_PAGE_RETRIES
+        round_consistent = True
+
+        for _ in range(MAX_API_PAGES):
+            start = int(current["start"])
+            while True:
+                try:
+                    payload = fetch_serpapi(current, api_key)
+                except NoScholarResults:
+                    payload = {"organic_results": [], "search_information": {"total_results": 0}}
+
+                page_results = payload.get("organic_results")
+                if page_results is None and (payload.get("search_information") or {}).get("total_results") == 0:
+                    page_results = []
+                if not isinstance(page_results, list):
+                    raise ApiError(f"Google Scholar ID {cites_id}: missing organic_results")
+
+                reported = (payload.get("search_information") or {}).get("total_results")
+                if not isinstance(reported, int) or isinstance(reported, bool) or reported < 0:
+                    reported = None
+                stale = (
+                    reported is not None
+                    and advertised_total is not None
+                    and reported < advertised_total
+                ) or (not page_results and (start != 0 or bool(advertised_total)))
+
+                for result in page_results:
+                    if not isinstance(result, dict):
+                        raise ApiError("Google Scholar: malformed citing document")
+                    title = result.get("title")
+                    if not isinstance(title, str) or not title.strip():
+                        raise ApiError("Google Scholar: citing document has no title")
+                    link = result.get("link")
+                    if not isinstance(link, str) or not link.strip():
+                        link = "https://scholar.google.com/scholar?" + urllib.parse.urlencode({"q": f'"{title.strip()}"'})
+                    item = CitationItem(
+                        title=title.strip(),
+                        link=link.strip(),
+                        arxiv_id=arxiv_id_from_url(link),
+                        doi=doi_from_url(link),
+                    )
+                    record_id = citation_item_evidence_key(item)
+                    round_ids.add(record_id)
+                    observed.setdefault(record_id, item)
+
+                if not stale or retries_left == 0:
+                    if stale:
+                        round_consistent = False
+                    break
+                retries_left -= 1
+
+            if reported is not None:
+                advertised_total = max(advertised_total or 0, reported)
+
+            next_page = next_scholar_page(payload, start, cites_id)
+            if next_page is None:
+                finished = True
+                break
+            current.update(next_page)
+            current["no_cache"] = "true"
         else:
-            start += len(page_results)
-    else:
-        raise ApiError(f"Google Scholar ID {cites_id}: exceeded {MAX_API_PAGES} pages; refusing partial data")
+            raise ApiError(f"Google Scholar ID {cites_id}: exceeded {MAX_API_PAGES} pages")
 
-    return unique_items(items)
+        stable = (
+            finished
+            and round_consistent
+            and previous_round_ids == round_ids
+            and (advertised_total is None or advertised_total <= len(observed))
+        )
+        if stable:
+            return unique_items(list(observed.values()))
+        previous_round_ids = round_ids if finished else None
+
+    raise ApiError(
+        f"Google Scholar ID {cites_id}: results did not stabilize after "
+        f"{GOOGLE_CITATION_ROUNDS} fresh rounds"
+    )
 
 
 def fetch_semantic_scholar_citing_items(paper_id: str, api_key: str | None) -> list[CitationItem]:
