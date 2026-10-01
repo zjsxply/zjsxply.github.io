@@ -168,7 +168,7 @@ papers:
         arxiv_id: '2609.13889'
     semantic_scholar:
       query: arXiv:2603.25723
-      citations: 45
+      citations: 50
       documents:
       - title: 'Agentic MIP Research: Accelerated Constraint Handler Generation'
         link: https://www.semanticscholar.org/paper/4ce8ae242c5783853a64b92cd4160141cf8fb23a
@@ -196,6 +196,9 @@ papers:
       - title: 'AutoSaddler: Automatic Harness Optimization with Durable Updates from Agent Execution Traces'
         link: https://www.semanticscholar.org/paper/5dc117f13f1fd87a926d64118e07bc943eb37b44
         arxiv_id: '2608.23041'
+      - title: 'Beyond the Model: Demystifying Harness Effects in Software Engineering Agents'
+        link: https://www.semanticscholar.org/paper/b1dcbd52547bd52f705103b2c81309012bb9a7cc
+        arxiv_id: '2609.32459'
       - title: 'CineForge: Self-Improving Agents for Long-Horizon Video Generation'
         link: https://www.semanticscholar.org/paper/a1b797abcee34f2afeb77a796516ad5810cbfa6d
         arxiv_id: '2608.29621'
@@ -203,6 +206,9 @@ papers:
         link: https://www.semanticscholar.org/paper/523634d4428176bcd737d6664ed400fb756a59a8
         arxiv_id: '2607.01709'
         doi: 10.48550/arxiv.2607.01709
+      - title: 'Compositional Safety Failures in Harness Evolution: Identification and Runtime Monitoring'
+        link: https://www.semanticscholar.org/paper/3e154688e93c7bcc30d64debf7615868bdd8bbaa
+        arxiv_id: '2609.33123'
       - title: 'Crafter: A Multi-Agent Harness for Editable Scientific Figure Generation from Diverse Inputs'
         link: https://www.semanticscholar.org/paper/ef1530727228713e8f1c34373477e1ffcac1bda4
         arxiv_id: '2605.30611'
@@ -217,6 +223,9 @@ papers:
       - title: 'EvoSafeHarness: Evolving Model- and Domain-Specific Harnesses for Securing Agents'
         link: https://www.semanticscholar.org/paper/32a47ea700703b124b598669953d31ab47e33b2c
         arxiv_id: '2609.05903'
+      - title: Execution Control Harness for Governed LLM-Based Code Generation
+        link: https://www.semanticscholar.org/paper/c8164999a82ffee41fe32afc45a4b7349c106be1
+        doi: 10.1109/iisa71656.2026.11705535
       - title: 'From Agent Loops to Deterministic Graphs: Execution Lineage for Reproducible AI-Native Work'
         link: https://www.semanticscholar.org/paper/645ea8d2d1e412551a3d55a55b857b35987f6b1b
         arxiv_id: '2605.06365'
@@ -282,9 +291,15 @@ papers:
         link: https://www.semanticscholar.org/paper/07ef99f203b26fb3926eca74583db90ee1f8e44f
         arxiv_id: '2606.13707'
         doi: 10.48550/arxiv.2606.13707
+      - title: 'PluginRSI: Recursive Improvement of Agent Harnesses with Reusable Plugins'
+        link: https://www.semanticscholar.org/paper/807040ab972f6af671e97307d6207c199b14b2c7
+        arxiv_id: '2609.32423'
       - title: 'Qwen-Planner-Agent: A Closed-Loop AI-for-AI Framework for Real-World Mobile Planner Agents'
         link: https://www.semanticscholar.org/paper/3cb2820a9596920429598b9745200b94e7883ba0
         arxiv_id: '2609.29892'
+      - title: 'RLHarness: Co-evolving Procedural Skills with Reinforcement Learning for Long-horizon Multimodal Reasoning'
+        link: https://www.semanticscholar.org/paper/9257c3e10adbc63e69454bbe97bb5864e7226a25
+        arxiv_id: '2609.32326'
       - title: 'SafeHarness: Lifecycle-Integrated Security Architecture for LLM-based Agent Deployment'
         link: https://www.semanticscholar.org/paper/dc80f1113a0087e81f47cc746590b802c8ef6013
         arxiv_id: '2604.13630'
