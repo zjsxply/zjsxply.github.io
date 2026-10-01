@@ -4,7 +4,7 @@ papers:
       query:
       - '5554083676653175677'
       - '10581113726319067053'
-      citations: 59
+      citations: 61
       documents:
       - title: A Survey on AI Agent Harness
         link: https://www.researchgate.net/profile/Zhongwei-Xie-3/publication/404675561_A_Survey_on_AI_Agent_Harness/links/6a187d5c2f87006ac07dc739/A-Survey-on-AI-Agent-Harness.pdf
@@ -113,7 +113,7 @@ papers:
       - title: 'LoopArena: Benchmarking Models as Runtime Controllers for Loop Engineering'
         link: https://arxiv.org/abs/2608.28281
         arxiv_id: '2608.28281'
-      - title: 'Making Waves: Emerging Risks as Regulatory Mismatch Meets Automation in LLM-Agents like OpenClaw for Water Treatment and Environmental Infrastructure'
+      - title: 'Making waves: Emerging risks as regulatory mismatch meets automation in llm-agents like openclaw for water treatment and environmental infrastructure'
         link: https://www.sciencedirect.com/science/article/pii/S0043135426015368
       - title: Metacognition Should Be the Scientific Framework for Bounded and Effective Self-Governance in Generative AI
         link: https://arxiv.org/abs/2605.23981
@@ -124,6 +124,9 @@ papers:
       - title: 'Orchestra-o1: Omnimodal Agent Orchestration'
         link: https://arxiv.org/abs/2606.13707
         arxiv_id: '2606.13707'
+      - title: 'Qwen-Planner-Agent: A Closed-Loop AI-for-AI Framework for Real-World Mobile Planner Agents'
+        link: https://arxiv.org/abs/2609.29892
+        arxiv_id: '2609.29892'
       - title: 'Remember the Decision, Not the Description: A Rate-Distortion Framework for Agent Memory'
         link: https://arxiv.org/abs/2605.10870
         arxiv_id: '2605.10870'
@@ -163,6 +166,9 @@ papers:
         arxiv_id: '2609.24234'
       - title: 'Toward the Science of Multi-Agent Communication: A Comprehensive Survey'
         link: https://www.preprints.org/manuscript/202609.1298
+      - title: 'When Agents Act Unwatched: The Reduced-Supervision Paradox in Agentic AI'
+        link: https://arxiv.org/abs/2609.29547
+        arxiv_id: '2609.29547'
       - title: 'When Malicious Instructions Persist: Persistent Memory Poisoning Attack on Harness-Based Agents'
         link: https://arxiv.org/abs/2609.13889
         arxiv_id: '2609.13889'
