@@ -4,7 +4,7 @@ papers:
       query:
       - '5554083676653175677'
       - '10581113726319067053'
-      citations: 61
+      citations: 66
       documents:
       - title: A Survey on AI Agent Harness
         link: https://www.researchgate.net/profile/Zhongwei-Xie-3/publication/404675561_A_Survey_on_AI_Agent_Harness/links/6a187d5c2f87006ac07dc739/A-Survey-on-AI-Agent-Harness.pdf
@@ -37,9 +37,12 @@ papers:
       - title: 'AutoPyVerifier: Learning Compact Executable Verifiers for Large Language Model Outputs'
         link: https://arxiv.org/abs/2604.22937
         arxiv_id: '2604.22937'
-      - title: 'AutoSaddler: Automatic Harness Optimization with Durable Updates from Agent Execution Traces'
+      - title: 'AutoSaddler: Automatic harness optimization with durable updates from agent execution traces'
         link: https://arxiv.org/abs/2608.23041
         arxiv_id: '2608.23041'
+      - title: 'Beyond the Model: Demystifying Harness Effects in Software Engineering Agents'
+        link: https://arxiv.org/abs/2609.32459
+        arxiv_id: '2609.32459'
       - title: Can Large Language Models Approximate Human Editorial Judgment?
         link: https://indexerlabs.com/IndexerLabs_Overlap_Report.pdf
       - title: 'CineForge: Self-Improving Agents for Long-Horizon Video Generation'
@@ -51,7 +54,10 @@ papers:
       - title: 'Comfyclaw: Self-evolving skill harnesses for image generation workflows'
         link: https://arxiv.org/abs/2607.01709
         arxiv_id: '2607.01709'
-      - title: 'Context scaling: a new frontier of AI scaling'
+      - title: 'Compositional Safety Failures in Harness Evolution: Identification and Runtime Monitoring'
+        link: https://arxiv.org/abs/2609.33123
+        arxiv_id: '2609.33123'
+      - title: 'Context scaling: A new frontier of AI scaling'
         link: https://www.the-innovation.org/article/doi/10.59717/ipj.aiplus.2026.100010
       - title: 'Control-Plane Placement and Memory Substrates in Modern Agentic AI: A Comparative Method for Prompt-Native Systems, Agent Shells, and Durable Runtimes'
         link: https://reference-global.com/article/10.2478/lpts-2026-0036
@@ -66,6 +72,8 @@ papers:
       - title: 'EvoSafeHarness: Evolving Model-and Domain-Specific Harnesses for Securing Agents'
         link: https://arxiv.org/abs/2609.05903
         arxiv_id: '2609.05903'
+      - title: Execution Control Harness for Governed LLM-Based Code Generation
+        link: https://ieeexplore.ieee.org/abstract/document/11705535/
       - title: 'From Agent Loops to Deterministic Graphs: Execution Lineage for Reproducible AI-Native Work'
         link: https://arxiv.org/abs/2605.06365
         arxiv_id: '2605.06365'
@@ -105,7 +113,7 @@ papers:
       - title: 'Intermediate Artifacts as First-Class Citizens: A Data Model for Durable Intermediate Artifacts in Agentic Systems'
         link: https://arxiv.org/abs/2605.12087
         arxiv_id: '2605.12087'
-      - title: 'JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution'
+      - title: 'JIT-Agent: Scaling harness intelligence via just-in-time harness evolution'
         link: https://arxiv.org/abs/2608.25593
         arxiv_id: '2608.25593'
       - title: 'Loop Engineering for Agentic Software Systems: LEAF Architecture, Pattern Taxonomy, Use Cases, Evaluation, Challenges, and Future Directions'
@@ -121,6 +129,9 @@ papers:
       - title: 'OPD-Evolver: Cultivating Holistic Agent Evolver via On-Policy Distillation'
         link: https://arxiv.org/abs/2606.17628
         arxiv_id: '2606.17628'
+      - title: 'OPERA: A Unified Omnimodal Progressive Spatio-Temporal Reasoning Agent for Referring Video Segmentation'
+        link: https://arxiv.org/abs/2609.33338
+        arxiv_id: '2609.33338'
       - title: 'Orchestra-o1: Omnimodal Agent Orchestration'
         link: https://arxiv.org/abs/2606.13707
         arxiv_id: '2606.13707'
@@ -132,6 +143,9 @@ papers:
         arxiv_id: '2605.10870'
       - title: Reproducible and shareable bioinformatics pipelines from natural-language prompts
         link: https://www.biorxiv.org/content/10.64898/2026.05.28.719125.abstract
+      - title: 'RLHarness: Co-evolving Procedural Skills with Reinforcement Learning for Long-horizon Multimodal Reasoning'
+        link: https://arxiv.org/abs/2609.32326
+        arxiv_id: '2609.32326'
       - title: 'SafeHarness: Lifecycle-Integrated Security Architecture for LLM-based Agent Deployment'
         link: https://arxiv.org/abs/2604.13630
         arxiv_id: '2604.13630'
@@ -174,7 +188,7 @@ papers:
         arxiv_id: '2609.13889'
     semantic_scholar:
       query: arXiv:2603.25723
-      citations: 50
+      citations: 51
       documents:
       - title: 'Agentic MIP Research: Accelerated Constraint Handler Generation'
         link: https://www.semanticscholar.org/paper/4ce8ae242c5783853a64b92cd4160141cf8fb23a
@@ -333,6 +347,9 @@ papers:
         link: https://www.semanticscholar.org/paper/9c1410f32500114b251e75da4674cc18deaa1c37
         arxiv_id: '2606.02540'
         doi: 10.48550/arxiv.2606.02540
+      - title: 'Table-as-Search: Agentic Information Seeking is Table Completion'
+        link: https://www.semanticscholar.org/paper/a744ad91b70eed9947e773ab60265b6ad3466e37
+        doi: 10.18653/v1/2026.findings-acl.743
       - title: Task-Aware Harness Provisioning for LLM Agents in Mission-Critical Infrastructure Operations
         link: https://www.semanticscholar.org/paper/bef41fb49d3fce0a38392e9f6d90f5ddfcc73c61
         arxiv_id: '2608.17433'
@@ -359,7 +376,7 @@ papers:
         doi: 10.48550/arxiv.2607.09996
     ads:
       query: 2026arXiv260325723P
-      citations: 23
+      citations: 27
       documents:
       - title: 'A Survey on Long-Term Memory Security in LLM Agents: Attacks, Defenses, and Governance Across the Memory Lifecycle'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260416548L/abstract
@@ -385,6 +402,10 @@ papers:
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260422937P/abstract
         arxiv_id: '2604.22937'
         doi: 10.48550/arxiv.2604.22937
+      - title: 'Beyond the Model: Demystifying Harness Effects in Software Engineering Agents'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260932459H/abstract
+        arxiv_id: '2609.32459'
+        doi: 10.48550/arxiv.2609.32459
       - title: Building Agent Harnesses for Scientific Curation from Multimodal Sources
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260621005Z/abstract
         arxiv_id: '2606.21005'
@@ -393,6 +414,10 @@ papers:
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260701709L/abstract
         arxiv_id: '2607.01709'
         doi: 10.48550/arxiv.2607.01709
+      - title: 'Compositional Safety Failures in Harness Evolution: Identification and Runtime Monitoring'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260933123Z/abstract
+        arxiv_id: '2609.33123'
+        doi: 10.48550/arxiv.2609.33123
       - title: 'From Agent Loops to Deterministic Graphs: Execution Lineage for Reproducible AI-Native Work'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260506365R/abstract
         arxiv_id: '2605.06365'
@@ -429,6 +454,10 @@ papers:
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260612341X/abstract
         arxiv_id: '2606.12341'
         doi: 10.48550/arxiv.2606.12341
+      - title: 'OPERA: A Unified Omnimodal Progressive Spatio-Temporal Reasoning Agent for Referring Video Segmentation'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260933338N/abstract
+        arxiv_id: '2609.33338'
+        doi: 10.48550/arxiv.2609.33338
       - title: 'Remember the Decision, Not the Description: A Rate-Distortion Framework for Agent Memory'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260510870Z/abstract
         arxiv_id: '2605.10870'
@@ -437,6 +466,10 @@ papers:
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260616458E/abstract
         arxiv_id: '2606.16458'
         doi: 10.48550/arxiv.2606.16458
+      - title: 'RLHarness: Co-evolving Procedural Skills with Reinforcement Learning for Long-horizon Multimodal Reasoning'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260932326S/abstract
+        arxiv_id: '2609.32326'
+        doi: 10.48550/arxiv.2609.32326
       - title: 'SafeHarness: Lifecycle-Integrated Security Architecture for LLM-based Agent Deployment'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260413630L/abstract
         arxiv_id: '2604.13630'
