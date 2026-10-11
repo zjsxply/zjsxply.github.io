@@ -4,7 +4,7 @@ papers:
       query:
       - '5554083676653175677'
       - '10581113726319067053'
-      citations: 66
+      citations: 68
       documents:
       - title: A Survey on AI Agent Harness
         link: https://www.researchgate.net/profile/Zhongwei-Xie-3/publication/404675561_A_Survey_on_AI_Agent_Harness/links/6a187d5c2f87006ac07dc739/A-Survey-on-AI-Agent-Harness.pdf
@@ -95,6 +95,9 @@ papers:
       - title: 'Harness Handbook: Making Evolving Agent Harnesses Readable, Navigable, and Editable'
         link: https://arxiv.org/abs/2607.13285
         arxiv_id: '2607.13285'
+      - title: 'Harness-Search: Guiding Long-Horizon Search through Multi-Agent Coordination'
+        link: https://arxiv.org/abs/2610.05382
+        arxiv_id: '2610.05382'
       - title: 'Harness updating is not harness benefit: Disentangling evolution capabilities in self-evolving llm agents'
         link: https://arxiv.org/abs/2605.30621
         arxiv_id: '2605.30621'
@@ -110,6 +113,9 @@ papers:
       - title: 'Harnessing Agent Skills: Architectural Patterns and a Reference Architecture for Skill-Mediated LLM Agents'
         link: https://arxiv.org/abs/2606.20631
         arxiv_id: '2606.20631'
+      - title: 'HASTE: Evolving Agent Harnesses Against Emerging Attacks Using Sparse Evidence'
+        link: https://arxiv.org/abs/2610.02920
+        arxiv_id: '2610.02920'
       - title: 'Intermediate Artifacts as First-Class Citizens: A Data Model for Durable Intermediate Artifacts in Agentic Systems'
         link: https://arxiv.org/abs/2605.12087
         arxiv_id: '2605.12087'
@@ -183,12 +189,12 @@ papers:
       - title: 'When Agents Act Unwatched: The Reduced-Supervision Paradox in Agentic AI'
         link: https://arxiv.org/abs/2609.29547
         arxiv_id: '2609.29547'
-      - title: 'When Malicious Instructions Persist: Persistent Memory Poisoning Attack on Harness-Based Agents'
+      - title: 'When malicious instructions persist: Persistent memory poisoning attack on harness-based agents'
         link: https://arxiv.org/abs/2609.13889
         arxiv_id: '2609.13889'
     semantic_scholar:
       query: arXiv:2603.25723
-      citations: 51
+      citations: 54
       documents:
       - title: 'Agentic MIP Research: Accelerated Constraint Handler Generation'
         link: https://www.semanticscholar.org/paper/4ce8ae242c5783853a64b92cd4160141cf8fb23a
@@ -266,6 +272,9 @@ papers:
         link: https://www.semanticscholar.org/paper/825fa78213d014d9edb89f8f5c738e4ce49ab2f2
         arxiv_id: '2607.13285'
         doi: 10.48550/arxiv.2607.13285
+      - title: 'Harness-Search: Guiding Long-Horizon Search through Multi-Agent Coordination'
+        link: https://www.semanticscholar.org/paper/316743c076e1bb5ef0e1db242e6f189f46d8bb50
+        arxiv_id: '2610.05382'
       - title: 'Harness the Memory: A Holistic Evaluation of Memory Substrates in Memory Agents'
         link: https://www.semanticscholar.org/paper/188e4015ea1a4efcd7015ef6071a24bcf8a27a13
         arxiv_id: '2608.15008'
@@ -288,6 +297,9 @@ papers:
         link: https://www.semanticscholar.org/paper/0ccf0c6b3c70f037375c37517347c82117246dc3
         arxiv_id: '2606.20631'
         doi: 10.48550/arxiv.2606.20631
+      - title: 'HASTE: Evolving Agent Harnesses Against Emerging Attacks Using Sparse Evidence'
+        link: https://www.semanticscholar.org/paper/95cbbdba1638cd57d440ae22bffdc201e6dd3866
+        arxiv_id: '2610.02920'
       - title: 'Intermediate Artifacts as First-Class Citizens: A Data Model for Durable Intermediate Artifacts in Agentic Systems'
         link: https://www.semanticscholar.org/paper/f089a82395ecdf29ca31d2cd535d1d96b0b0d3f3
         arxiv_id: '2605.12087'
@@ -335,6 +347,9 @@ papers:
       - title: Self-Evolving Embodied Agents via Skill-Harness Evolution
         link: https://www.semanticscholar.org/paper/2db19095dae718f2ab9522aae9469934902dac76
         arxiv_id: '2608.11350'
+      - title: 'SHarP: Saliency-based Pruning of Agent Harnesses'
+        link: https://www.semanticscholar.org/paper/ca9b2105ffc695eff61a5c519d1ee5c6d9ea9589
+        arxiv_id: '2610.04178'
       - title: Skill-based Agentic Evaluation for Real-time Data Science Tasks
         link: https://www.semanticscholar.org/paper/98a925ae85a1feaa63791df2a995640f515419be
         arxiv_id: '2609.16487'
@@ -376,7 +391,7 @@ papers:
         doi: 10.48550/arxiv.2607.09996
     ads:
       query: 2026arXiv260325723P
-      citations: 27
+      citations: 28
       documents:
       - title: 'A Survey on Long-Term Memory Security in LLM Agents: Attacks, Defenses, and Governance Across the Memory Lifecycle'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260416548L/abstract
@@ -418,6 +433,10 @@ papers:
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260933123Z/abstract
         arxiv_id: '2609.33123'
         doi: 10.48550/arxiv.2609.33123
+      - title: 'COVENANT: Natural-Language Workflow Compilation for Aligned Agent Execution'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260725400W/abstract
+        arxiv_id: '2607.25400'
+        doi: 10.48550/arxiv.2607.25400
       - title: 'From Agent Loops to Deterministic Graphs: Execution Lineage for Reproducible AI-Native Work'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260506365R/abstract
         arxiv_id: '2605.06365'
@@ -501,8 +520,11 @@ papers:
         arxiv_id: '2606.03544'
     semantic_scholar:
       query: arXiv:2510.26852
-      citations: 3
+      citations: 4
       documents:
+      - title: Can AI Agents Learn Their Way to the Top? Evaluating Heuristic Learning in a Long-Running Game Agent Competition
+        link: https://www.semanticscholar.org/paper/192fd3b5d9dbad85b386fdda9c244e0ad67f3e3d
+        arxiv_id: '2610.12341'
       - title: Frontier Coding Agents Can Now Implement an AlphaZero Self-Play Machine Learning Pipeline For Connect Four That Performs Comparably to an External Solver
         link: https://www.semanticscholar.org/paper/e28464b8a6dd6f0f50bc549b598e9d82f10b45ab
         arxiv_id: '2604.25067'
@@ -542,5 +564,9 @@ papers:
         doi: 10.48550/arxiv.2607.07663
     ads:
       query: 2026arXiv260603544P
-      citations: 0
-      documents: []
+      citations: 1
+      documents:
+      - title: 'Recursive Self-Improvement in AI: From Bounded Self-Refinement to Autonomous Research Loops'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260707663C/abstract
+        arxiv_id: '2607.07663'
+        doi: 10.48550/arxiv.2607.07663
