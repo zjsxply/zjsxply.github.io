@@ -194,7 +194,7 @@ papers:
         arxiv_id: '2609.13889'
     semantic_scholar:
       query: arXiv:2603.25723
-      citations: 54
+      citations: 57
       documents:
       - title: 'Agentic MIP Research: Accelerated Constraint Handler Generation'
         link: https://www.semanticscholar.org/paper/4ce8ae242c5783853a64b92cd4160141cf8fb23a
@@ -235,6 +235,9 @@ papers:
       - title: 'Compositional Safety Failures in Harness Evolution: Identification and Runtime Monitoring'
         link: https://www.semanticscholar.org/paper/3e154688e93c7bcc30d64debf7615868bdd8bbaa
         arxiv_id: '2609.33123'
+      - title: Contextual Representation Flow Across Depth in State-Space and Transformer Architectures
+        link: https://www.semanticscholar.org/paper/f13c4195ee777fe70d711671703f62fb8184b64b
+        arxiv_id: '2510.06640'
       - title: 'Crafter: A Multi-Agent Harness for Editable Scientific Figure Generation from Diverse Inputs'
         link: https://www.semanticscholar.org/paper/ef1530727228713e8f1c34373477e1ffcac1bda4
         arxiv_id: '2605.30611'
@@ -307,6 +310,9 @@ papers:
       - title: 'JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution'
         link: https://www.semanticscholar.org/paper/128749c752a55ad19f939b1ec65309c4126a54c4
         arxiv_id: '2608.25593'
+      - title: 'MedHarnessBench: A Unified Benchmark for Healthcare Agent Evaluation'
+        link: https://www.semanticscholar.org/paper/2ff16251a6299fbb84763f3144ed028298fe3a32
+        arxiv_id: '2610.15714'
       - title: 'MemoHarness: Agent Harnesses That Learn from Experience'
         link: https://www.semanticscholar.org/paper/b1e7c6c4c8d9dcfb7c8c8961c9428db036c61d9e
         arxiv_id: '2607.14159'
@@ -336,6 +342,9 @@ papers:
         link: https://www.semanticscholar.org/paper/dc80f1113a0087e81f47cc746590b802c8ef6013
         arxiv_id: '2604.13630'
         doi: 10.48550/arxiv.2604.13630
+      - title: Scaling Inference-Time Compute with Teams of Coding Agents
+        link: https://www.semanticscholar.org/paper/024e959e1c4d8d4730a3f92d405a2e787a7b8181
+        arxiv_id: '2610.17471'
       - title: Scaling Laws for Agent Harnesses via Effective Feedback Compute
         link: https://www.semanticscholar.org/paper/9fa36859fd4a79b304076d319ad5f4cf353d1ee9
         arxiv_id: '2605.29682'
@@ -391,7 +400,7 @@ papers:
         doi: 10.48550/arxiv.2607.09996
     ads:
       query: 2026arXiv260325723P
-      citations: 28
+      citations: 29
       documents:
       - title: 'A Survey on Long-Term Memory Security in LLM Agents: Attacks, Defenses, and Governance Across the Memory Lifecycle'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260416548L/abstract
@@ -505,6 +514,10 @@ papers:
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260901582Q/abstract
         arxiv_id: '2609.01582'
         doi: 10.48550/arxiv.2609.01582
+      - title: 'The Path to Self-Evolving Clinical Systems: Scaling Medical Agents from Assistance to Autonomy'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260711175Z/abstract
+        arxiv_id: '2607.11175'
+        doi: 10.48550/arxiv.2607.11175
   fu2026catarenaevaluatingevolutionarycapabilities:
     google_scholar:
       query:
@@ -539,8 +552,12 @@ papers:
         doi: 10.48550/arxiv.2606.03544
     ads:
       query: 2025arXiv251026852F
-      citations: 2
+      citations: 3
       documents:
+      - title: 'DemoEvolve: Demonstration-Guided Harness Evolution under Sparse Feedback'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260524539C/abstract
+        arxiv_id: '2605.24539'
+        doi: 10.48550/arxiv.2605.24539
       - title: Frontier Coding Agents Can Now Implement an AlphaZero Self-Play Machine Learning Pipeline For Connect Four That Performs Comparably to an External Solver
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260425067S/abstract
         arxiv_id: '2604.25067'
