@@ -8,6 +8,7 @@ and writes per-source cited-paper caches to `_data/publication_cited_documents.y
 from __future__ import annotations
 
 import argparse
+import hashlib
 import http.client
 import json
 import os
@@ -37,14 +38,15 @@ ADS_API_URL = "https://api.adsabs.harvard.edu/v1/search/query"
 
 GOOGLE_AUTHOR_PAGE_SIZE = 100
 SERPAPI_CITATION_PAGE_SIZE = 20
-# Google serves one cites list from inconsistent index snapshots. A page can
-# advertise fewer results than an earlier page, or a next link can return an
-# empty page. `as_sdt` changes the sampling path rather than guaranteeing a
-# complete list, so first-page requests intentionally do not set it. Each page
-# is requested without cache, stale pages are retried, and complete rounds are
-# repeated until the same result IDs are observed twice.
-GOOGLE_CITATION_ROUNDS = 4
-GOOGLE_PAGE_RETRIES = 3
+# Google Scholar is served from inconsistent index snapshots. In measured
+# runs, one page advertised 72 results while later pages reported 39-63, and
+# the same one-page CATArena query returned 2, 2, then 3 results. Therefore:
+# - query all cites IDs together, matching the browser URL;
+# - use the first page's reported count as a target, never as a page size;
+# - cover a bounded set of complementary windows and retain Google result_id
+#   values as evidence, rather than repeating rounds until they look stable;
+# - stop as soon as the target is reached. The cap includes the first page.
+GOOGLE_CITATION_MAX_REQUESTS = 12
 SEMANTIC_SCHOLAR_CITATION_PAGE_SIZE = 100
 ADS_CITATION_PAGE_SIZE = 2000
 HTTP_ATTEMPTS = 5
@@ -79,7 +81,17 @@ class CitationItem:
     link: str
     arxiv_id: str | None = None
     doi: str | None = None
+    source_id: str | None = None
     title_aliases: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True)
+class GoogleCitationBatch:
+    items: list[CitationItem]
+    reported_total: int | None
+    raw_unique_count: int
+    complete: bool
+    requests: int
 
 
 @dataclass
@@ -430,8 +442,8 @@ def citation_item_titles(item: CitationItem) -> tuple[str, ...]:
     return tuple(sorted(set((item.title, *item.title_aliases))))
 
 
-def citation_item_evidence_key(item: CitationItem) -> str:
-    """Identify records that can be compressed without losing grouping evidence."""
+def citation_item_semantic_evidence_key(item: CitationItem) -> str:
+    """Identify semantic evidence while ignoring an upstream record ID."""
     identifiers = sorted(citation_item_identifiers(item))
     if identifiers:
         evidence: dict[str, Any] = {"identifiers": identifiers}
@@ -442,6 +454,13 @@ def citation_item_evidence_key(item: CitationItem) -> str:
             evidence["raw_titles"] = citation_item_titles(item)
             evidence["link"] = normalize_url(item.link) or item.link
     return json.dumps(evidence, sort_keys=True)
+
+
+def citation_item_evidence_key(item: CitationItem) -> str:
+    """Identify records that can be compressed without losing grouping evidence."""
+    if item.source_id:
+        return json.dumps({"source_id": item.source_id}, sort_keys=True)
+    return citation_item_semantic_evidence_key(item)
 
 
 def citation_identity_components(identity_sets: list[set[tuple[str, str]]]) -> list[list[int]]:
@@ -582,6 +601,8 @@ def citation_item_from_dict(document: Any) -> CitationItem | None:
     if not isinstance(title, str) or not title.strip() or not isinstance(link, str) or not link.strip():
         return None
     title, link = title.strip(), link.strip()
+    source_id = document.get("source_id")
+    source_id = source_id.strip() if isinstance(source_id, str) and source_id.strip() else None
     try:
         parsed = urllib.parse.urlparse(link)
         if parsed.scheme.lower() not in {"http", "https"} or not parsed.netloc:
@@ -601,12 +622,15 @@ def citation_item_from_dict(document: Any) -> CitationItem | None:
         link=link,
         arxiv_id=arxiv_id,
         doi=doi,
+        source_id=source_id,
         title_aliases=aliases,
     )
 
 
 def item_dict(item: CitationItem) -> dict[str, Any]:
     document: dict[str, Any] = {"title": item.title, "link": item.link}
+    if item.source_id:
+        document["source_id"] = item.source_id
     if item.arxiv_id:
         document["arxiv_id"] = item.arxiv_id
     if item.doi:
@@ -857,146 +881,189 @@ def publications_needing_google_author_lookup(path: Path) -> list[str]:
     return paper_keys
 
 
-def fetch_serpapi_citing_items(
-    cites_ids: list[str], api_key: str, minimum_count: int = 0
-) -> list[CitationItem]:
-    unique_ids = list(dict.fromkeys(cites_ids))
-    best_items: list[CitationItem] = []
-    for _ in range(GOOGLE_CITATION_ROUNDS):
-        items: list[CitationItem] = []
-        # Fetch each Scholar record independently; merged queries have returned incomplete lists.
-        for cites_id in unique_ids:
-            items.extend(fetch_serpapi_citation_cluster(cites_id, api_key))
-        items = unique_items(items)
+def scholar_page_context(payload: dict[str, Any], start: int, cites_id: str) -> dict[str, str] | None:
+    """Read the complete Google pagination context without following its URL.
 
-        if len(citation_item_groups(items)) > len(citation_item_groups(best_items)):
-            best_items = items
-        if len(citation_item_groups(best_items)) >= minimum_count:
-            break
-        log(
-            f"Google Scholar returned {len(citation_item_groups(best_items))} citing works; "
-            f"retrying fresh rounds until the cached baseline is reached."
-        )
-    return best_items
-
-
-def next_scholar_page(payload: dict[str, Any], start: int, cites_id: str) -> dict[str, str] | None:
-    for field in ("serpapi_pagination", "pagination"):
+    SerpApi's `serpapi_pagination.next` omits undocumented Google parameters
+    such as `sciodt` and `scipsc`, while raw `pagination.next` retains them.
+    Prefer the raw Google link, preserve blank values, and rebuild the request
+    against SerpApi so the API key is never sent to an upstream URL.
+    """
+    for field in ("pagination", "serpapi_pagination"):
         pagination = payload.get(field) or {}
         if not isinstance(pagination, dict):
             raise ApiError("Google Scholar: malformed pagination")
         link = pagination.get("next") or pagination.get("next_link")
-        if link:
-            try:
-                query = urllib.parse.parse_qs(urllib.parse.urlsplit(link).query)
-                offset = int(query["start"][0])
-            except (KeyError, ValueError, TypeError):
-                raise ApiError("Google Scholar: invalid next-page offset") from None
-            if offset <= start:
-                raise ApiError("Google Scholar: next-page offset did not advance")
-            if query.get("cites", [cites_id]) != [cites_id]:
-                raise ApiError("Google Scholar: next page changed citation ID")
-            # Preserve Scholar's search context, but never follow a returned URL with our API key.
-            allowed = {"start", "as_sdt", "sciodt", "scipsc", "filter"}
-            return {name: values[0] for name, values in query.items() if name in allowed}
+        if not link:
+            continue
+        try:
+            query = urllib.parse.parse_qs(
+                urllib.parse.urlsplit(link).query, keep_blank_values=True
+            )
+            offset = int(query["start"][0])
+        except (KeyError, ValueError, TypeError):
+            raise ApiError("Google Scholar: invalid next-page offset") from None
+        if offset <= start:
+            raise ApiError("Google Scholar: next-page offset did not advance")
+        if query.get("cites", [cites_id]) != [cites_id]:
+            raise ApiError("Google Scholar: next page changed citation ID")
+        allowed = {"start", "as_sdt", "sciodt", "scipsc", "filter"}
+        return {name: values[0] for name, values in query.items() if name in allowed}
     return None
 
 
-def fetch_serpapi_citation_cluster(
-    cites_id: str, api_key: str
-) -> list[CitationItem]:
-    observed: dict[str, CitationItem] = {}
-    previous_round_ids: set[str] | None = None
-    advertised_total: int | None = None
-
-    for _ in range(GOOGLE_CITATION_ROUNDS):
-        round_ids: set[str] = set()
-        current: dict[str, str] = {
-            "engine": "google_scholar",
-            "cites": cites_id,
-            "hl": "en",
-            "num": str(SERPAPI_CITATION_PAGE_SIZE),
-            "filter": "0",
-            "no_cache": "true",
-            "start": "0",
-        }
-        finished = False
-        retries_left = GOOGLE_PAGE_RETRIES
-        round_consistent = True
-
-        for _ in range(MAX_API_PAGES):
-            start = int(current["start"])
-            while True:
-                try:
-                    payload = fetch_serpapi(current, api_key)
-                except NoScholarResults:
-                    payload = {"organic_results": [], "search_information": {"total_results": 0}}
-
-                page_results = payload.get("organic_results")
-                if page_results is None and (payload.get("search_information") or {}).get("total_results") == 0:
-                    page_results = []
-                if not isinstance(page_results, list):
-                    raise ApiError(f"Google Scholar ID {cites_id}: missing organic_results")
-
-                reported = (payload.get("search_information") or {}).get("total_results")
-                if not isinstance(reported, int) or isinstance(reported, bool) or reported < 0:
-                    reported = None
-                stale = (
-                    reported is not None
-                    and advertised_total is not None
-                    and reported < advertised_total
-                ) or (not page_results and (start != 0 or bool(advertised_total)))
-
-                for result in page_results:
-                    if not isinstance(result, dict):
-                        raise ApiError("Google Scholar: malformed citing document")
-                    title = result.get("title")
-                    if not isinstance(title, str) or not title.strip():
-                        raise ApiError("Google Scholar: citing document has no title")
-                    link = result.get("link")
-                    if not isinstance(link, str) or not link.strip():
-                        link = "https://scholar.google.com/scholar?" + urllib.parse.urlencode({"q": f'"{title.strip()}"'})
-                    item = CitationItem(
-                        title=title.strip(),
-                        link=link.strip(),
-                        arxiv_id=arxiv_id_from_url(link),
-                        doi=doi_from_url(link),
-                    )
-                    record_id = citation_item_evidence_key(item)
-                    round_ids.add(record_id)
-                    observed.setdefault(record_id, item)
-
-                if not stale or retries_left == 0:
-                    if stale:
-                        round_consistent = False
-                    break
-                retries_left -= 1
-
-            if reported is not None:
-                advertised_total = max(advertised_total or 0, reported)
-
-            next_page = next_scholar_page(payload, start, cites_id)
-            if next_page is None:
-                finished = True
-                break
-            current.update(next_page)
-            current["no_cache"] = "true"
-        else:
-            raise ApiError(f"Google Scholar ID {cites_id}: exceeded {MAX_API_PAGES} pages")
-
-        stable = (
-            finished
-            and round_consistent
-            and previous_round_ids == round_ids
-            and (advertised_total is None or advertised_total <= len(observed))
+def scholar_result_item(result: Any) -> tuple[str, CitationItem]:
+    if not isinstance(result, dict):
+        raise ApiError("Google Scholar: malformed citing document")
+    title = result.get("title")
+    if not isinstance(title, str) or not title.strip():
+        raise ApiError("Google Scholar: citing document has no title")
+    link = result.get("link")
+    if not isinstance(link, str) or not link.strip():
+        link = "https://scholar.google.com/scholar?" + urllib.parse.urlencode(
+            {"q": f'"{title.strip()}"'}
         )
-        if stable:
-            return unique_items(list(observed.values()))
-        previous_round_ids = round_ids if finished else None
+    result_id = result.get("result_id")
+    source_id = (
+        result_id.strip()
+        if isinstance(result_id, str) and result_id.strip()
+        else hashlib.sha256(f"{title}\0{link}".encode()).hexdigest()[:20]
+    )
+    return source_id, CitationItem(
+        title=title.strip(),
+        link=link.strip(),
+        arxiv_id=arxiv_id_from_url(link),
+        doi=doi_from_url(link),
+        source_id=source_id,
+    )
 
-    raise ApiError(
-        f"Google Scholar ID {cites_id}: results did not stabilize after "
-        f"{GOOGLE_CITATION_ROUNDS} fresh rounds"
+
+def fetch_serpapi_citing_items(
+    cites_ids: list[str],
+    api_key: str,
+    minimum_count: int = 0,
+    cached_items: list[CitationItem] | None = None,
+) -> GoogleCitationBatch:
+    """Collect one combined cites query through complementary page windows.
+
+    Google reports one approximate total on the first page but later pages can
+    come from different index snapshots. A single `next` chain is therefore not
+    enough. Measured here, the combined NLAH query reported 72 but ordinary
+    next-link pagination produced only 41-45 distinct result IDs. A bounded
+    coverage matrix over alternative offsets, filters, and preserved Google
+    contexts recovered all 72 IDs; two independent harvests produced the same
+    set. This is not a stability loop: each window is requested at most once,
+    with one final forced-fresh window, and the process stops at the reported
+    target or 12 successful requests.
+
+    `result_id` is kept as source evidence because Google may represent two
+    metadata records with the same DOI/arXiv identifier. Cross-source unique
+    counts still use the existing conservative identity grouping.
+    """
+    unique_ids = list(dict.fromkeys(cites_ids))
+    if not unique_ids:
+        return GoogleCitationBatch([], 0, 0, True, 0)
+    combined_id = ",".join(unique_ids)
+    cached_by_evidence = {
+        citation_item_semantic_evidence_key(item): item
+        for item in cached_items or []
+    }
+    observed: dict[str, CitationItem] = {
+        f"cache:{evidence_key}": item
+        for evidence_key, item in cached_by_evidence.items()
+    }
+    requests = 0
+
+    first_params = {
+        "engine": "google_scholar",
+        "cites": combined_id,
+        "hl": "en",
+        "num": str(SERPAPI_CITATION_PAGE_SIZE),
+        "filter": "0",
+        "start": "0",
+    }
+
+    def collect(payload: dict[str, Any]) -> None:
+        page_results = payload.get("organic_results")
+        if not isinstance(page_results, list):
+            raise ApiError("Google Scholar: missing organic_results")
+        for result in page_results:
+            source_id, item = scholar_result_item(result)
+            evidence_key = citation_item_semantic_evidence_key(item)
+            observed.pop(f"cache:{evidence_key}", None)
+            observed.setdefault(source_id, item)
+
+    first = fetch_serpapi(first_params, api_key)
+    requests += 1
+    collect(first)
+    raw_total = (first.get("search_information") or {}).get("total_results")
+    advertised_total = (
+        raw_total
+        if isinstance(raw_total, int) and not isinstance(raw_total, bool) and raw_total >= 0
+        else None
+    )
+    target = max(advertised_total or 0, minimum_count)
+    context = scholar_page_context(first, 0, combined_id) or {
+        "as_sdt": "2005",
+        "sciodt": "0,5",
+        "scipsc": "1",
+    }
+    context.pop("start", None)
+
+    windows: list[tuple[str, str, str, str, dict[str, str], bool]] = [
+        ("default", "20", "1", "en", context, False),
+        ("filter0", "20", "0", "en", context, False),
+        ("filter0", "40", "0", "en", context, False),
+        ("filter0", "30", "0", "en", context, False),
+        ("filter0", "50", "0", "en", context, False),
+        ("filter0", "60", "0", "en", context, False),
+        ("filter0", "60", "0", "en", {"as_sdt": context.get("as_sdt", "2005")}, False),
+        ("filter0", "60", "0", "zh-CN", context, False),
+        ("filter0", "20", "0", "zh-CN", context, False),
+    ]
+    for cites_id in unique_ids if len(unique_ids) > 1 else []:
+        windows.append(("filter0", "40", "0", "en", context, False))
+    windows.append(("default", "20", "1", "en", context, True))
+
+    for label, start, filter_value, language, extra, fresh in windows:
+        if len(observed) >= target or requests >= GOOGLE_CITATION_MAX_REQUESTS:
+            break
+        params = {
+            "engine": "google_scholar",
+            "cites": combined_id,
+            "hl": language,
+            "num": str(SERPAPI_CITATION_PAGE_SIZE),
+            "filter": filter_value,
+            "start": start,
+            **extra,
+        }
+        if fresh:
+            params["no_cache"] = "true"
+        try:
+            payload = fetch_serpapi(params, api_key)
+        except NoScholarResults:
+            requests += 1
+            continue
+        requests += 1
+        before = len(observed)
+        collect(payload)
+        log(
+            f"Google Scholar {label} start={start}: +{len(observed) - before} "
+            f"new ({len(observed)}/{target or 'unknown'}, {requests} request(s))."
+        )
+
+    complete = target == 0 or len(observed) >= target
+    if not complete:
+        warn(
+            f"Google Scholar coverage reached {len(observed)}/{target} result IDs "
+            f"after {requests} requests; retaining cached data."
+        )
+    return GoogleCitationBatch(
+        items=list(observed.values()),
+        reported_total=max(advertised_total or 0, len(observed)) if observed else advertised_total,
+        raw_unique_count=len(observed),
+        complete=complete,
+        requests=requests,
     )
 
 
@@ -1282,7 +1349,21 @@ def generate_publication_citations(
         cached = existing_cache.get("google_scholar", {})
         previous = publication_source_section(publication, "google_scholar").get("citations", 0)
         baseline = cached.get("citations", previous) if isinstance(cached, dict) else previous
-        return fetch_serpapi_citing_items(google_ids, serpapi_key, max(previous, baseline))
+        cached_google_items = cached_source_items(existing_cache, "google_scholar") if "google_scholar" in existing_cache else []
+        batch = fetch_serpapi_citing_items(
+            google_ids,
+            serpapi_key,
+            max(previous, baseline),
+            cached_google_items,
+        )
+        log(
+            f"Google Scholar coverage: {batch.raw_unique_count}/"
+            f"{batch.reported_total or 'unknown'} result IDs; "
+            f"complete={batch.complete}; requests={batch.requests}."
+        )
+        if not batch.complete:
+            raise ApiError("Google Scholar coverage was incomplete")
+        return batch.items
 
     google_ids = resolve_google_ids(publication, bib_metadata, articles_by_title)
     queries["google_scholar"] = google_ids

@@ -4,7 +4,7 @@ papers:
       query:
       - '5554083676653175677'
       - '10581113726319067053'
-      citations: 68
+      citations: 72
       documents:
       - title: A Survey on AI Agent Harness
         link: https://www.researchgate.net/profile/Zhongwei-Xie-3/publication/404675561_A_Survey_on_AI_Agent_Harness/links/6a187d5c2f87006ac07dc739/A-Survey-on-AI-Agent-Harness.pdf
@@ -74,6 +74,9 @@ papers:
         arxiv_id: '2609.05903'
       - title: Execution Control Harness for Governed LLM-Based Code Generation
         link: https://ieeexplore.ieee.org/abstract/document/11705535/
+      - title: 'Forging More Tasks into Better Harnesses: Agentic Harness Evolution via Successive Scale Racing'
+        link: https://arxiv.org/abs/2610.28815
+        arxiv_id: '2610.28815'
       - title: 'From Agent Loops to Deterministic Graphs: Execution Lineage for Reproducible AI-Native Work'
         link: https://arxiv.org/abs/2605.06365
         arxiv_id: '2605.06365'
@@ -83,6 +86,9 @@ papers:
       - title: 'From Question Answering to Task Completion: A Survey on Agent System and Harness Design'
         link: https://arxiv.org/abs/2606.20683
         arxiv_id: '2606.20683'
+      - title: 'HACHIMI-II: From Role-Play to Learner Behavior Modeling for Faithful Student Simulation'
+        link: https://arxiv.org/abs/2610.19654
+        arxiv_id: '2610.19654'
       - title: 'Harness-Aware Evaluation of LLM Agents: Systems, Benchmarks, and Protocols'
         link: https://www.preprints.org/manuscript/202609.2140
       - title: 'Harness engineering for language agents: The harness layer as control, agency, and runtime'
@@ -122,13 +128,16 @@ papers:
       - title: 'JIT-Agent: Scaling harness intelligence via just-in-time harness evolution'
         link: https://arxiv.org/abs/2608.25593
         arxiv_id: '2608.25593'
-      - title: 'Loop Engineering for Agentic Software Systems: LEAF Architecture, Pattern Taxonomy, Use Cases, Evaluation, Challenges, and Future Directions'
-        link: https://www.researchgate.net/profile/Partha-Ray-11/publication/408733345_Loop_Engineering_for_Agentic_Software_Systems_LEAF_Architecture_Pattern_Taxonomy_Use_Cases_Evaluation_Challenges_and_Future_Directions/links/6a510bf45ec6581029907331/Loop-Engineering-for-Agentic-Software-Systems-LEAF-Architecture-Pattern-Taxonomy-Use-Cases-Evaluation-Challenges-and-Future-Directions.pdf
+      - title: 'Loop Engineering for Agentic Software Systems: LEAF Architecture, Pattern Taxonomy, Use Cases, Evaluation, Challenges and Future Directions'
+        link: https://onlinelibrary.wiley.com/doi/abs/10.1111/exsy.70442
       - title: 'LoopArena: Benchmarking Models as Runtime Controllers for Loop Engineering'
         link: https://arxiv.org/abs/2608.28281
         arxiv_id: '2608.28281'
       - title: 'Making waves: Emerging risks as regulatory mismatch meets automation in llm-agents like openclaw for water treatment and environmental infrastructure'
         link: https://www.sciencedirect.com/science/article/pii/S0043135426015368
+      - title: 'MedHarnessBench: A Unified Benchmark for Healthcare Agent Evaluation'
+        link: https://arxiv.org/abs/2610.15714
+        arxiv_id: '2610.15714'
       - title: Metacognition Should Be the Scientific Framework for Bounded and Effective Self-Governance in Generative AI
         link: https://arxiv.org/abs/2605.23981
         arxiv_id: '2605.23981'
@@ -144,6 +153,9 @@ papers:
       - title: 'Qwen-Planner-Agent: A Closed-Loop AI-for-AI Framework for Real-World Mobile Planner Agents'
         link: https://arxiv.org/abs/2609.29892
         arxiv_id: '2609.29892'
+      - title: 'Reliable Before Profitable: QuantHarness for Governing Financial Strategy Development with LLM Agents'
+        link: https://arxiv.org/abs/2610.26101
+        arxiv_id: '2610.26101'
       - title: 'Remember the Decision, Not the Description: A Rate-Distortion Framework for Agent Memory'
         link: https://arxiv.org/abs/2605.10870
         arxiv_id: '2605.10870'
@@ -181,7 +193,7 @@ papers:
       - title: 'The Path to Self-Evolving Clinical Systems: Scaling Medical Agents from Assistance to Autonomy'
         link: https://arxiv.org/abs/2607.11175
         arxiv_id: '2607.11175'
-      - title: 'The Work Behind Delegation: A Framework for Supervising AI Coding Agents'
+      - title: 'The work behind delegation: A framework for supervising AI coding agents'
         link: https://arxiv.org/abs/2609.24234
         arxiv_id: '2609.24234'
       - title: 'Toward the Science of Multi-Agent Communication: A Comprehensive Survey'
