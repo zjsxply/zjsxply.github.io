@@ -23,10 +23,10 @@ papers:
         arxiv_id: '2604.22748'
       - title: 'AgentReins: Designing the human side of agent harness'
         link: https://scholar.google.com/scholar?q=%22AgentReins%3A+Designing+the+human+side+of+agent+harness%22
-      - title: 'Agents in the Large: Perception-Centered Architecture for Persistent Agents'
+      - title: 'Agents in the large: Perception-centered architecture for persistent agents'
         link: https://arxiv.org/abs/2608.30478
         arxiv_id: '2608.30478'
-      - title: 'AI4AI Survey: From Long-Horizon Agents to Recursive Self-Improvement—Definitions, Reliable Horizons, and Open Problems'
+      - title: 'AI4AI survey: From long-horizon agents to recursive self-improvement—definitions, reliable horizons, and open problems'
         link: https://www.preprints.org/manuscript/202608.2108
       - title: 'AION: Next-Generation Tasks and Practical Harness for Time Series'
         link: https://arxiv.org/abs/2605.25045
@@ -180,6 +180,8 @@ papers:
         link: https://arxiv.org/abs/2606.02540
         arxiv_id: '2606.02540'
       - title: 'SpatialGuard: Harness-Guided Verifiable Spatial Reasoning for Text-to-Image Generation'
+        link: https://aclanthology.org/2026.emnlp-main.653/
+      - title: 'SpatialGuard: Harness-Guided Verifiable Spatial Reasoning for Text-to-Image Generation'
         link: https://arxiv.org/abs/2609.01582
         arxiv_id: '2609.01582'
       - title: 'Statistical Priors for Implicit Preferences: Decoupling Skill Selection as a Local Harness in Personal Agents'
@@ -190,7 +192,7 @@ papers:
         arxiv_id: '2608.17433'
       - title: Task-Specialized Harness Refinement\\Across Financial Decision Tasks
         link: https://openreview.net/forum?id=9LHVuRrbYx
-      - title: 'The Path to Self-Evolving Clinical Systems: Scaling Medical Agents from Assistance to Autonomy'
+      - title: 'The path to self-evolving clinical systems: Scaling medical agents from assistance to autonomy'
         link: https://arxiv.org/abs/2607.11175
         arxiv_id: '2607.11175'
       - title: 'The work behind delegation: A framework for supervising AI coding agents'
@@ -206,7 +208,7 @@ papers:
         arxiv_id: '2609.13889'
     semantic_scholar:
       query: arXiv:2603.25723
-      citations: 57
+      citations: 60
       documents:
       - title: 'Agentic MIP Research: Accelerated Constraint Handler Generation'
         link: https://www.semanticscholar.org/paper/4ce8ae242c5783853a64b92cd4160141cf8fb23a
@@ -237,6 +239,9 @@ papers:
       - title: 'Beyond the Model: Demystifying Harness Effects in Software Engineering Agents'
         link: https://www.semanticscholar.org/paper/b1dcbd52547bd52f705103b2c81309012bb9a7cc
         arxiv_id: '2609.32459'
+      - title: Can Image Agents Complete Visual Commissions? A Benchmark and Modular Framework
+        link: https://www.semanticscholar.org/paper/714d82d00e98f54d2714aa48f09e15fcdbf08bd4
+        arxiv_id: '2610.39330'
       - title: 'CineForge: Self-Improving Agents for Long-Horizon Video Generation'
         link: https://www.semanticscholar.org/paper/a1b797abcee34f2afeb77a796516ad5810cbfa6d
         arxiv_id: '2608.29621'
@@ -254,6 +259,9 @@ papers:
         link: https://www.semanticscholar.org/paper/ef1530727228713e8f1c34373477e1ffcac1bda4
         arxiv_id: '2605.30611'
         doi: 10.48550/arxiv.2605.30611
+      - title: 'Don''t Forget What You Just Learned: Self-Directed Repair Turns Agent Mistakes Into Lasting Lessons'
+        link: https://www.semanticscholar.org/paper/d5eca343e925ce23d34e7522b4ba5511d985d7e6
+        arxiv_id: '2610.31846'
       - title: 'Dr-DCI: Scaling Direct Corpus Interaction via Dynamic Workspace Expansion'
         link: https://www.semanticscholar.org/paper/aa6278a3fdab65afa144d5e562a13d183bedc74d
         arxiv_id: '2606.14885'
@@ -341,6 +349,9 @@ papers:
         link: https://www.semanticscholar.org/paper/07ef99f203b26fb3926eca74583db90ee1f8e44f
         arxiv_id: '2606.13707'
         doi: 10.48550/arxiv.2606.13707
+      - title: Performance Verification of Semantic Routing Based on Lightweight LLMs in Financial Air-Gapped Environments
+        link: https://www.semanticscholar.org/paper/7dfb81d61e7fc8b8c3a17edce027b799c3e488a0
+        doi: 10.1109/access.2026.3746297
       - title: 'PluginRSI: Recursive Improvement of Agent Harnesses with Reusable Plugins'
         link: https://www.semanticscholar.org/paper/807040ab972f6af671e97307d6207c199b14b2c7
         arxiv_id: '2609.32423'
@@ -412,8 +423,12 @@ papers:
         doi: 10.48550/arxiv.2607.09996
     ads:
       query: 2026arXiv260325723P
-      citations: 29
+      citations: 66
       documents:
+      - title: 'A Governance Methodology Layer for AI-Assisted Software Development: Defect Taxonomy, Controlled Ablation, and a Test of Process-Over-Capability'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260904218K/abstract
+        arxiv_id: '2609.04218'
+        doi: 10.48550/arxiv.2609.04218
       - title: 'A Survey on Long-Term Memory Security in LLM Agents: Attacks, Defenses, and Governance Across the Memory Lifecycle'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260416548L/abstract
         arxiv_id: '2604.16548'
@@ -426,6 +441,14 @@ papers:
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260422748C/abstract
         arxiv_id: '2604.22748'
         doi: 10.48550/arxiv.2604.22748
+      - title: 'Agents in the Large: Perception-Centered Architecture for Persistent Agents'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260830478D/abstract
+        arxiv_id: '2608.30478'
+        doi: 10.48550/arxiv.2608.30478
+      - title: 'AI4BayesCode: From Natural Language Descriptions to Validated Modular Stateful Bayesian Samplers'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260518476Z/abstract
+        arxiv_id: '2605.18476'
+        doi: 10.48550/arxiv.2605.18476
       - title: 'AION: Next-Generation Tasks and Practical Harness for Time Series'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260525045Z/abstract
         arxiv_id: '2605.25045'
@@ -438,6 +461,10 @@ papers:
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260422937P/abstract
         arxiv_id: '2604.22937'
         doi: 10.48550/arxiv.2604.22937
+      - title: 'AutoSaddler: Automatic Harness Optimization with Durable Updates from Agent Execution Traces'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260823041P/abstract
+        arxiv_id: '2608.23041'
+        doi: 10.48550/arxiv.2608.23041
       - title: 'Beyond the Model: Demystifying Harness Effects in Software Engineering Agents'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260932459H/abstract
         arxiv_id: '2609.32459'
@@ -446,6 +473,10 @@ papers:
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260621005Z/abstract
         arxiv_id: '2606.21005'
         doi: 10.48550/arxiv.2606.21005
+      - title: 'CineForge: Self-Improving Agents for Long-Horizon Video Generation'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260829621L/abstract
+        arxiv_id: '2608.29621'
+        doi: 10.48550/arxiv.2608.29621
       - title: 'COMFYCLAW: Self-Evolving Skill Harnesses for Image Generation Workflows'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260701709L/abstract
         arxiv_id: '2607.01709'
@@ -458,6 +489,26 @@ papers:
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260725400W/abstract
         arxiv_id: '2607.25400'
         doi: 10.48550/arxiv.2607.25400
+      - title: 'Don''t Forget What You Just Learned: Self-Directed Repair Turns Agent Mistakes Into Lasting Lessons'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv261031846K/abstract
+        arxiv_id: '2610.31846'
+        doi: 10.48550/arxiv.2610.31846
+      - title: 'Dr-DCI: Scaling Direct Corpus Interaction via Dynamic Workspace Expansion'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260614885L/abstract
+        arxiv_id: '2606.14885'
+        doi: 10.48550/arxiv.2606.14885
+      - title: 'DS-Lighting: Making Agent Harnesses Explicit for Data-Science Automation'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260828590L/abstract
+        arxiv_id: '2608.28590'
+        doi: 10.48550/arxiv.2608.28590
+      - title: 'EvoSafeHarness: Evolving Model- and Domain-Specific Harnesses for Securing Agents'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260905903L/abstract
+        arxiv_id: '2609.05903'
+        doi: 10.48550/arxiv.2609.05903
+      - title: 'Forging More Tasks into Better Harnesses: Agentic Harness Evolution via Successive Scale Racing'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv261028815L/abstract
+        arxiv_id: '2610.28815'
+        doi: 10.48550/arxiv.2610.28815
       - title: 'From Agent Loops to Deterministic Graphs: Execution Lineage for Reproducible AI-Native Work'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260506365R/abstract
         arxiv_id: '2605.06365'
@@ -466,22 +517,60 @@ papers:
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260614502Z/abstract
         arxiv_id: '2606.14502'
         doi: 10.48550/arxiv.2606.14502
+      - title: 'HACHIMI-II: From Role-Play to Learner Behavior Modeling for Faithful Student Simulation'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv261019654J/abstract
+        arxiv_id: '2610.19654'
+        doi: 10.48550/arxiv.2610.19654
       - title: Harness Engineering as Categorical Architecture
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260512239B/abstract
         arxiv_id: '2605.12239'
         doi: 10.48550/arxiv.2605.12239
+      - title: 'Harness Engineering for Physical AI: Robot Middleware Is the Harness Layer'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260609416L/abstract
+        arxiv_id: '2606.09416'
+        doi: 10.48550/arxiv.2606.09416
       - title: 'Harness Handbook: Making Evolving Agent Harnesses Readable,Navigable, and Editable'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260713285W/abstract
         arxiv_id: '2607.13285'
         doi: 10.48550/arxiv.2607.13285
+      - title: 'Harness-Search: Guiding Long-Horizon Search through Multi-Agent Coordination'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv261005382W/abstract
+        arxiv_id: '2610.05382'
+      - title: 'Harness the Memory: A Holistic Evaluation of Memory Substrates in Memory Agents'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260815008H/abstract
+        arxiv_id: '2608.15008'
+        doi: 10.48550/arxiv.2608.15008
+      - title: 'Harness-Zero: Harness Distillation via Agent-as-Harness'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260924974Y/abstract
+        arxiv_id: '2609.24974'
+      - title: 'HarnessBridge: Learnable Bidirectional Controller for LLM Agent Harness'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260612882W/abstract
+        arxiv_id: '2606.12882'
+        doi: 10.48550/arxiv.2606.12882
       - title: 'HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260901437W/abstract
         arxiv_id: '2609.01437'
         doi: 10.48550/arxiv.2609.01437
+      - title: 'HASTE: Evolving Agent Harnesses Against Emerging Attacks Using Sparse Evidence'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv261002920X/abstract
+        arxiv_id: '2610.02920'
+        doi: 10.48550/arxiv.2610.02920
       - title: 'Intermediate Artifacts as First-Class Citizens: A Data Model for Durable Intermediate Artifacts in Agentic Systems'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260512087R/abstract
         arxiv_id: '2605.12087'
         doi: 10.48550/arxiv.2605.12087
+      - title: 'JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260825593Z/abstract
+        arxiv_id: '2608.25593'
+        doi: 10.48550/arxiv.2608.25593
+      - title: 'LoopArena: Benchmarking Models as Runtime Controllers for Loop Engineering'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260828281W/abstract
+        arxiv_id: '2608.28281'
+        doi: 10.48550/arxiv.2608.28281
+      - title: 'MedHarnessBench: A Unified Benchmark for Healthcare Agent Evaluation'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv261015714T/abstract
+        arxiv_id: '2610.15714'
+        doi: 10.48550/arxiv.2610.15714
       - title: 'MemoHarness: Agent Harnesses That Learn from Experience'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260714159H/abstract
         arxiv_id: '2607.14159'
@@ -490,6 +579,10 @@ papers:
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260523981J/abstract
         arxiv_id: '2605.23981'
         doi: 10.48550/arxiv.2605.23981
+      - title: 'Nautilus: From One Prompt to Plug-and-Play Robot Learning'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260511665J/abstract
+        arxiv_id: '2605.11665'
+        doi: 10.48550/arxiv.2605.11665
       - title: 'OCELOT: Inference-Leakage Budgets for Privacy-Preserving LLM Agents'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260612341X/abstract
         arxiv_id: '2606.12341'
@@ -498,6 +591,21 @@ papers:
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260933338N/abstract
         arxiv_id: '2609.33338'
         doi: 10.48550/arxiv.2609.33338
+      - title: 'Orchestra-o1: Omnimodal Agent Orchestration'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260613707Z/abstract
+        arxiv_id: '2606.13707'
+        doi: 10.48550/arxiv.2606.13707
+      - title: 'PluginRSI: Recursive Improvement of Agent Harnesses with Reusable Plugins'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260932423S/abstract
+        arxiv_id: '2609.32423'
+        doi: 10.48550/arxiv.2609.32423
+      - title: 'Qwen-Planner-Agent: A Closed-Loop AI-for-AI Framework for Real-World Mobile Planner Agents'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260929892Q/abstract
+        arxiv_id: '2609.29892'
+        doi: 10.48550/arxiv.2609.29892
+      - title: 'Reliable Before Profitable: QuantHarness for Governing Financial Strategy Development with LLM Agents'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv261026101M/abstract
+        arxiv_id: '2610.26101'
       - title: 'Remember the Decision, Not the Description: A Rate-Distortion Framework for Agent Memory'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260510870Z/abstract
         arxiv_id: '2605.10870'
@@ -514,6 +622,10 @@ papers:
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260413630L/abstract
         arxiv_id: '2604.13630'
         doi: 10.48550/arxiv.2604.13630
+      - title: Scaling Inference-Time Compute with Teams of Coding Agents
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv261017471S/abstract
+        arxiv_id: '2610.17471'
+        doi: 10.48550/arxiv.2610.17471
       - title: Scaling Laws for Agent Harnesses via Effective Feedback Compute
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260529682Z/abstract
         arxiv_id: '2605.29682'
@@ -522,14 +634,56 @@ papers:
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260617546Z/abstract
         arxiv_id: '2606.17546'
         doi: 10.48550/arxiv.2606.17546
+      - title: Self-Evolving Embodied Agents via Skill-Harness Evolution
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260811350W/abstract
+        arxiv_id: '2608.11350'
+        doi: 10.48550/arxiv.2608.11350
+      - title: 'SHarP: Saliency-based Pruning of Agent Harnesses'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv261004178G/abstract
+        arxiv_id: '2610.04178'
+      - title: Skill-based Agentic Evaluation for Real-time Data Science Tasks
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260916487T/abstract
+        arxiv_id: '2609.16487'
+        doi: 10.48550/arxiv.2609.16487
+      - title: 'SkillHarm: Lifecycle-Aware Skill-Based Attacks via Automated Construction'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260602540N/abstract
+        arxiv_id: '2606.02540'
+        doi: 10.48550/arxiv.2606.02540
       - title: 'SpatialGuard: Harness-Guided Verifiable Spatial Reasoning for Text-to-Image Generation'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260901582Q/abstract
         arxiv_id: '2609.01582'
         doi: 10.48550/arxiv.2609.01582
+      - title: 'Statistical Priors for Implicit Preferences: Decoupling Skill Selection as a Local Harness in Personal Agents'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260605828G/abstract
+        arxiv_id: '2606.05828'
+        doi: 10.48550/arxiv.2606.05828
+      - title: Task-Aware Harness Provisioning for LLM Agents in Mission-Critical Infrastructure Operations
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260817433L/abstract
+        arxiv_id: '2608.17433'
+        doi: 10.48550/arxiv.2608.17433
       - title: 'The Path to Self-Evolving Clinical Systems: Scaling Medical Agents from Assistance to Autonomy'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260711175Z/abstract
         arxiv_id: '2607.11175'
         doi: 10.48550/arxiv.2607.11175
+      - title: 'The Work Behind Delegation: A Framework for Supervising AI Coding Agents'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260924234P/abstract
+        arxiv_id: '2609.24234'
+      - title: 'WeAgent-MMGenEdit: A Full-Stack Recipe for Multimodal Agentic Image Generation and Editing'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260905171Z/abstract
+        arxiv_id: '2609.05171'
+        doi: 10.48550/arxiv.2609.05171
+      - title: 'When Agents Act Unwatched: The Reduced-Supervision Paradox in Agentic AI'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260929547S/abstract
+        arxiv_id: '2609.29547'
+        doi: 10.48550/arxiv.2609.29547
+      - title: 'When Malicious Instructions Persist: Persistent Memory Poisoning Attack on Harness-Based Agents'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260913889H/abstract
+        arxiv_id: '2609.13889'
+        doi: 10.48550/arxiv.2609.13889
+      - title: 'Who&amp;When Pro: Can LLMs Really Attribute Failures in AI Agents?'
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv260709996L/abstract
+        arxiv_id: '2607.09996'
+        doi: 10.48550/arxiv.2607.09996
   fu2026catarenaevaluatingevolutionarycapabilities:
     google_scholar:
       query:
@@ -539,13 +693,13 @@ papers:
       - title: 'EvoLedger: Evidence-Preserving Test-Time Evolution for LLM Agents'
         link: https://openreview.net/pdf?id=hPlWAXPb5l
       - title: 'Read, Route, Patch: Robust Test-Time Evolution for LLM Agents'
-        link: https://openreview.net/pdf?id=JyMFWdeeaG
+        link: https://www.researchgate.net/profile/Kaijie-Chen-5/publication/413651808_Read_Route_Patch_Robust_Test-Time_Evolution_for_LLM_Agents/links/6a8f456d726e0877c92c6523/Read-Route-Patch-Robust-Test-Time-Evolution-for-LLM-Agents.pdf
       - title: 'SAGE: A Quantitative Evaluation of Socialized Evolution in Agent Ecosystems'
         link: https://arxiv.org/abs/2606.03544
         arxiv_id: '2606.03544'
     semantic_scholar:
       query: arXiv:2510.26852
-      citations: 4
+      citations: 5
       documents:
       - title: Can AI Agents Learn Their Way to the Top? Evaluating Heuristic Learning in a Long-Running Game Agent Competition
         link: https://www.semanticscholar.org/paper/192fd3b5d9dbad85b386fdda9c244e0ad67f3e3d
@@ -562,10 +716,17 @@ papers:
         link: https://www.semanticscholar.org/paper/8787603312268b45d8e39daab6a741e8bb51b442
         arxiv_id: '2606.03544'
         doi: 10.48550/arxiv.2606.03544
+      - title: 'When Agents Fail: Model or Harness--Who''s to Blame?'
+        link: https://www.semanticscholar.org/paper/06cababf3ab1ce5ed336f106edf7cb9c7fc011b9
+        arxiv_id: '2610.32483'
     ads:
       query: 2025arXiv251026852F
-      citations: 3
+      citations: 4
       documents:
+      - title: Can AI Agents Learn Their Way to the Top? Evaluating Heuristic Learning in a Long-Running Game Agent Competition
+        link: https://ui.adsabs.harvard.edu/abs/2026arXiv261012341Y/abstract
+        arxiv_id: '2610.12341'
+        doi: 10.48550/arxiv.2610.12341
       - title: 'DemoEvolve: Demonstration-Guided Harness Evolution under Sparse Feedback'
         link: https://ui.adsabs.harvard.edu/abs/2026arXiv260524539C/abstract
         arxiv_id: '2605.24539'
