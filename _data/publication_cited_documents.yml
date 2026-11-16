@@ -4,7 +4,7 @@ papers:
       query:
       - '5554083676653175677'
       - '10581113726319067053'
-      citations: 76
+      citations: 77
       documents:
       - title: A Survey on AI Agent Harness
         link: https://www.researchgate.net/profile/Zhongwei-Xie-3/publication/404675561_A_Survey_on_AI_Agent_Harness/links/6a187d5c2f87006ac07dc739/A-Survey-on-AI-Agent-Harness.pdf
@@ -54,7 +54,7 @@ papers:
       - title: 'Comfyclaw: Self-evolving skill harnesses for image generation workflows'
         link: https://arxiv.org/abs/2607.01709
         arxiv_id: '2607.01709'
-      - title: 'Compositional Safety Failures in Harness Evolution: Identification and Runtime Monitoring'
+      - title: 'Compositional safety failures in harness evolution: Identification and runtime monitoring'
         link: https://arxiv.org/abs/2609.33123
         arxiv_id: '2609.33123'
       - title: 'Context scaling: A new frontier of AI scaling'
@@ -80,6 +80,9 @@ papers:
       - title: 'Forging More Tasks into Better Harnesses: Agentic Harness Evolution via Successive Scale Racing'
         link: https://arxiv.org/abs/2610.28815
         arxiv_id: '2610.28815'
+      - title: 'FreeForm Harness: A Mobile-Native Agent Harness for Open and Composable Extensions'
+        link: https://arxiv.org/abs/2611.04579
+        arxiv_id: '2611.04579'
       - title: 'From Agent Loops to Deterministic Graphs: Execution Lineage for Reproducible AI-Native Work'
         link: https://arxiv.org/abs/2605.06365
         arxiv_id: '2605.06365'
@@ -740,7 +743,7 @@ papers:
     google_scholar:
       query:
       - '9187625130475749521'
-      citations: 4
+      citations: 5
       documents:
       - title: 'EvoLedger: Evidence-Preserving Test-Time Evolution for LLM Agents'
         link: https://openreview.net/pdf?id=hPlWAXPb5l
@@ -751,6 +754,8 @@ papers:
       - title: 'SAGE: A Quantitative Evaluation of Socialized Evolution in Agent Ecosystems'
         link: https://arxiv.org/abs/2606.03544
         arxiv_id: '2606.03544'
+      - title: 'Turning Experience into Better Decisions: Test-Time Evolution for LLM Agents'
+        link: https://openreview.net/forum?id=FAZM1G8JJZ
     semantic_scholar:
       query: arXiv:2510.26852
       citations: 6
