@@ -222,7 +222,7 @@ papers:
         arxiv_id: '2609.13889'
     semantic_scholar:
       query: arXiv:2603.25723
-      citations: 61
+      citations: 62
       documents:
       - title: 'Agentic MIP Research: Accelerated Constraint Handler Generation'
         link: https://www.semanticscholar.org/paper/4ce8ae242c5783853a64b92cd4160141cf8fb23a
@@ -310,6 +310,9 @@ papers:
         link: https://www.semanticscholar.org/paper/9b180665463ee9eca4a85b3d146fc00d0f159149
         arxiv_id: '2606.20683'
         doi: 10.48550/arxiv.2606.20683
+      - title: 'GENE: Generalizable Need-Driven Evolution of Coding Agents with Post-Evolution Verification'
+        link: https://www.semanticscholar.org/paper/9ae7f7ecdd5db82cc938de453bf7472bed734d1e
+        doi: 10.1109/iccwamtip72078.2026.11769263
       - title: Harness Engineering as Categorical Architecture
         link: https://www.semanticscholar.org/paper/68004f1c20175ee44fa2cef4cc496fbdf6c6db3b
         arxiv_id: '2605.12239'
